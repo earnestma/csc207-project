@@ -5,3 +5,6 @@ tmp/
 
 *.class
 build
+
+todoist_api.txt
+toggl_api.txt
