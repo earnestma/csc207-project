@@ -5,6 +5,7 @@ tmp/
 
 *.class
 build
+target
 
 todoist_api.txt
 toggl_api.txt
