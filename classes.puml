@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+User *-- Project
+Project *-- Task
+Task *-- Reminder
+Task *-- Date
+Reminder *-- Date
+
+class Task {
+- str name
+- str description
+- float time
+- Date dueDate
+- Date creationDate
+- int priority
+- boolean status
+- Reminder reminder
+}
+
+class Project {
+- str name
+- Task[] tasks
+- boolean archived
+}
+
+class User{
+- str name
+- int id
+- Project[] projects
+}
+
+class Reminder{
+- str name
+- str description
+- Date remindTime
+}
+
+class Date{
+-
+}
+
+@enduml
