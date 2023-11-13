@@ -1,9 +1,10 @@
 package project.src.main.java.interface_adapter.add_task;
 
+import project.src.main.java.interface_adapter.ViewModel;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 
-public class AddTaskViewModel {
+public class AddTaskViewModel extends ViewModel {
 
     public final String TITLE_LABEL = "Add Task View";
     public final String TASK_NAME_LABEL = "Enter task name:";
