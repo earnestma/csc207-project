@@ -32,4 +32,8 @@ public class AddTaskViewModel extends ViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
+
+    public AddTaskState getState(){
+        return state;
+    }
 }

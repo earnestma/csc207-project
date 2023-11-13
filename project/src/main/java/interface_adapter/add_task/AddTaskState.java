@@ -1,6 +1,6 @@
 package project.src.main.java.interface_adapter.add_task;
 
-import project.src.main.java.view.AddTaskView;
+import java.util.ArrayList;
 
 public class AddTaskState {
     private String taskName = "";
@@ -47,5 +47,12 @@ public class AddTaskState {
 
     public void setDueDateError(String dueDateError) {
         this.dueDateError = dueDateError;
+    }
+
+    public ArrayList<String> showTaskAdded() {
+        ArrayList<String> task = new ArrayList<String>();
+        task.add(taskName);
+        task.add(dueDate);
+        return task;
     }
 }

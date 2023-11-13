@@ -1,6 +1,8 @@
 package project.src.main.java.interface_adapter.add_task;
 
 import project.src.main.java.interface_adapter.ViewManagerModel;
+import project.src.main.java.use_case.add_task.AddTaskOutputBoundary;
+import project.src.main.java.use_case.add_task.AddTaskOutputData;
 
 public class AddTaskPresenter implements AddTaskOutputBoundary {
 
@@ -11,5 +13,24 @@ public class AddTaskPresenter implements AddTaskOutputBoundary {
                             AddTaskViewModel addTaskViewModel) {
         this.viewManagerModel = viewManagerModel;
         this.addTaskViewModel = addTaskViewModel;
+    }
+
+    @Override
+    public void prepareSuccessView(AddTaskOutputData response) {
+        // switch to project view when task is successfully added
+
+        ProjectState projectState = projectViewModel.getState();
+        projectState.setTaskName(response.getTaskName());
+        projectState.setDueDate(response.getDueDate());
+        this.projectViewModel.setState(projectState);
+        this.projectViewModel.firePropertyChanged();
+
+        this.viewManagerModel.setActiveView(projectViewModel.getViewName());
+        this.viewManagerModel.firePropertyChanged();
+    }
+
+    @Override
+    public void prepareFailView(String error) {
+
     }
 }

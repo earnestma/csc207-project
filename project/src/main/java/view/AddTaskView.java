@@ -42,7 +42,7 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
                 new JLabel("Due Date"), dueDateInputField);
 
         JPanel buttons = new JPanel();
-        addTask = new JButton(addTaskViewModel.ADDTASK_BUTTON_LABEL);
+        addTask = new JButton(addTaskViewModel.TASK_NAME_LABEL);
         buttons.add(addTask);
         cancel = new JButton(addTaskViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
@@ -115,8 +115,11 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        AddTaskState state = (AddTaskState) evt.getNewValue();
-        setFields(state);
+        if (evt.getPropertyName().equals("state")) {
+            AddTaskState state = (AddTaskState) evt.getNewValue();
+            setFields(state);
+            JOptionPane.showMessageDialog(this, state.showTaskAdded());
+        }
     }
 
     private void setFields(AddTaskState state) {
