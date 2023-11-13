@@ -23,18 +23,18 @@ class Task {
 class Project {
 - str name
 - final int id
-- Map tasks
+- Map<int, Task> tasks
 - boolean archived
 }
 
-class User{
+class User {
 - str name
 - final str username
 - final str password
-- Map projects
+- Map<int, Project> projects
 }
 
-class Reminder{
+class Reminder {
 - str name
 - str description
 - LocalDateTime remindDateTime
