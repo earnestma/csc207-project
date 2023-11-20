@@ -1,14 +1,18 @@
 package data_access;
 
 import entity.Task;
-import entity.User;
 import entity.Project;
+
+import java.util.ArrayList;
 
 public interface ProjectDataAccessInterface {
     void modifyProject(Project project);
 
-    boolean addTask(Task task);
+    ArrayList<Task> getTasks(int projectID);
 
-    boolean deleteTask(Task task);
+    void addTask(Project project, Task task);
 
+    void deleteTask(Task task);
+
+    void modifyTask(Project project, Task task);
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Task {
     private String name;
-    private int id;
+    private Long id;
     private boolean hasDueDate;
     private LocalDateTime dueDate;
     private int priority; // Todoist: 1 (highest) - 4 (least, default)
@@ -22,7 +22,7 @@ public class Task {
         this.priority = priority;
     }
 
-    public Task(String name, int priority, int id) {
+    public Task(String name, int priority, Long id) {
         this.name = name;
         this.id = id;
         this.hasDueDate = false;
@@ -40,7 +40,7 @@ public class Task {
         this.priority = 4; // default/least value
     }
 
-    public Task(String name, int priority, LocalDateTime dueDate, int id) {
+    public Task(String name, int priority, LocalDateTime dueDate, Long id) {
         this.name = name;
         this.id = id;
         this.hasDueDate = true;
@@ -56,6 +56,14 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getID() {
+        return id;
+    }
+
+    public void setID(Long id) {
+        this.id = id;
     }
 
     public boolean hasDueDate() {

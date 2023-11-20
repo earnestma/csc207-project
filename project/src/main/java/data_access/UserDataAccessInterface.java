@@ -1,11 +1,11 @@
 package data_access;
 
+import java.io.IOException;
+
 import entity.Project;
 
 public interface UserDataAccessInterface {
-    String getTodoistAPIKey();
-
-    void addProject(Project project);
+    void addProject(Project project) throws IOException;
 
     void deleteProject(Project project);
 }
