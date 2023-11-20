@@ -1,4 +1,4 @@
-package main.java.entity;
+package project.src.main.java.entity;
 import java.util.HashMap;
 import java.util.Map;
 
