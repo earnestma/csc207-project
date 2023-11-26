@@ -1,10 +1,9 @@
-package interface_adapter.add_project;
+package main.java.interface_adapter.add_project;
 
-import use_case.add_project.AddProjectInputData;
-import use_case.add_project.AddProjectInputBoundary;
+// import main.java.use_case.add_project.AddProjectInputBoundary;
 
 public class AddProjectController {
-    final AddProjectInputBoundary addProjectUseCaseInteractor;
+    /*final AddProjectInputBoundary addProjectUseCaseInteractor;
 
     public AddProjectController(AddProjectInputBoundary addProjectUseCaseInteractor) {
         this.addProjectUseCaseInteractor = addProjectUseCaseInteractor;
@@ -14,5 +13,5 @@ public class AddProjectController {
         AddProjectInputData addProjectInputData = new AddProjectInputData(taskName);
 
         addProjectUseCaseInteractor.execute(addProjectInputData);
-    }
+    } */
 }

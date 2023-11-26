@@ -26,6 +26,8 @@ public class CheckTimeInteractor {
             System.out.println("Days: " + days);
             System.out.println("Hours: " + hours);
             System.out.println("Minutes: " + minutes);
+
+            CheckTimeOutputData outputData = new CheckTimeOutputData(currentDateTime, dueDateTime, false);
         }
 
     }
@@ -36,13 +38,5 @@ public class CheckTimeInteractor {
 
     private int findMinutes(LocalDateTime currentDateTime, LocalDateTime futureDateTime){
         return (int) ChronoUnit.MINUTES.between(currentDateTime, futureDateTime);
-    }
-
-    private int findHours(LocalDateTime currentDateTime, LocalDateTime futureDateTime){
-        return (int) ChronoUnit.HOURS.between(currentDateTime, futureDateTime);
-    }
-
-    private int findDays(LocalDateTime currentDateTime, LocalDateTime futureDateTime){
-        return (int) ChronoUnit.DAYS.between(currentDateTime, futureDateTime);
     }
 }
