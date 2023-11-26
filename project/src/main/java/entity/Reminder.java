@@ -1,4 +1,4 @@
-package project.src.main.java.entity;
+package entity;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,7 @@ public class Reminder {
     private String description;
     private LocalDateTime remindDateTime;
 
-    public Reminder(String name, String description, LocalDateTime remindTime){
+    public Reminder(String name, String description, LocalDateTime remindTime) {
         this.name = name;
         this.description = description;
         this.remindDateTime = remindTime;
