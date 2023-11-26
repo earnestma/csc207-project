@@ -9,7 +9,7 @@ public class Task {
     private Long id;
     private boolean hasDueDate;
     private LocalDateTime dueDate;
-    private int priority; // Todoist: 1 (highest) - 4 (least, default)
+    private int priority; // Todoist: 1 (highest) - 4 (least, default). API does it in reverse
     private boolean completed;
     public List<Reminder> reminders; // Stores a list of reminders, with the most
                                      // urgent at the front?
@@ -37,7 +37,7 @@ public class Task {
         this.dueDate = dueDate;
         this.completed = false;
         this.reminders = new ArrayList<Reminder>();
-        this.priority = 4; // default/least value
+        this.priority = priority;
     }
 
     public Task(String name, int priority, LocalDateTime dueDate, Long id) {
@@ -47,7 +47,7 @@ public class Task {
         this.dueDate = dueDate;
         this.completed = false;
         this.reminders = new ArrayList<Reminder>();
-        this.priority = 4; // default/least value
+        this.priority = priority;
     }
 
     public String getName() {
