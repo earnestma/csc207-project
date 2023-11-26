@@ -2,7 +2,7 @@ package main.java.use_case.check_remaining_time;
 
 import java.time.LocalDateTime;
 
-public class CheckTimeInputData {
+public class CheckTimeInputData implements CheckTimeInputBoundary{
     final private LocalDateTime dueDateTime;
 
     public CheckTimeInputData(LocalDateTime dueDateTime){

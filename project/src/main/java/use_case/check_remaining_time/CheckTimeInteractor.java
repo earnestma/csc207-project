@@ -12,12 +12,12 @@ public class CheckTimeInteractor {
 
     public void execute(CheckTimeInputData checkTimeInputData){
         LocalDateTime dueDateTime = checkTimeInputData.getDueDateTime();
-        LocalDateTime currentDueDate = findCurrentTime();
-        if (currentDueDate.compareTo(dueDateTime) < 0){
+        LocalDateTime currentDateTime = findCurrentTime();
+        if (currentDateTime.compareTo(dueDateTime) > 0){
             System.out.println("Already Due");
         }
         else{
-            int minutes = findMinutes(currentDueDate, dueDateTime);
+            int minutes = findMinutes(currentDateTime, dueDateTime);
 
             int days = minutes / 1440;
             int hours = (minutes - (days * 1440)) / 60;
