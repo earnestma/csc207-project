@@ -1,0 +1,10 @@
+package project.src.main.java.view;
+
+import javax.swing.*;
+
+public class LabelTextPanel extends JPanel {
+    LabelTextPanel(JLabel label, JTextField textField) {
+        this.add(label);
+        this.add(textField);
+    }
+}
