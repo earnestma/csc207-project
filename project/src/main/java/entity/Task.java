@@ -20,7 +20,6 @@ public class Task {
         this.id = id;
         this.dueDateTime = dueDateTime;
         this.priority = priority;
-
         this.completed = false;
         this.reminders = new ArrayList<Reminder>();
     }
