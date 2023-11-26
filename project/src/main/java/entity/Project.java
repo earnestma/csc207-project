@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Project {
     private String name;
-    private int id;
+    private long id;
     public Map<Integer, Task> tasks; // tasks has {task1 id : task1, task2 id : task2...}
     private boolean archived;
 
@@ -15,14 +15,14 @@ public class Project {
         this.archived = false;
     }
 
-    public Project(String name, int id) {
+    public Project(String name, long id) {
         this.name = name;
         this.tasks = new HashMap<Integer, Task>();
         this.archived = false;
         this.id = id;
     }
 
-    public Project(String name, int id, Map<Integer, Task> tasks, boolean archived) {
+    public Project(String name, long id, Map<Integer, Task> tasks, boolean archived) {
         this.name = name;
         this.tasks = new HashMap<Integer, Task>();
         this.archived = false;
@@ -38,11 +38,11 @@ public class Project {
         this.name = newName;
     }
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

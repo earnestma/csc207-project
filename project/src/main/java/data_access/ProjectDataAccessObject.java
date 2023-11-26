@@ -109,7 +109,7 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface {
     }
 
     @Override
-    public ArrayList<Task> getTasks(int projectID) {
+    public ArrayList<Task> getTasks(long projectID) {
         HttpClient client = HttpClient.newHttpClient();
 
         ArrayList<Task> taskList = new ArrayList<Task>();

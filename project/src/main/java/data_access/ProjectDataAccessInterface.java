@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface ProjectDataAccessInterface {
     void modifyProject(Project project);
 
-    ArrayList<Task> getTasks(int projectID);
+    ArrayList<Task> getTasks(long projectID);
 
     void addTask(Project project, Task task);
 

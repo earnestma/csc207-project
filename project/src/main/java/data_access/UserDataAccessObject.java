@@ -34,7 +34,7 @@ public class UserDataAccessObject implements UserDataAccessInterface {
             if (response.statusCode() == 200) {
                 JSONObject JSONResp = new JSONObject(response.body());
                 // set the project id for our own use
-                project.setId(JSONResp.getInt("id"));
+                project.setId(JSONResp.getLong("id"));
 
             } else {
                 throw new IOException("Error creating project");
