@@ -1,16 +1,22 @@
-package project.src.main.java.interface_adapter.add_task;
+package interface_adapter.add_task;
 
 import java.util.ArrayList;
 
 public class AddTaskState {
     private String taskName = "";
     private String taskNameError = null;
+    private String priority = "";
+    private String priorityError = null;
     private String dueDate = "";
     private String dueDateError = null;
 
     public AddTaskState(AddTaskState copy) {
         taskName = copy.taskName;
         taskNameError = copy.taskNameError;
+
+        priority = copy.priority;
+        priorityError = copy.priorityError;
+
         dueDate = copy.dueDate;
         dueDateError = copy.dueDateError;
     }
@@ -23,6 +29,14 @@ public class AddTaskState {
 
     public String getTaskNameError(){
         return taskNameError;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public String getPriorityError() {
+        return priorityError;
     }
 
     public String getDueDate() {
@@ -49,10 +63,12 @@ public class AddTaskState {
         this.dueDateError = dueDateError;
     }
 
-    public ArrayList<String> showTaskAdded() {
-        ArrayList<String> task = new ArrayList<String>();
+    public ArrayList<Object> showTaskAdded() {
+        ArrayList<Object> task = new ArrayList<Object>();
         task.add(taskName);
+        task.add(priority);
         task.add(dueDate);
         return task;
     }
+
 }

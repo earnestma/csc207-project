@@ -1,6 +1,6 @@
-package project.src.main.java.use_case.add_task;
-import project.src.main.java.entity.Task;
-import project.src.main.java.entity.TaskFactory;
+package use_case.add_task;
+import entity.Task;
+import entity.TaskFactory;
 
 public class AddTaskInteractor implements AddTaskInputBoundary {
     final AddTaskDataAccessInterface userDataAccessObject;
@@ -17,7 +17,7 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
 
     @Override
     public void execute(AddTaskInputData addTaskInputData) {
-        Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getDueDate());
+        Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getPriority(), addTaskInputData.getDueDate());
         userDataAccessObject.add(task);
 
         AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), false);
