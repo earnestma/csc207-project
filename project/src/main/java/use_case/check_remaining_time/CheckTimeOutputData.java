@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class CheckTimeOutputData {
     private LocalDateTime dateTime;
 
-    public CheckTimeOutputData(LocalDateTime dateTime){
+    public CheckTimeOutputData(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 }
