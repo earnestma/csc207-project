@@ -1,6 +1,6 @@
-package project.src.main.java.interface_adapter.add_task;
+package interface_adapter.add_task;
 
-import project.src.main.java.interface_adapter.ViewModel;
+import interface_adapter.ViewModel;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 

@@ -1,8 +1,8 @@
-package project.src.main.java.interface_adapter.add_task;
+package interface_adapter.add_task;
 
-import project.src.main.java.interface_adapter.ViewManagerModel;
-import project.src.main.java.use_case.add_task.AddTaskOutputBoundary;
-import project.src.main.java.use_case.add_task.AddTaskOutputData;
+import interface_adapter.ViewManagerModel;
+import use_case.add_task.AddTaskOutputBoundary;
+import use_case.add_task.AddTaskOutputData;
 
 public class AddTaskPresenter implements AddTaskOutputBoundary {
 
