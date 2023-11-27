@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Task {
     private String name;
-    private int id;
+    private Long id;
     private boolean hasDueDate;
     private LocalDateTime dueDate;
-    private int priority; // Todoist: 1 (highest) - 4 (least, default)
+    private int priority; // Todoist: 1 (highest) - 4 (least, default). API does it in reverse
     private boolean completed;
     public List<Reminder> reminders; // Stores a list of reminders, with the most
                                      // urgent at the front?
@@ -22,7 +22,7 @@ public class Task {
         this.priority = priority;
     }
 
-    public Task(String name, int priority, int id) {
+    public Task(String name, int priority, Long id) {
         this.name = name;
         this.id = id;
         this.hasDueDate = false;
@@ -37,17 +37,17 @@ public class Task {
         this.dueDate = dueDate;
         this.completed = false;
         this.reminders = new ArrayList<Reminder>();
-        this.priority = 4; // default/least value
+        this.priority = priority;
     }
 
-    public Task(String name, int priority, LocalDateTime dueDate, int id) {
+    public Task(String name, int priority, LocalDateTime dueDate, Long id) {
         this.name = name;
         this.id = id;
         this.hasDueDate = true;
         this.dueDate = dueDate;
         this.completed = false;
         this.reminders = new ArrayList<Reminder>();
-        this.priority = 4; // default/least value
+        this.priority = priority;
     }
 
     public String getName() {
@@ -56,6 +56,14 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getID() {
+        return id;
+    }
+
+    public void setID(Long id) {
+        this.id = id;
     }
 
     public boolean hasDueDate() {
