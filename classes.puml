@@ -1,44 +1,44 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-'Composition Relations (A has B)'
+
 User *-- Project
 Project *-- Task
 Task *-- Reminder
-
-'Dependency Relations (A use B)'
-Task --> LocalDateTime
-Reminder --> LocalDateTime
+Task *-- Date
+Reminder *-- Date
 
 class Task {
 - str name
 - str description
-- final int id
-- LocalDateTime dueDateTime
+- float time
+- LocalDateTime dueDate
+- Date creationDate
 - int priority
-- boolean completed
-- List<Reminder> reminders
+- boolean status
+- Reminder reminder
 }
 
 class Project {
 - str name
-- final int id
-- Map<int, Task> tasks
+- Task[] tasks
 - boolean archived
 }
 
-class User {
+class User{
 - str name
-- final str username
-- final str password
-- Map<int, Project> projects
+- int id
+- Project[] projects
 }
 
-class Reminder {
+class Reminder{
 - str name
 - str description
-- LocalDateTime remindDateTime
+- LocalDateTime remindTime
 }
 
+class Date{
+-
+}
 
 @enduml
