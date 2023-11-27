@@ -1,8 +1,8 @@
-package project.src.main.java.view;
+package view;
 
-import project.src.main.java.interface_adapter.add_task.AddTaskController;
-import project.src.main.java.interface_adapter.add_task.AddTaskState;
-import project.src.main.java.interface_adapter.add_task.AddTaskViewModel;
+import interface_adapter.add_task.AddTaskController;
+import interface_adapter.add_task.AddTaskState;
+import interface_adapter.add_task.AddTaskViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +20,8 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
     final JTextField taskNameInputField = new JTextField(15);
     private final JLabel taskNameErrorField = new JLabel();
+    final JTextField priorityInputField = new JTextField(15);
+    private final JLabel priorityErrorField = new JLabel();
     final JTextField dueDateInputField = new JTextField(15);
     private final JLabel dueDateErrorField = new JLabel();
 
@@ -38,6 +40,8 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
         LabelTextPanel taskNameInfo = new LabelTextPanel(
                 new JLabel("Task name"), taskNameInputField);
+        LabelTextPanel priorityInfo = new LabelTextPanel(
+                new JLabel("Priority"), priorityInputField);
         LabelTextPanel dueDateInfo = new LabelTextPanel(
                 new JLabel("Due Date"), dueDateInputField);
 
@@ -55,6 +59,7 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
                             addTaskController.execute(
                                     currentState.getTaskName(),
+                                    currentState.getPriority(),
                                     currentState.getDueDate()
                             );
                         }
@@ -82,6 +87,25 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         });
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+        priorityInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        AddTaskState currentState = addTaskViewModel.getState();
+                        currentState.setDueDate(priorityInputField.getText() + e.getKeyChar());
+                        addTaskViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+
+
         dueDateInputField.addKeyListener(
                 new KeyListener() {
                     @Override
@@ -103,6 +127,8 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         this.add(title);
         this.add(taskNameInfo);
         this.add(taskNameErrorField);
+        this.add(priorityInfo);
+        this.add(priorityErrorField);
         this.add(dueDateInfo);
         this.add(dueDateErrorField);
         this.add(buttons);
@@ -124,6 +150,7 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
     private void setFields(AddTaskState state) {
         taskNameInputField.setText(state.getTaskName());
+        priorityInputField.setText(state.getPriority());
         dueDateInputField.setText(state.getDueDate());
     }
 }
