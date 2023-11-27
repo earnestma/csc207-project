@@ -16,6 +16,7 @@ public class Project {
     }
 
     public Project(String name, long id) {
+
         this.name = name;
         this.tasks = new HashMap<Integer, Task>();
         this.archived = false;
