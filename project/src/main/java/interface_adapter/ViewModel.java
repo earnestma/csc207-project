@@ -1,4 +1,4 @@
-package project.src.main.java.interface_adapter;
+package main.java.interface_adapter;
 
 import java.beans.PropertyChangeListener;
 

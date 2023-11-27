@@ -2,9 +2,8 @@ package main.java.view;
 
 import main.java.entity.Project;
 import main.java.entity.Task;
-import main.java.entity.User;
 import main.java.interface_adapter.home_view.HomeViewViewModel;
-import main.java.interface_adapter.project.ProjectViewModel;
+import main.java.interface_adapter.select_project.SelectProjectController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,20 +11,39 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class HomeViewView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "home view";
     private final HomeViewViewModel homeViewViewModel;
     private ArrayList<Project> projects;
+    private final SelectProjectController selectProjectController;
+    private BorderLayout borderLayout;
 
-    public HomeViewView(HomeViewViewModel homeViewViewModel){
-        this.setLayout(new BorderLayout());
+    public HomeViewView(HomeViewViewModel homeViewViewModel,
+                        SelectProjectController selectProjectController){
+        borderLayout = new BorderLayout();
+        this.setLayout(borderLayout);
+        
         this.homeViewViewModel = homeViewViewModel;
         this.homeViewViewModel.addPropertyChangeListener(this);
+        this.selectProjectController = selectProjectController;
+        
+        // For Testing
         projects = new ArrayList<>();
-        projects.add(new Project("Easy", 123));
-        projects.add(new Project("Hard", 4312));
+        projects.add(new Project("Easy Project", 123));
+        projects.add(new Project("Hard Project", 4312));
+        
+        for (int i = 0; i < 10; i++){
+            Project temp = new Project("Project" + i, i);
+            for (int j = 0; j <= i; j++){
+                Task temp_task = new Task("Task" + j,
+                        "desc", j + i*100, LocalDateTime.now(), 1);
+                temp.addTask(temp_task);
+            }
+            projects.add(temp);
+        }
         updateView();
     }
 
@@ -38,7 +56,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         int numProjects = projects.size();
 
         for (Project project: projects) {
-            JPanel panel = createProjectPanel(project.getName());
+            JPanel panel = createProjectPanel(project);
             panelList.add(panel);
         }
 
@@ -103,7 +121,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     }
 
 
-    private static JPanel createProjectPanel(String panelText) {
+    private JPanel createProjectPanel(Project project) {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setSize(new Dimension(300, 50));
@@ -112,13 +130,13 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
 
-        JButton projectButton = new JButton(panelText);
+        JButton projectButton = new JButton(project.getName());
 
         projectButton.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null,"CHANGE TO PROJECT VIEW");
+                        selectProjectController.execute(project);
                     }
                 }
         );

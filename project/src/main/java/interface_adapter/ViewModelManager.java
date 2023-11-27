@@ -1,9 +1,9 @@
-package project.src.main.java.interface_adapter;
+package main.java.interface_adapter;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ViewManagerModel {
+public class ViewModelManager {
     private String activeViewName;
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);

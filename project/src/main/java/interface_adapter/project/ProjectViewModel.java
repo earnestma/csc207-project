@@ -16,8 +16,6 @@ public class ProjectViewModel extends ViewModel{
 
     public static final String ADD_TASK_BUTTON_LABEL = "Add Task";
 
-    private ArrayList<Task> tasks;
-
     public ProjectViewModel() {
         super("project");
     }
@@ -25,6 +23,8 @@ public class ProjectViewModel extends ViewModel{
     public void setState(ProjectState state) {
         this.state = state;
     }
+    
+    public ProjectState getState(){return state;}
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -37,18 +37,4 @@ public class ProjectViewModel extends ViewModel{
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
-
-    public ProjectState getState() {
-        return state;
-    }
-
-    public ArrayList<Task> getTasksList() {
-        return tasks;
-    }
-
-    public void setTasksList(ArrayList<Task> tasks) {
-        this.tasks = tasks;
-    }
-
-
 }

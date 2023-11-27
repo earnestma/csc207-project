@@ -19,6 +19,8 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
     private ArrayList<Task> taskList;
 
     public ProjectView(ProjectViewModel projectViewModel){
+        this.setLayout(new BorderLayout());
+        
         this.projectViewModel = projectViewModel;
         this.projectViewModel.addPropertyChangeListener(this);
         projectName = "";
@@ -61,9 +63,9 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        this.add(headerPanel);
-        this.add(scrollPane);
-        this.add(footerPanel);
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(footerPanel, BorderLayout.SOUTH);
     }
 
     public JPanel createHeaderPanel(){
@@ -90,7 +92,10 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         addTaskButton.setPreferredSize(new Dimension(100, 30));
         addTaskButton.setMargin(new Insets(0, 0, 0, 0));
         addTaskButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        addTaskButton.setFocusPainted(false);
+        addTaskButton.setContentAreaFilled(false);
         addTaskButton.setBorderPainted(true);
+        addTaskButton.setOpaque(false);
         panel.add(addTaskButton, BorderLayout.EAST);
 
         return panel;
@@ -148,7 +153,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null, "CHANGE TO PROJECTS VIEW");
+                        JOptionPane.showMessageDialog(null, "CHANGE TO HOME VIEW");
                     }
                 }
         );
@@ -156,7 +161,10 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         goBackButton.setPreferredSize(new Dimension(100, 30));
         goBackButton.setMargin(new Insets(0, 0, 0, 0));
         goBackButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        goBackButton.setFocusPainted(false);
+        goBackButton.setContentAreaFilled(false);
         goBackButton.setBorderPainted(true);
+        goBackButton.setOpaque(false);
         panel.add(goBackButton, BorderLayout.WEST);
 
         return panel;
@@ -180,8 +188,9 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.clearAll();
 
         ProjectState state = (ProjectState) evt.getNewValue();
+        
 
-        projectName = state.getProjectName();
+        projectName = state.getProject().getName();
         taskList = state.getProject().getTaskList();
 
         this.updateView();
