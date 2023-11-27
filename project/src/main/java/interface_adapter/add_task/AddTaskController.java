@@ -1,7 +1,6 @@
 package interface_adapter.add_task;
 
-import use_case.add_task.AddTaskInputData;
-import use_case.add_task.AddTaskInputBoundary;
+import use_case.add_task.*;
 
 public class AddTaskController {
 
@@ -10,9 +9,9 @@ public class AddTaskController {
         this.addTaskUseCaseInteractor = addTaskUseCaseInteractor;
     }
 
-    public void execute(String taskName, String dueDate) {
+    public void execute(String taskName, String priority, String dueDate) {
         AddTaskInputData addTaskInputData = new AddTaskInputData(
-                taskName, dueDate);
+                taskName, priority, dueDate);
 
         addTaskUseCaseInteractor.execute(addTaskInputData);
     }
