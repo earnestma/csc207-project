@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import main.java.interface_adapter.ViewModelManager;
+import main.java.interface_adapter.go_home_view.GoHomeViewController;
 import main.java.interface_adapter.home_view.HomeViewViewModel;
 import main.java.interface_adapter.project.ProjectViewModel;
 import main.java.interface_adapter.select_project.SelectProjectController;
@@ -33,7 +34,9 @@ public class Main {
         HomeViewViewModel homeViewViewModel = new HomeViewViewModel();
 
         // Views
-        ProjectView projectView = new ProjectView(projectViewModel);
+        GoHomeViewController goHomeViewController =
+                GoHomeViewUseCaseFactory.createGoHomeViewUseCase(viewModelManager, homeViewViewModel);
+        ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController);
         views.add(projectView, projectView.viewName);
 
         SelectProjectController selectProjectController =

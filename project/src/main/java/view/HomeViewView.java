@@ -190,7 +190,13 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
 
         return panel;
     }
-
+    
+    public void clearAll(){
+        this.removeAll();
+        this.revalidate();
+        this.repaint();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -198,12 +204,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Vertical Panel List with Button Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        this.clearAll();
+        this.updateView();
     }
 }

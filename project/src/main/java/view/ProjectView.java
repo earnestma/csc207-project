@@ -1,6 +1,7 @@
 package main.java.view;
 
 import main.java.entity.Task;
+import main.java.interface_adapter.go_home_view.GoHomeViewController;
 import main.java.interface_adapter.project.ProjectState;
 import main.java.interface_adapter.project.ProjectViewModel;
 
@@ -17,14 +18,18 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
     private final ProjectViewModel projectViewModel;
     private String projectName;
     private ArrayList<Task> taskList;
+    private GoHomeViewController goHomeViewController;
 
-    public ProjectView(ProjectViewModel projectViewModel){
+    public ProjectView(ProjectViewModel projectViewModel,
+                       GoHomeViewController goHomeViewController){
         this.setLayout(new BorderLayout());
         
         this.projectViewModel = projectViewModel;
         this.projectViewModel.addPropertyChangeListener(this);
         projectName = "";
         taskList = new ArrayList<Task>();
+        
+        this.goHomeViewController = goHomeViewController;
     }
 
     public void updateView(){
@@ -153,7 +158,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null, "CHANGE TO HOME VIEW");
+                        goHomeViewController.execute();
                     }
                 }
         );
