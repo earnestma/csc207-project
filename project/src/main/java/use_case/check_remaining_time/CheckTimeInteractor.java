@@ -39,4 +39,12 @@ public class CheckTimeInteractor {
     private int findMinutes(LocalDateTime currentDateTime, LocalDateTime futureDateTime){
         return (int) ChronoUnit.MINUTES.between(currentDateTime, futureDateTime);
     }
+
+    private int findHours(LocalDateTime currentDateTime, LocalDateTime futureDateTime){
+        return (int) ChronoUnit.HOURS.between(currentDateTime, futureDateTime);
+    }
+
+    private int findDays(LocalDateTime currentDateTime, LocalDateTime futureDateTime){
+        return (int) ChronoUnit.DAYS.between(currentDateTime, futureDateTime);
+    }
 }

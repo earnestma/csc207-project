@@ -12,7 +12,7 @@ class Task {
 - str name
 - str description
 - float time
-- Date dueDate
+- LocalDateTime dueDate
 - Date creationDate
 - int priority
 - boolean status
@@ -34,7 +34,7 @@ class User{
 class Reminder{
 - str name
 - str description
-- Date remindTime
+- LocalDateTime remindTime
 }
 
 class Date{

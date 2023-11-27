@@ -22,5 +22,9 @@ public class CheckTimeOutputData {
 
     public LocalDateTime getDueDateTime() {
         return dueDateTime;
+    private LocalDateTime dateTime;
+
+    public CheckTimeOutputData(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }
