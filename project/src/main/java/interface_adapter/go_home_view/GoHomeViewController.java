@@ -1,6 +1,6 @@
-package main.java.interface_adapter.go_home_view;
+package interface_adapter.go_home_view;
 
-import main.java.use_case.go_home_view.GoHomeViewInputBoundary;
+import use_case.go_home_view.GoHomeViewInputBoundary;
 
 public class GoHomeViewController {
     final GoHomeViewInputBoundary goHomeViewInteractor;

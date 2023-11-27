@@ -1,16 +1,16 @@
-package main.java.app;
+package app;
+
+import interface_adapter.ViewModelManager;
+import interface_adapter.go_home_view.GoHomeViewController;
+import interface_adapter.home_view.HomeViewViewModel;
+import interface_adapter.project.ProjectViewModel;
+import interface_adapter.select_project.SelectProjectController;
+import view.HomeViewView;
+import view.ProjectView;
+import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
-
-import main.java.interface_adapter.ViewModelManager;
-import main.java.interface_adapter.go_home_view.GoHomeViewController;
-import main.java.interface_adapter.home_view.HomeViewViewModel;
-import main.java.interface_adapter.project.ProjectViewModel;
-import main.java.interface_adapter.select_project.SelectProjectController;
-import main.java.view.HomeViewView;
-import main.java.view.ProjectView;
-import main.java.view.ViewManager;
 
 public class Main {
     public static void main(String[] args) {

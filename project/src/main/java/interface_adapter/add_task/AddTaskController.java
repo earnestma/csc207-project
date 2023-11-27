@@ -1,7 +1,7 @@
-package project.src.main.java.interface_adapter.add_task;
+package interface_adapter.add_task;
 
-import project.src.main.java.use_case.add_task.AddTaskInputData;
-import project.src.main.java.use_case.add_task.AddTaskInputBoundary;
+import use_case.add_task.AddTaskInputData;
+import use_case.add_task.AddTaskInputBoundary;
 
 public class AddTaskController {
 

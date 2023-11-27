@@ -1,4 +1,4 @@
-package main.java.use_case.check_remaining_time;
+package use_case.check_remaining_time;
 
 import java.time.LocalDateTime;
 
@@ -22,9 +22,10 @@ public class CheckTimeOutputData {
 
     public LocalDateTime getDueDateTime() {
         return dueDateTime;
-    private LocalDateTime dateTime;
+    
+        // private LocalDateTime dateTime;
 
-    public CheckTimeOutputData(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    // public CheckTimeOutputData(LocalDateTime dateTime) {
+    //    this.dateTime = dateTime;
     }
 }

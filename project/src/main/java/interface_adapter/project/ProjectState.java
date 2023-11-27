@@ -1,7 +1,6 @@
-package main.java.interface_adapter.project;
+package interface_adapter.project;
 
-import main.java.entity.*;
-import java.util.*;
+import entity.Project;
 
 public class ProjectState {
     private Project project;

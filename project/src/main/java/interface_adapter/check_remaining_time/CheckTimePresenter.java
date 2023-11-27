@@ -1,8 +1,8 @@
-package main.java.interface_adapter.check_remaining_time;
+package interface_adapter.check_remaining_time;
 
-import main.java.interface_adapter.project.ProjectViewModel;
-import main.java.use_case.check_remaining_time.CheckTimeOutputBoundary;
-import main.java.use_case.check_remaining_time.CheckTimeOutputData;
+import interface_adapter.project.ProjectViewModel;
+import use_case.check_remaining_time.CheckTimeOutputBoundary;
+import use_case.check_remaining_time.CheckTimeOutputData;
 
 // Implement boundary
 public class CheckTimePresenter{

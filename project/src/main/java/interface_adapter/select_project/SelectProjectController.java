@@ -1,8 +1,8 @@
-package main.java.interface_adapter.select_project;
+package interface_adapter.select_project;
 
-import main.java.use_case.select_project.SelectProjectInputBoundary;
-import main.java.entity.Project;
-import main.java.use_case.select_project.SelectProjectInputData;
+import use_case.select_project.SelectProjectInputBoundary;
+import entity.Project;
+import use_case.select_project.SelectProjectInputData;
 
 public class SelectProjectController {
     final SelectProjectInputBoundary selectProjectInteractor;

@@ -1,4 +1,4 @@
-package project.src.main.java.interface_adapter.add_task;
+package interface_adapter.add_task;
 
 import java.util.ArrayList;
 

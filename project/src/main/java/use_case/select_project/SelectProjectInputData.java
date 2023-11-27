@@ -1,6 +1,6 @@
-package main.java.use_case.select_project;
+package use_case.select_project;
 
-import main.java.entity.Project;
+import entity.Project;
 
 public class SelectProjectInputData {
     final private Project project;

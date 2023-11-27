@@ -1,9 +1,9 @@
-package main.java.view;
+package view;
 
-import main.java.entity.Task;
-import main.java.interface_adapter.go_home_view.GoHomeViewController;
-import main.java.interface_adapter.project.ProjectState;
-import main.java.interface_adapter.project.ProjectViewModel;
+import entity.Task;
+import interface_adapter.go_home_view.GoHomeViewController;
+import interface_adapter.project.ProjectState;
+import interface_adapter.project.ProjectViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -193,7 +193,6 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.clearAll();
 
         ProjectState state = (ProjectState) evt.getNewValue();
-        
 
         projectName = state.getProject().getName();
         taskList = state.getProject().getTaskList();

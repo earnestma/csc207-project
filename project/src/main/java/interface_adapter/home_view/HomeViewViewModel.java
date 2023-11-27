@@ -1,5 +1,5 @@
-package main.java.interface_adapter.home_view;
-import main.java.interface_adapter.ViewModel;
+package interface_adapter.home_view;
+import interface_adapter.ViewModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

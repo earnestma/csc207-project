@@ -1,9 +1,9 @@
-package main.java.entity;
+package entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import project.src.main.java.entity.Reminder;
+import entity.Reminder;
 
 public class Task {
     private String name;

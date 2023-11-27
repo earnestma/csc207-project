@@ -1,11 +1,11 @@
-package main.java.interface_adapter.project;
+package interface_adapter.project;
 
-import main.java.interface_adapter.ViewModel;
+import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-import main.java.entity.Task;
+import entity.Task;
 
 public class ProjectViewModel extends ViewModel{
     private final String TITLE_LABEL = "Project View";

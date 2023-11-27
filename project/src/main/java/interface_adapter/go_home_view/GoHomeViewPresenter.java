@@ -1,9 +1,9 @@
-package main.java.interface_adapter.go_home_view;
+package interface_adapter.go_home_view;
 
-import main.java.interface_adapter.ViewModelManager;
-import main.java.interface_adapter.home_view.HomeViewViewModel;
-import main.java.use_case.go_home_view.GoHomeViewInputData;
-import main.java.use_case.go_home_view.GoHomeViewOutputBoundary;
+import interface_adapter.ViewModelManager;
+import interface_adapter.home_view.HomeViewViewModel;
+import use_case.go_home_view.GoHomeViewInputData;
+import use_case.go_home_view.GoHomeViewOutputBoundary;
 
 public class GoHomeViewPresenter implements GoHomeViewOutputBoundary {
     private final HomeViewViewModel homeViewViewModel;

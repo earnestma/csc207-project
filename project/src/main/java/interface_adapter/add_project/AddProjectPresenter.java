@@ -1,21 +1,21 @@
-package main.java.interface_adapter.add_project;
+package interface_adapter.add_project;
 
-import main.java.use_case.add_project.AddProjectOutputBoundary;
+import use_case.add_project.AddProjectOutputBoundary;
 
 public class AddProjectPresenter implements AddProjectOutputBoundary {
 /*
     private final AddProjectViewModel addProjectViewModel;
-    private ViewManagerModel viewManagerModel;
+    private ViewModelManager ViewModelManager;
 
-    public AddProjectPresenter(ViewManagerModel viewManagerModel,
+    public AddProjectPresenter(ViewModelManager ViewModelManager,
             AddProjectViewModel addProjectViewModel) {
-        this.viewManagerModel = viewManagerModel;
+        this.ViewModelManager = ViewModelManager;
         this.addProjectViewModel = addProjectViewModel;
     }
 
     @Override
     public void prepareSuccessView(AddProjectOutputData response) {
-        // switch to project main.java.view when Project is successfully added
+        // switch to project view when Project is successfully added
 
         ProjectState projectState = projectViewModel.getState();
         projectState.setProjectName(response.getProjectName());
@@ -23,8 +23,8 @@ public class AddProjectPresenter implements AddProjectOutputBoundary {
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
 
-        this.viewManagerModel.setActiveView(projectViewModel.getViewName());
-        this.viewManagerModel.firePropertyChanged();
+        this.ViewModelManager.setActiveView(projectViewModel.getViewName());
+        this.ViewModelManager.firePropertyChanged();
     }
     */
     @Override

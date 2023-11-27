@@ -1,6 +1,6 @@
-package main.java.interface_adapter.add_project;
+package interface_adapter.add_project;
 
-// import main.java.use_case.add_project.AddProjectInputBoundary;
+// import use_case.add_project.AddProjectInputBoundary;
 
 public class AddProjectController {
     /*final AddProjectInputBoundary addProjectUseCaseInteractor;

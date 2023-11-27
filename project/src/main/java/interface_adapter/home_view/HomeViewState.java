@@ -1,7 +1,7 @@
-package main.java.interface_adapter.home_view;
+package interface_adapter.home_view;
 
-import main.java.entity.User;
-import main.java.interface_adapter.project.ProjectState;
+import entity.User;
+import interface_adapter.project.ProjectState;
 
 public class HomeViewState {
     private User user;

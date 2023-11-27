@@ -1,8 +1,8 @@
-package project.src.main.java.view;
+package view;
 
-import project.src.main.java.interface_adapter.add_task.AddTaskController;
-import project.src.main.java.interface_adapter.add_task.AddTaskState;
-import project.src.main.java.interface_adapter.add_task.AddTaskViewModel;
+import interface_adapter.add_task.AddTaskController;
+import interface_adapter.add_task.AddTaskState;
+import interface_adapter.add_task.AddTaskViewModel;
 
 import javax.swing.*;
 import java.awt.*;

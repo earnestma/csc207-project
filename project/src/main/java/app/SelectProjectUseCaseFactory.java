@@ -1,10 +1,10 @@
-package main.java.app;
+package app;
 
-import main.java.interface_adapter.ViewModelManager;
-import main.java.interface_adapter.project.ProjectViewModel;
-import main.java.interface_adapter.select_project.SelectProjectController;
-import main.java.interface_adapter.select_project.SelectProjectPresenter;
-import main.java.use_case.select_project.SelectProjectInteractor;
+import interface_adapter.ViewModelManager;
+import interface_adapter.project.ProjectViewModel;
+import interface_adapter.select_project.SelectProjectController;
+import interface_adapter.select_project.SelectProjectPresenter;
+import use_case.select_project.SelectProjectInteractor;
 
 public class SelectProjectUseCaseFactory {
     private SelectProjectUseCaseFactory(){}

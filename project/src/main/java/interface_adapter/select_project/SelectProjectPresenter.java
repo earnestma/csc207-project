@@ -1,10 +1,10 @@
-package main.java.interface_adapter.select_project;
+package interface_adapter.select_project;
 
-import main.java.interface_adapter.ViewModelManager;
-import main.java.interface_adapter.project.ProjectState;
-import main.java.interface_adapter.project.ProjectViewModel;
-import main.java.use_case.select_project.SelectProjectOutputBoundary;
-import main.java.use_case.select_project.SelectProjectOutputData;
+import interface_adapter.ViewModelManager;
+import interface_adapter.project.ProjectState;
+import interface_adapter.project.ProjectViewModel;
+import use_case.select_project.SelectProjectOutputBoundary;
+import use_case.select_project.SelectProjectOutputData;
 
 public class SelectProjectPresenter implements SelectProjectOutputBoundary {
     private final ProjectViewModel projectViewModel;

@@ -1,9 +1,9 @@
-package main.java.view;
+package view;
 
-import main.java.entity.Project;
-import main.java.entity.Task;
-import main.java.interface_adapter.home_view.HomeViewViewModel;
-import main.java.interface_adapter.select_project.SelectProjectController;
+import entity.Project;
+import entity.Task;
+import interface_adapter.home_view.HomeViewViewModel;
+import interface_adapter.select_project.SelectProjectController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class HomeViewView extends JPanel implements ActionListener, PropertyChangeListener {
@@ -36,14 +35,15 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         projects.add(new Project("Hard Project", 4312));
         
         for (int i = 0; i < 10; i++){
-            Project temp = new Project("Project" + i, i);
+            Project temp = new Project("Project " + i, i);
             for (int j = 0; j <= i; j++){
-                Task temp_task = new Task("Task" + j,
-                        "desc", j + i*100, LocalDateTime.now(), 1);
+                Task temp_task = new Task("Task " + j, 1, Long.valueOf(i * 100 + j));
                 temp.addTask(temp_task);
             }
             projects.add(temp);
         }
+        // To here
+        
         updateView();
     }
 

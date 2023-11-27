@@ -1,10 +1,10 @@
-package main.java.app;
+package app;
 
-import main.java.interface_adapter.ViewModelManager;
-import main.java.interface_adapter.go_home_view.GoHomeViewController;
-import main.java.interface_adapter.go_home_view.GoHomeViewPresenter;
-import main.java.interface_adapter.home_view.HomeViewViewModel;
-import main.java.use_case.go_home_view.GoHomeViewInteractor;
+import interface_adapter.ViewModelManager;
+import interface_adapter.go_home_view.GoHomeViewController;
+import interface_adapter.go_home_view.GoHomeViewPresenter;
+import interface_adapter.home_view.HomeViewViewModel;
+import use_case.go_home_view.GoHomeViewInteractor;
 
 public class GoHomeViewUseCaseFactory {
     private GoHomeViewUseCaseFactory(){}

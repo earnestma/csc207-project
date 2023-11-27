@@ -1,4 +1,4 @@
-package main.java.use_case.add_project;
+package use_case.add_project;
 
 public class AddProjectInputData {
     final private String projectName;
