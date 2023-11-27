@@ -2,6 +2,7 @@ package main.java.entity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import project.src.main.java.entity.Reminder;
 
 public class Task {
     private String name;
@@ -11,10 +12,10 @@ public class Task {
     private int priority; // Lower value = High priority
     private boolean completed;
     private List<Reminder> reminders; // Stores a list of reminders, with the most
-                                     // urgent at the front?
+    // urgent at the front?
 
     public Task(String name, String description, int id, LocalDateTime dueDateTime,
-                int priority){
+                int priority) {
         this.name = name;
         this.description = description;
         this.id = id;
@@ -23,4 +24,10 @@ public class Task {
         this.completed = false;
         this.reminders = new ArrayList<Reminder>();
     }
+
+    public String getName(){
+        return name;
+    }
+    public int getId(){return id;}
+
 }

@@ -18,11 +18,18 @@ public class Project {
         this.archived = false;
     }
 
+    public String getName(){
+        return name;
+    }
     public ArrayList<Task> getTaskList(){
         ArrayList<Task> temp = new ArrayList<Task>();
         for (Task task: tasks.values()){
             temp.add(task);
         }
         return temp;
+    }
+    
+    public void addTask(Task task){
+        tasks.put(task.getId(), task);
     }
 }
