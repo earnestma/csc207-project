@@ -1,0 +1,33 @@
+package main.java.interface_adapter.home_view;
+import main.java.interface_adapter.ViewModel;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+public class HomeViewViewModel extends ViewModel{
+    private final String TITLE_LABEL = "Home View";
+
+    private HomeViewState state = new HomeViewState();
+
+    public static final String ADD_PROJECT_BUTTON_LABEL = "Add Project";
+
+    public static final String DELETE_PROJECT_BUTTON_LABEL = "Delete Project";
+
+    public static final String PROJECTS_LABEL = "Projects: ";
+
+    public HomeViewViewModel(){super("home view");}
+
+    public void setState(HomeViewState state) {this.state = state;}
+
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    // This is what the Login Presenter will call to let the ViewModel know
+    // to alert the View
+    public void firePropertyChanged() {
+        support.firePropertyChange("state", null, this.state);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        support.addPropertyChangeListener(listener);
+    }
+}

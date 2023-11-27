@@ -1,37 +1,54 @@
 package main.java.app;
 
 import javax.swing.*;
+import java.awt.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import main.java.entity.Task;
+import main.java.interface_adapter.ViewManagerModel;
 import main.java.interface_adapter.check_remaining_time.CheckTimePresenter;
+import main.java.interface_adapter.home_view.HomeViewViewModel;
+import main.java.interface_adapter.project.ProjectViewModel;
 import main.java.use_case.check_remaining_time.CheckTimeInputData;
 import main.java.use_case.check_remaining_time.CheckTimeInteractor;
 import main.java.use_case.check_remaining_time.CheckTimeOutputBoundary;
+import main.java.view.HomeViewView;
+import main.java.view.ProjectView;
+import main.java.view.ViewManager;
 
 public class Main {
     public static void main(String[] args) {
-        /*
-        JFrame application = new JFrame("Test");
+        // The main application window.
+        JFrame application = new JFrame("Scheduler");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        LocalDateTime now = java.time.LocalDateTime.now();
-        LocalDateTime future = java.time.LocalDateTime.of(2023, 12, 10, 4, 5);
+        application.setSize(400, 400);
+        application.setResizable(false);
 
-        long minutes = ChronoUnit.MINUTES.between(now, future);
-        long hours = ChronoUnit.HOURS.between(now, future);
-        long days = ChronoUnit.DAYS.between(now, future);
+        CardLayout cardLayout = new CardLayout();
 
-        System.out.println(minutes);
+        // The various View objects. Only one view is visible at a time.
+        JPanel views = new JPanel(cardLayout);
+        application.add(views);
 
-        Task task = new Task("name", "desc", 0,
-                java.time.LocalDateTime.of(2023, 12, 10, 4, 5), 1);  */
+        // This keeps track of and manages which view is currently showing.
+        ViewManagerModel viewManagerModel = new ViewManagerModel();
+        new ViewManager(views, cardLayout, viewManagerModel);
 
-        CheckTimeInputData input_data =
-                new CheckTimeInputData(java.time.LocalDateTime.of(2023, 12, 10, 4, 5));
+        // View Models
+        ProjectViewModel projectViewModel = new ProjectViewModel();
+        HomeViewViewModel homeViewViewModel = new HomeViewViewModel();
 
-        CheckTimeInteractor interactor = new CheckTimeInteractor(new CheckTimePresenter());
-        interactor.execute(input_data);
+        // Views
+        ProjectView projectView = new ProjectView(projectViewModel);
+        views.add(projectView, projectView.viewName);
 
+        HomeViewView homeViewView = new HomeViewView(homeViewViewModel);
+        views.add(homeViewView, homeViewView.viewName);
 
+        viewManagerModel.setActiveView(homeViewView.viewName);
+        viewManagerModel.firePropertyChanged();
+
+        application.pack();
+        application.setVisible(true);
     }
 }

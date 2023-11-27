@@ -1,0 +1,191 @@
+package main.java.view;
+
+import main.java.entity.Project;
+import main.java.entity.Task;
+import main.java.entity.User;
+import main.java.interface_adapter.home_view.HomeViewViewModel;
+import main.java.interface_adapter.project.ProjectViewModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+
+public class HomeViewView extends JPanel implements ActionListener, PropertyChangeListener {
+    public final String viewName = "home view";
+    private final HomeViewViewModel homeViewViewModel;
+    private ArrayList<Project> projects;
+
+    public HomeViewView(HomeViewViewModel homeViewViewModel){
+        this.setLayout(new BorderLayout());
+        this.homeViewViewModel = homeViewViewModel;
+        this.homeViewViewModel.addPropertyChangeListener(this);
+        projects = new ArrayList<>();
+        projects.add(new Project("Easy", 123));
+        projects.add(new Project("Hard", 4312));
+        updateView();
+    }
+
+    public void updateView(){
+        java.util.List<JPanel> panelList = new java.util.ArrayList<>();
+
+        JPanel headerPanel = createHeaderPanel();
+        JPanel footerPanel = createFooterPanel();
+
+        int numProjects = projects.size();
+
+        for (Project project: projects) {
+            JPanel panel = createProjectPanel(project.getName());
+            panelList.add(panel);
+        }
+
+        if (numProjects <= 5)
+        {
+            int missing = 5 - numProjects;
+            for (int i = 1; i <= missing; i++) {
+                JPanel panel = createEmptyPanel();
+                panelList.add(panel);
+            }
+        }
+
+        // Create a main panel to hold the list of panels vertically
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+        // Add each panel to the main panel
+        for (JPanel panel : panelList) {
+            mainPanel.add(panel);
+        }
+
+        // Create a JScrollPane to allow scrolling
+        JScrollPane scrollPane = new JScrollPane(mainPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(footerPanel, BorderLayout.SOUTH);
+    }
+
+    public JPanel createHeaderPanel(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setPreferredSize(new Dimension(300, 50));
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        JLabel label = new JLabel(homeViewViewModel.PROJECTS_LABEL);
+        label.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        panel.add(label, BorderLayout.WEST);
+
+        JButton addProjectButton = new JButton(homeViewViewModel.ADD_PROJECT_BUTTON_LABEL);
+
+        addProjectButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(null,"CHANGE TO ADD PROJECT VIEW");
+                    }
+                }
+        );
+
+        addProjectButton.setPreferredSize(new Dimension(100, 30));
+        addProjectButton.setMargin(new Insets(0, 0, 0, 0));
+        addProjectButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        addProjectButton.setFocusPainted(false);
+        addProjectButton.setContentAreaFilled(false);
+        addProjectButton.setBorderPainted(true);
+        addProjectButton.setOpaque(false);
+        panel.add(addProjectButton, BorderLayout.EAST);
+
+        return panel;
+    }
+
+
+    private static JPanel createProjectPanel(String panelText) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setSize(new Dimension(300, 50));
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+
+        JButton projectButton = new JButton(panelText);
+
+        projectButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(null,"CHANGE TO PROJECT VIEW");
+                    }
+                }
+        );
+
+        projectButton.setPreferredSize(new Dimension(390, 50));
+        projectButton.setHorizontalAlignment(SwingConstants.LEFT);
+        projectButton.setMargin(new Insets(0, 0, 0, 0));
+        projectButton.setFocusPainted(false);
+        projectButton.setContentAreaFilled(false);
+        projectButton.setBorderPainted(true);
+        projectButton.setOpaque(false);
+        panel.add(projectButton, BorderLayout.WEST);
+
+        return panel;
+    }
+
+
+    private JPanel createEmptyPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setPreferredSize(new Dimension(300, 50));
+
+        return panel;
+    }
+
+    private JPanel createFooterPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setPreferredSize(new Dimension(300, 50));
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        JButton deleteProjectButton = new JButton(homeViewViewModel.DELETE_PROJECT_BUTTON_LABEL);
+
+        deleteProjectButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(null, "CHANGE TO DELETE PROJECT VIEW");
+                    }
+                }
+        );
+
+        deleteProjectButton.setPreferredSize(new Dimension(100, 30));
+        deleteProjectButton.setMargin(new Insets(0, 0, 0, 0));
+        deleteProjectButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        deleteProjectButton.setFocusPainted(false);
+        deleteProjectButton.setContentAreaFilled(false);
+        deleteProjectButton.setBorderPainted(true);
+        deleteProjectButton.setOpaque(false);
+        panel.add(deleteProjectButton, BorderLayout.WEST);
+
+        return panel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Vertical Panel List with Button Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+}
