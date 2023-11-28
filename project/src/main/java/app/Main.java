@@ -5,8 +5,11 @@ import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_project.SelectProjectController;
+import interface_adapter.select_task.SelectTaskController;
+import interface_adapter.task.TaskViewModel;
 import view.HomeViewView;
 import view.ProjectView;
+import view.TaskView;
 import view.ViewManager;
 
 import javax.swing.*;
@@ -32,11 +35,16 @@ public class Main {
         // View Models
         ProjectViewModel projectViewModel = new ProjectViewModel();
         HomeViewViewModel homeViewViewModel = new HomeViewViewModel();
+        TaskViewModel taskViewModel = new TaskViewModel();
 
-        // Views
+        // Controllers
         GoHomeViewController goHomeViewController =
                 GoHomeViewUseCaseFactory.createGoHomeViewUseCase(viewModelManager, homeViewViewModel);
-        ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController);
+        SelectTaskController selectTaskController =
+                SelectTaskUseCaseFactory.createSelectUseCase(viewModelManager, taskViewModel);
+        
+        //Views
+        ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController, selectTaskController);
         views.add(projectView, projectView.viewName);
 
         SelectProjectController selectProjectController =
@@ -44,12 +52,10 @@ public class Main {
         HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController);
         views.add(homeViewView, homeViewView.viewName);
         
+        TaskView taskView = new TaskView(taskViewModel, selectTaskController);
+        views.add(taskView, taskView.viewName);
         
-        
-        
-        
-        
-        
+        // Make sure start at home view
         viewModelManager.setActiveView(homeViewView.viewName);
         viewModelManager.firePropertyChanged();
 
