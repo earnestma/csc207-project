@@ -93,7 +93,7 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
                     @Override
                     public void keyTyped(KeyEvent e) {
                         AddTaskState currentState = addTaskViewModel.getState();
-                        currentState.setDueDate(priorityInputField.getText() + e.getKeyChar());
+                        currentState.setPriority(priorityInputField.getText() + e.getKeyChar());
                         addTaskViewModel.setState(currentState);
                     }
 

@@ -65,6 +65,9 @@ public class AddTaskState {
         this.taskNameError = taskNameError;
     }
 
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
