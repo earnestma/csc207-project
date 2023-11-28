@@ -3,6 +3,9 @@ package view;
 import interface_adapter.add_task.AddTaskController;
 import interface_adapter.add_task.AddTaskState;
 import interface_adapter.add_task.AddTaskViewModel;
+import interface_adapter.go_project_view.GoProjectViewController;
+import interface_adapter.project.ProjectState;
+import interface_adapter.project.ProjectViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,10 +31,12 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
     final JButton cancel;
     final JButton addTask;
     private final AddTaskController addTaskController;
+    private final GoProjectViewController goProjectViewController;
 
-    public AddTaskView(AddTaskViewModel addTaskViewModel, AddTaskController controller) {
+    public AddTaskView(AddTaskViewModel addTaskViewModel, AddTaskController controller, GoProjectViewController goProjectViewController) {
 
         this.addTaskController = controller;
+        this.goProjectViewController = goProjectViewController;
         this.addTaskViewModel = addTaskViewModel;
         this.addTaskViewModel.addPropertyChangeListener(this);
 
@@ -68,7 +73,16 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
                 }
         );
 
-        cancel.addActionListener(this);
+        cancel.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(cancel)) {
+                            goProjectViewController.execute();
+                        }
+                    }
+                }
+        );
 
         taskNameInputField.addKeyListener(new KeyListener() {
             @Override
@@ -145,7 +159,6 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         if (evt.getPropertyName().equals("state")) {
             AddTaskState state = (AddTaskState) evt.getNewValue();
             setFields(state);
-            JOptionPane.showMessageDialog(this, state.showTaskAdded());
         }
     }
 
