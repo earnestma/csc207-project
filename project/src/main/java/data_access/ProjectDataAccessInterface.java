@@ -1,7 +1,7 @@
 package data_access;
 
-import entity.Task;
 import entity.Project;
+import entity.Task;
 
 import java.util.ArrayList;
 

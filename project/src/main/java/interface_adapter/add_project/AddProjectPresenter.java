@@ -1,17 +1,15 @@
 package interface_adapter.add_project;
 
-import interface_adapter.ViewManagerModel;
 import use_case.add_project.AddProjectOutputBoundary;
-import use_case.add_project.AddProjectOutputData;
 
 public class AddProjectPresenter implements AddProjectOutputBoundary {
-
+/*
     private final AddProjectViewModel addProjectViewModel;
-    private ViewManagerModel viewManagerModel;
+    private ViewModelManager ViewModelManager;
 
-    public AddProjectPresenter(ViewManagerModel viewManagerModel,
+    public AddProjectPresenter(ViewModelManager ViewModelManager,
             AddProjectViewModel addProjectViewModel) {
-        this.viewManagerModel = viewManagerModel;
+        this.ViewModelManager = ViewModelManager;
         this.addProjectViewModel = addProjectViewModel;
     }
 
@@ -25,10 +23,10 @@ public class AddProjectPresenter implements AddProjectOutputBoundary {
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
 
-        this.viewManagerModel.setActiveView(projectViewModel.getViewName());
-        this.viewManagerModel.firePropertyChanged();
+        this.ViewModelManager.setActiveView(projectViewModel.getViewName());
+        this.ViewModelManager.firePropertyChanged();
     }
-
+    */
     @Override
     public void prepareFailView(String error) {
 

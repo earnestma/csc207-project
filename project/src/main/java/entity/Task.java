@@ -3,6 +3,7 @@ package entity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import entity.Reminder;
 
 public class Task {
     private String name;
@@ -50,7 +51,7 @@ public class Task {
         this.priority = priority;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 

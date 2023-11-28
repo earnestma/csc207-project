@@ -1,4 +1,4 @@
-package main.java.use_case.check_remaining_time;
+package use_case.check_remaining_time;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -26,6 +26,8 @@ public class CheckTimeInteractor {
             System.out.println("Days: " + days);
             System.out.println("Hours: " + hours);
             System.out.println("Minutes: " + minutes);
+
+            CheckTimeOutputData outputData = new CheckTimeOutputData(currentDateTime, dueDateTime, false);
         }
 
     }
