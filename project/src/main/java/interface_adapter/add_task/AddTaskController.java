@@ -1,5 +1,6 @@
 package interface_adapter.add_task;
 
+import entity.Project;
 import use_case.add_task.*;
 
 public class AddTaskController {
@@ -9,9 +10,9 @@ public class AddTaskController {
         this.addTaskUseCaseInteractor = addTaskUseCaseInteractor;
     }
 
-    public void execute(String taskName, String priority, String dueDate) {
+    public void execute(String taskName, String priority, String dueDate, Project project) {
         AddTaskInputData addTaskInputData = new AddTaskInputData(
-                taskName, priority, dueDate);
+                taskName, priority, dueDate, project);
 
         addTaskUseCaseInteractor.execute(addTaskInputData);
     }

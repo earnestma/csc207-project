@@ -1,5 +1,7 @@
 package interface_adapter.add_task;
 
+import entity.Project;
+
 import java.util.ArrayList;
 
 public class AddTaskState {
@@ -9,6 +11,8 @@ public class AddTaskState {
     private String priorityError = null;
     private String dueDate = "";
     private String dueDateError = null;
+    private Project project;
+
 
     public AddTaskState(AddTaskState copy) {
         taskName = copy.taskName;
@@ -19,6 +23,8 @@ public class AddTaskState {
 
         dueDate = copy.dueDate;
         dueDateError = copy.dueDateError;
+
+        project = copy.project;
     }
 
     public AddTaskState() {}
@@ -47,6 +53,10 @@ public class AddTaskState {
         return dueDateError;
     }
 
+    public Project getProject() {
+        return new Project("hi");
+    }
+
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
@@ -61,6 +71,10 @@ public class AddTaskState {
 
     public void setDueDateError(String dueDateError) {
         this.dueDateError = dueDateError;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public ArrayList<Object> showTaskAdded() {
