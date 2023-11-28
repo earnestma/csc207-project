@@ -23,6 +23,10 @@ public class AddTaskViewModel extends ViewModel {
         this.state = state;
     }
 
+    public AddTaskState getState(){
+        return state;
+    }
+
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
@@ -33,7 +37,4 @@ public class AddTaskViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
-    public AddTaskState getState(){
-        return state;
-    }
 }
