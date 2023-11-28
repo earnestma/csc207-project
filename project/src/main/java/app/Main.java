@@ -4,6 +4,7 @@ import data_access.ProjectDataAccessObject;
 import interface_adapter.ViewModelManager;
 import interface_adapter.add_task.AddTaskViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
+import interface_adapter.go_project_view.GoProjectViewController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_add_task.SelectAddTaskController;
@@ -53,7 +54,9 @@ public class Main {
         HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController);
         views.add(homeViewView, homeViewView.viewName);
 
-       AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject);
+        GoProjectViewController goProjectViewController =
+                GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
+       AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject, goProjectViewController);
        views.add(addTaskView, addTaskView.viewName);
         
         
