@@ -35,15 +35,15 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         this.addTaskViewModel = addTaskViewModel;
         this.addTaskViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel("Add Task Screen");
+        JLabel title = new JLabel("Add Task");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel taskNameInfo = new LabelTextPanel(
-                new JLabel("Task name"), taskNameInputField);
+                new JLabel("Task name:"), taskNameInputField);
         LabelTextPanel priorityInfo = new LabelTextPanel(
-                new JLabel("Priority"), priorityInputField);
+                new JLabel("Priority:"), priorityInputField);
         LabelTextPanel dueDateInfo = new LabelTextPanel(
-                new JLabel("Due Date"), dueDateInputField);
+                new JLabel("Due date: (YYYY-MM-DD)"), dueDateInputField);
 
         JPanel buttons = new JPanel();
         addTask = new JButton(addTaskViewModel.TASK_NAME_LABEL);
@@ -60,7 +60,8 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
                             addTaskController.execute(
                                     currentState.getTaskName(),
                                     currentState.getPriority(),
-                                    currentState.getDueDate()
+                                    currentState.getDueDate(),
+                                    currentState.getProject()
                             );
                         }
                     }
