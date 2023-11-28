@@ -98,7 +98,7 @@ public class Task {
         return this.completed;
     }
 
-    public void setCompleted(boolean state) {
+    public void setCompleted() {
         this.completed = true;
     }
 }
