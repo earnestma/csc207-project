@@ -1,5 +1,6 @@
 package use_case.add_task;
 
+import entity.Task;
 import entity.TaskFactory;
 
 public class AddTaskInteractor implements AddTaskInputBoundary {
@@ -17,10 +18,10 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
 
     @Override
     public void execute(AddTaskInputData addTaskInputData) {
-        //Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getDueDate());
-        // userDataAccessObject.add(task);
+        Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getPriority(), addTaskInputData.getDueDate());
+        userDataAccessObject.add(task);
 
-        // AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), false);
-        // addTaskPresenter.prepareSuccessView(addTaskOutputData);
+        AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), false);
+        addTaskPresenter.prepareSuccessView(addTaskOutputData);
     }
 }

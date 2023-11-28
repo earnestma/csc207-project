@@ -26,4 +26,12 @@ public class ViewManager implements PropertyChangeListener {
             cardLayout.show(views, viewModelName);
         }
     }
+
+    public void clearPropertyChange(PropertyChangeEvent e) {
+        if (e.getPropertyName().equals("clear")) {
+            String viewModelName = (String) e.getNewValue();
+            cardLayout.show(views, viewModelName);
+        }
+        System.out.println("test");
+    }
 }
