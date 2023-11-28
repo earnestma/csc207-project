@@ -27,8 +27,6 @@ public class AddTaskPresenter implements AddTaskOutputBoundary {
 
         this.ViewModelManager.setActiveView(projectViewModel.getViewName());
         this.ViewModelManager.firePropertyChanged(); */
-       
-        
     }
 
     @Override
