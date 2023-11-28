@@ -3,6 +3,7 @@ package use_case.add_task;
 import entity.Project;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class AddTaskInputData {
@@ -11,13 +12,15 @@ public class AddTaskInputData {
     final private int priority;
     final private LocalDateTime dueDate;
     final private Project project;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
     public AddTaskInputData(String taskName, String priority, String dueDate, Project project) {
         this.taskName = taskName;
         this.priority = Integer.parseInt(priority);
-        this.dueDate = LocalDateTime.parse(dueDate, formatter);
+
+        LocalDate date = LocalDate.parse(dueDate, dateFormatter);
+        this.dueDate = date.atStartOfDay();
         this.project = project;
     }
 
