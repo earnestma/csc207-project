@@ -9,15 +9,12 @@ import java.time.format.DateTimeFormatter;
 public class AddTaskInputData {
 
     final private String taskName;
-    final private int priority;
     final private LocalDateTime dueDate;
     final private Project project;
     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-
-    public AddTaskInputData(String taskName, String priority, String dueDate, Project project) {
+    public AddTaskInputData(String taskName, String dueDate, Project project) {
         this.taskName = taskName;
-        this.priority = Integer.parseInt(priority);
 
         LocalDate date = LocalDate.parse(dueDate, dateFormatter);
         this.dueDate = date.atStartOfDay();
@@ -26,10 +23,6 @@ public class AddTaskInputData {
 
     String getTaskName() {
         return taskName;
-    }
-
-    int getPriority() {
-        return priority;
     }
 
     LocalDateTime getDueDate() {

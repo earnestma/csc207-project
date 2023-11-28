@@ -23,8 +23,6 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
     final JTextField taskNameInputField = new JTextField(15);
     private final JLabel taskNameErrorField = new JLabel();
-    final JTextField priorityInputField = new JTextField(15);
-    private final JLabel priorityErrorField = new JLabel();
     final JTextField dueDateInputField = new JTextField(15);
     private final JLabel dueDateErrorField = new JLabel();
 
@@ -33,7 +31,8 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
     private final AddTaskController addTaskController;
     private final GoProjectViewController goProjectViewController;
 
-    public AddTaskView(AddTaskViewModel addTaskViewModel, AddTaskController controller, GoProjectViewController goProjectViewController) {
+    public AddTaskView(AddTaskViewModel addTaskViewModel, AddTaskController controller,
+            GoProjectViewController goProjectViewController) {
 
         this.addTaskController = controller;
         this.goProjectViewController = goProjectViewController;
@@ -45,8 +44,6 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
         LabelTextPanel taskNameInfo = new LabelTextPanel(
                 new JLabel("Task name:"), taskNameInputField);
-        LabelTextPanel priorityInfo = new LabelTextPanel(
-                new JLabel("Priority:"), priorityInputField);
         LabelTextPanel dueDateInfo = new LabelTextPanel(
                 new JLabel("Due date: (YYYY-MM-DD)"), dueDateInputField);
 
@@ -64,14 +61,11 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
                             addTaskController.execute(
                                     currentState.getTaskName(),
-                                    currentState.getPriority(),
                                     currentState.getDueDate(),
-                                    currentState.getProject()
-                            );
+                                    currentState.getProject());
                         }
                     }
-                }
-        );
+                });
 
         cancel.addActionListener(
                 new ActionListener() {
@@ -81,8 +75,7 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
                             goProjectViewController.execute();
                         }
                     }
-                }
-        );
+                });
 
         taskNameInputField.addKeyListener(new KeyListener() {
             @Override
@@ -101,25 +94,6 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
             }
         });
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        priorityInputField.addKeyListener(
-                new KeyListener() {
-                    @Override
-                    public void keyTyped(KeyEvent e) {
-                        AddTaskState currentState = addTaskViewModel.getState();
-                        currentState.setPriority(priorityInputField.getText() + e.getKeyChar());
-                        addTaskViewModel.setState(currentState);
-                    }
-
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                    }
-
-                    @Override
-                    public void keyReleased(KeyEvent e) {
-                    }
-                });
-
 
         dueDateInputField.addKeyListener(
                 new KeyListener() {
@@ -142,8 +116,6 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         this.add(title);
         this.add(taskNameInfo);
         this.add(taskNameErrorField);
-        this.add(priorityInfo);
-        this.add(priorityErrorField);
         this.add(dueDateInfo);
         this.add(dueDateErrorField);
         this.add(buttons);
@@ -164,7 +136,6 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
 
     private void setFields(AddTaskState state) {
         taskNameInputField.setText(state.getTaskName());
-        priorityInputField.setText(state.getPriority());
         dueDateInputField.setText(state.getDueDate());
     }
 }
