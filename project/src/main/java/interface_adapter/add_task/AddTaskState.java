@@ -54,7 +54,7 @@ public class AddTaskState {
     }
 
     public Project getProject() {
-        return new Project("hi");
+        return project;
     }
 
     public void setTaskName(String taskName) {
@@ -76,6 +76,7 @@ public class AddTaskState {
     public void setProject(Project project) {
         this.project = project;
     }
+
 
     public ArrayList<Object> showTaskAdded() {
         ArrayList<Object> task = new ArrayList<Object>();
