@@ -4,6 +4,7 @@ import entity.Project;
 import entity.Task;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import use_case.delete_task.DeleteTaskDataAccessInterface;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class ProjectDataAccessObject implements ProjectDataAccessInterface {
+public class ProjectDataAccessObject implements ProjectDataAccessInterface, DeleteTaskDataAccessInterface {
 
     @Override
     public void modifyProject(Project project) {
