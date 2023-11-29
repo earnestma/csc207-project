@@ -1,6 +1,7 @@
 package app;
 
 import interface_adapter.ViewModelManager;
+import interface_adapter.check_remaining_time.CheckTimeController;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.project.ProjectViewModel;
@@ -40,19 +41,21 @@ public class Main {
         // Controllers
         GoHomeViewController goHomeViewController =
                 GoHomeViewUseCaseFactory.createGoHomeViewUseCase(viewModelManager, homeViewViewModel);
+        SelectProjectController selectProjectController =
+                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel);
         SelectTaskController selectTaskController =
                 SelectTaskUseCaseFactory.createSelectUseCase(viewModelManager, taskViewModel);
+        CheckTimeController checkTimeController =
+                CheckTimeUseCaseFactory.createCheckTimeUseCase(viewModelManager, taskViewModel);
         
         //Views
         ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController, selectTaskController);
         views.add(projectView, projectView.viewName);
 
-        SelectProjectController selectProjectController =
-                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel);
         HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController);
         views.add(homeViewView, homeViewView.viewName);
         
-        TaskView taskView = new TaskView(taskViewModel, selectTaskController);
+        TaskView taskView = new TaskView(taskViewModel, selectProjectController, checkTimeController);
         views.add(taskView, taskView.viewName);
         
         // Make sure start at home view

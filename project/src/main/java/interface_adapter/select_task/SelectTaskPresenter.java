@@ -19,6 +19,7 @@ public class SelectTaskPresenter implements SelectTaskOutputBoundary {
     public void prepareSuccessView(SelectTaskOutputData response) {
         TaskState taskState = taskViewModel.getState();
         taskState.setTask(response.getTask());
+        taskState.setPreviousProject(response.getProject());
         this.taskViewModel.setState(taskState);
         this.taskViewModel.firePropertyChanged();
         

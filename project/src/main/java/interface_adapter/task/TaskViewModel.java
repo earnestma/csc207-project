@@ -9,20 +9,24 @@ public class TaskViewModel extends ViewModel {
     private final String TITLE_LABEL = "Task View";
     
     private TaskState state = new TaskState();
+    private String message;
+    public static final String TASK_LABEL = "TASK";
+    public static final String DUE_DATE_LABEL = "Due Date:";
+    public static final String GO_BACK_BUTTON_LABEL = "Go Back";
     
-    public static final String ADD_TASK_BUTTON_LABEL = "Go Back";
-    
-    public static final String HOME_PAGE_BUTTON_LABEL = "Time";
+    public static final String TIME_BUTTON_LABEL = "Time";
     
     public static final String COMPLETE_BUTTON_LABEL = "Complete";
     
     public TaskViewModel() {
         super("task");
+        this.message = message;
     }
     
     public void setState(TaskState state) {
         this.state = state;
     }
+    public void setMessage(String message){this.message = message;}
     
     public TaskState getState(){return state;}
     
@@ -37,4 +41,6 @@ public class TaskViewModel extends ViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
+    
+    public void showMessage(){support.firePropertyChange("message", null, this.message);}
 }

@@ -1,42 +1,35 @@
 package interface_adapter.check_remaining_time;
 
-import interface_adapter.project.ProjectViewModel;
+import interface_adapter.ViewModelManager;
+import interface_adapter.task.TaskViewModel;
 import use_case.check_remaining_time.CheckTimeOutputBoundary;
 import use_case.check_remaining_time.CheckTimeOutputData;
 
 // Implement boundary
-public class CheckTimePresenter{
-    /*
-    private ViewModelManager ViewModelManager;
-    private final CheckTimeViewModel checkTimeViewModel;
-    private final ProjectViewModel tasksViewModel;
+public class CheckTimePresenter implements CheckTimeOutputBoundary{
+    
+    private ViewModelManager viewModelManager;
+    private final TaskViewModel tasksViewModel;
 
-    public CheckTimePresenter(ViewModelManager ViewModelManager,
-                              CheckTimeViewModel checkTimeViewModel,
-                              ProjectViewModel tasksViewModel) {
-        this.ViewModelManager = ViewModelManager;
-        this.checkTimeViewModel = checkTimeViewModel;
+    public CheckTimePresenter(ViewModelManager viewModelManager,
+                              TaskViewModel tasksViewModel) {
+        this.viewModelManager = viewModelManager;
         this.tasksViewModel = tasksViewModel;
     }
 
     @Override
     public void prepareSuccessView(CheckTimeOutputData response) {
         // On success, switch to the logged in view.
-
-        LoggedInState loggedInState = loggedInViewModel.getState();
-        loggedInState.setUsername(response.getUsername());
-        this.loggedInViewModel.setState(loggedInState);
-        this.loggedInViewModel.firePropertyChanged();
-
-        this.ViewModelManager.setActiveView(loggedInViewModel.getViewName());
-        this.ViewModelManager.firePropertyChanged();
+        String outputMessage = response.getOutputMessage();
+        
+        this.tasksViewModel.setMessage(outputMessage);
+        this.tasksViewModel.showMessage();
     }
 
     @Override
     public void prepareFailView(String error) {
-        LoginState loginState = loginViewModel.getState();
-        loginState.setUsernameError(error);
-        loginViewModel.firePropertyChanged();
+        this.tasksViewModel.setMessage(error);
+        this.tasksViewModel.showMessage();
     }
-    */
+    
 }

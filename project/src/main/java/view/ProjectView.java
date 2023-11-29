@@ -1,5 +1,6 @@
 package view;
 
+import entity.Project;
 import entity.Task;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.project.ProjectState;
@@ -17,8 +18,7 @@ import java.util.ArrayList;
 public class ProjectView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "project";
     private final ProjectViewModel projectViewModel;
-    private String projectName;
-    private ArrayList<Task> taskList;
+    private Project project;
     private GoHomeViewController goHomeViewController;
     private SelectTaskController selectTaskController;
 
@@ -29,8 +29,6 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         
         this.projectViewModel = projectViewModel;
         this.projectViewModel.addPropertyChangeListener(this);
-        projectName = "";
-        taskList = new ArrayList<Task>();
         
         this.goHomeViewController = goHomeViewController;
         this.selectTaskController = selectTaskController;
@@ -41,7 +39,9 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         JPanel headerPanel = createHeaderPanel();
         JPanel footerPanel = createFooterPanel();
-
+        
+        ArrayList<Task> taskList = project.getTaskList();
+        
         int numTasks = taskList.size();
 
         for (Task task: taskList){
@@ -83,7 +83,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         panel.setPreferredSize(new Dimension(300, 50));
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        JLabel label = new JLabel(projectName);
+        JLabel label = new JLabel(project.getName());
         label.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         panel.add(label, BorderLayout.WEST);
 
@@ -125,7 +125,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        selectTaskController.execute(task);
+                        selectTaskController.execute(task, project);
                     }
                 }
         );
@@ -198,8 +198,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         ProjectState state = (ProjectState) evt.getNewValue();
 
-        projectName = state.getProject().getName();
-        taskList = state.getProject().getTaskList();
+        project = state.getProject();
 
         this.updateView();
     }
