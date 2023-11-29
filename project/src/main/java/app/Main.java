@@ -2,6 +2,8 @@ package app;
 
 import data_access.ProjectDataAccessObject;
 import interface_adapter.ViewModelManager;
+import interface_adapter.delete_task.DeleteTaskController;
+import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.add_task.AddTaskViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.go_project_view.GoProjectViewController;
@@ -13,6 +15,7 @@ import view.AddTaskView;
 import view.HomeViewView;
 import view.ProjectView;
 import view.ViewManager;
+import view.DeleteTaskView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,6 +40,7 @@ public class Main {
         // View Models
         ProjectViewModel projectViewModel = new ProjectViewModel();
         HomeViewViewModel homeViewViewModel = new HomeViewViewModel();
+        DeleteTaskViewModel deleteTaskViewModel = new DeleteTaskViewModel();
         AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
 
         ProjectDataAccessObject addTaskDataAccessObject = new ProjectDataAccessObject();
@@ -53,12 +57,16 @@ public class Main {
                 SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel);
         HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController);
         views.add(homeViewView, homeViewView.viewName);
-
+      
         GoProjectViewController goProjectViewController =
                 GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
        AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject, goProjectViewController);
        views.add(addTaskView, addTaskView.viewName);
-        
+      
+      DeleteTaskView deleteTaskView = DeleteTaskUseCaseFactory.create(viewModelManager, projectViewModel, deleteTaskViewModel,
+                addTaskDataAccessObject, goProjectViewController);
+        views.add(deleteTaskView, deleteTaskView.viewName);
+       
         
         
         
