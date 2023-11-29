@@ -24,6 +24,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
     final JButton cancel;
     final JButton deleteTask;
     private final DeleteTaskController deleteTaskController;
+    private final GoProjectViewController goProjectViewController;
 
     public DeleteTaskView(DeleteTaskViewModel deleteTaskViewModel, DeleteTaskController controller,
                           GoProjectViewController goProjectViewController) {
