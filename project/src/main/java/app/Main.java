@@ -10,6 +10,7 @@ import interface_adapter.go_project_view.GoProjectViewController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_add_task.SelectAddTaskController;
+import interface_adapter.select_delete_Task.SelectDeleteTaskController;
 import interface_adapter.select_project.SelectProjectController;
 import view.AddTaskView;
 import view.HomeViewView;
@@ -50,7 +51,9 @@ public class Main {
                 GoHomeViewUseCaseFactory.createGoHomeViewUseCase(viewModelManager, homeViewViewModel);
         SelectAddTaskController selectAddTaskController =
                 SelectAddTaskUseCaseFactory.createSelectAddTaskUseCase(viewModelManager, addTaskViewModel);
-        ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController, selectAddTaskController);
+        SelectDeleteTaskController selectDeleteTaskController =
+                SelectDeleteTaskUseCaseFactory.createSelectDeleteTaskUseCase(viewModelManager, deleteTaskViewModel);
+        ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController, selectAddTaskController, selectDeleteTaskController);
         views.add(projectView, projectView.viewName);
 
         SelectProjectController selectProjectController =
@@ -60,10 +63,10 @@ public class Main {
       
         GoProjectViewController goProjectViewController =
                 GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
-       AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject, goProjectViewController);
-       views.add(addTaskView, addTaskView.viewName);
+        AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject, goProjectViewController);
+        views.add(addTaskView, addTaskView.viewName);
       
-      DeleteTaskView deleteTaskView = DeleteTaskUseCaseFactory.create(viewModelManager, projectViewModel, deleteTaskViewModel,
+        DeleteTaskView deleteTaskView = DeleteTaskUseCaseFactory.create(viewModelManager, projectViewModel, deleteTaskViewModel,
                 addTaskDataAccessObject, goProjectViewController);
         views.add(deleteTaskView, deleteTaskView.viewName);
        
