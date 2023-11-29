@@ -10,8 +10,8 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
     final TaskFactory taskFactory;
 
     public AddTaskInteractor(AddTaskDataAccessInterface addTaskDataAccessInterface,
-                             AddTaskOutputBoundary addTaskOutputBoundary,
-                             TaskFactory taskFactory) {
+            AddTaskOutputBoundary addTaskOutputBoundary,
+            TaskFactory taskFactory) {
         this.userDataAccessObject = addTaskDataAccessInterface;
         this.addTaskPresenter = addTaskOutputBoundary;
         this.taskFactory = taskFactory;
@@ -19,7 +19,7 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
 
     @Override
     public void execute(AddTaskInputData addTaskInputData) {
-        Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getPriority(), addTaskInputData.getDueDate());
+        Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getDueDate());
         Project project = addTaskInputData.getProject();
         userDataAccessObject.addTask(project, task);
 
