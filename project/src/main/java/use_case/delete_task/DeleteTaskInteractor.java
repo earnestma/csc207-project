@@ -7,19 +7,16 @@ import java.util.ArrayList;
 public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
     final DeleteTaskDataAccessInterface projectDataAccessObject;
     final DeleteTaskOutputBoundary deleteTaskPresenter;
-    final ArrayList<Task> taskList;
 
     public DeleteTaskInteractor(DeleteTaskDataAccessInterface deleteTaskDataAccessInterface,
-                                DeleteTaskOutputBoundary deleteTaskOutputBoundary,
-                                DeleteTaskInputData deleteTaskInputData) {
+                                DeleteTaskOutputBoundary deleteTaskOutputBoundary) {
         this.projectDataAccessObject = deleteTaskDataAccessInterface;
         this.deleteTaskPresenter = deleteTaskOutputBoundary;
-
-        long projectID = deleteTaskInputData.getProject().getId();
-        this.taskList = deleteTaskDataAccessInterface.getTasks(projectID);
     }
 
     public void execute(DeleteTaskInputData deleteTaskInputData) {
+        long projectID = deleteTaskInputData.getProject().getId();
+        ArrayList<Task> taskList = this.projectDataAccessObject.getTasks(projectID);
 
         String taskName = deleteTaskInputData.getTaskName();
 
