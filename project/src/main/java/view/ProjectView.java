@@ -1,9 +1,11 @@
 package view;
 
+import entity.Project;
 import entity.Task;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.project.ProjectState;
 import interface_adapter.project.ProjectViewModel;
+import interface_adapter.select_add_task.SelectAddTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +18,15 @@ import java.util.ArrayList;
 public class ProjectView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "project";
     private final ProjectViewModel projectViewModel;
+    private final SelectAddTaskController selectAddTaskController;
     private String projectName;
+    private Project projectObject;
     private ArrayList<Task> taskList;
     private GoHomeViewController goHomeViewController;
 
     public ProjectView(ProjectViewModel projectViewModel,
-                       GoHomeViewController goHomeViewController){
+                       GoHomeViewController goHomeViewController,
+                       SelectAddTaskController selectAddTaskController){
         this.setLayout(new BorderLayout());
         
         this.projectViewModel = projectViewModel;
@@ -30,6 +35,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         taskList = new ArrayList<Task>();
         
         this.goHomeViewController = goHomeViewController;
+        this.selectAddTaskController = selectAddTaskController;
     }
 
     public void updateView(){
@@ -89,7 +95,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null,"CHANGE TO ADD TASK VIEW");
+                        selectAddTaskController.execute(projectObject);
                     }
                 }
         );
@@ -194,6 +200,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         ProjectState state = (ProjectState) evt.getNewValue();
 
+        projectObject = state.getProject();
         projectName = state.getProject().getName();
         taskList = state.getProject().getTaskList();
 
