@@ -53,7 +53,6 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddT
 
         taskJSON.put("content", task.getName());
         taskJSON.put("project_id", project.getId());
-        taskJSON.put("priority", task.getPriority());
 
         if (task.hasDueDate()) {
             taskJSON.put("due_datetime", task.getDueDate().toString());
@@ -129,11 +128,10 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddT
                     JSONObject t = r.getJSONObject(i);
                     String tN = t.getString("content");
                     long tID = t.getLong("id");
-                    int tP = t.getInt("priority");
 
                     if (t.isNull("due")) {
                         // no due date set
-                        Task task = new Task(tN, tP, tID);
+                        Task task = new Task(tN, tID);
                         taskList.add(task);
                     } else {
                         JSONObject a = t.getJSONObject("due");
@@ -141,7 +139,7 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddT
                         LocalDateTime date = LocalDateTime.parse(a.getString("datetime"),
                                 DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
-                        Task task = new Task(tN, tP, date, tID);
+                        Task task = new Task(tN, date, tID);
                         taskList.add(task);
                     }
                 }
@@ -165,7 +163,6 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddT
         JSONObject taskJSON = new JSONObject();
 
         taskJSON.put("content", task.getName());
-        taskJSON.put("priority", task.getPriority());
 
         if (task.hasDueDate()) {
             taskJSON.put("due_datetime", task.getDueDate().toString());
