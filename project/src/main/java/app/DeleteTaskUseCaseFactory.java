@@ -4,6 +4,7 @@ import interface_adapter.ViewModelManager;
 import interface_adapter.delete_task.DeleteTaskController;
 import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.delete_task.DeleteTaskPresenter;
+import interface_adapter.go_project_view.GoProjectViewController;
 import interface_adapter.project.ProjectViewModel;
 import use_case.delete_task.DeleteTaskDataAccessInterface;
 import use_case.delete_task.DeleteTaskInputBoundary;
