@@ -37,7 +37,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         for (int i = 0; i < 10; i++){
             Project temp = new Project("Project " + i, i);
             for (int j = 0; j <= i; j++){
-                Task temp_task = new Task("Task " + j, 1, Long.valueOf(i * 100 + j));
+                Task temp_task = new Task("Task " + j, Long.valueOf(i * 100 + j));
                 temp.addTask(temp_task);
             }
             projects.add(temp);
