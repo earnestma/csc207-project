@@ -2,6 +2,7 @@ package data_access;
 
 import entity.Project;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 
 public class UserDataAccessObject implements UserDataAccessInterface {
 
@@ -69,6 +71,46 @@ public class UserDataAccessObject implements UserDataAccessInterface {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public ArrayList<Project> listProjects() {
+        ArrayList<Project> projects = new ArrayList<Project>();
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://api.todoist.com/rest/v2/projects"))
+                .GET()
+                .setHeader("Authorization", "Bearer " + System.getenv("token"))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                JSONArray r = new JSONArray(response.body());
+
+                for (int i = 0; i < r.length(); i++) {
+                    JSONObject p = r.getJSONObject(i);
+                    String pName = p.getString("name");
+                    Long pID = p.getLong("id");
+
+                    Project pr = new Project(pName, pID);
+
+                    projects.add(pr);
+                }
+            } else {
+                throw new IOException("Cannot get list of all projects.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return projects;
     }
 
 }

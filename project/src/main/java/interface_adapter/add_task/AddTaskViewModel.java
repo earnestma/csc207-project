@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
 public class AddTaskViewModel extends ViewModel {
 
     public final String TITLE_LABEL = "Add Task View";
-    public final String TASK_NAME_LABEL = "Enter task name:";
+    public final String TASK_NAME_LABEL = "Confirm";
     public final String DUE_DATE_LABEL = "Enter due date (MM-DD-YYYY)";
 
     public static final String ADD_TASK_BUTTON_LABEL = "Add task";
@@ -23,6 +23,10 @@ public class AddTaskViewModel extends ViewModel {
         this.state = state;
     }
 
+    public AddTaskState getState(){
+        return state;
+    }
+
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
@@ -33,7 +37,4 @@ public class AddTaskViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
-    public AddTaskState getState(){
-        return state;
-    }
 }

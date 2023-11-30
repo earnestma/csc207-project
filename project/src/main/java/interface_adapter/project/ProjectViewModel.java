@@ -16,6 +16,8 @@ public class ProjectViewModel extends ViewModel{
 
     public static final String ADD_TASK_BUTTON_LABEL = "Add Task";
 
+    public static final String DELETE_TASK_BUTTON_LABEL = "Delete Task";
+
     public ProjectViewModel() {
         super("project");
     }

@@ -2,10 +2,11 @@ package interface_adapter.check_remaining_time;
 
 import interface_adapter.ViewModelManager;
 import interface_adapter.task.TaskViewModel;
+
 import use_case.check_remaining_time.CheckTimeOutputBoundary;
 import use_case.check_remaining_time.CheckTimeOutputData;
 
-// Implement boundary
+// Implement bo
 public class CheckTimePresenter implements CheckTimeOutputBoundary{
     
     private ViewModelManager viewModelManager;
@@ -13,7 +14,7 @@ public class CheckTimePresenter implements CheckTimeOutputBoundary{
 
     public CheckTimePresenter(ViewModelManager viewModelManager,
                               TaskViewModel tasksViewModel) {
-        this.viewModelManager = viewModelManager;
+
         this.tasksViewModel = tasksViewModel;
     }
 
@@ -23,7 +24,7 @@ public class CheckTimePresenter implements CheckTimeOutputBoundary{
         String outputMessage = response.getOutputMessage();
         
         this.tasksViewModel.setMessage(outputMessage);
-        this.tasksViewModel.showMessage();
+        this.tasksV
     }
 
     @Override
@@ -31,5 +32,4 @@ public class CheckTimePresenter implements CheckTimeOutputBoundary{
         this.tasksViewModel.setMessage(error);
         this.tasksViewModel.showMessage();
     }
-    
 }

@@ -1,34 +1,32 @@
 package interface_adapter.add_task;
 
 import interface_adapter.ViewModelManager;
+import interface_adapter.project.ProjectState;
+import interface_adapter.project.ProjectViewModel;
 import use_case.add_task.AddTaskOutputBoundary;
 import use_case.add_task.AddTaskOutputData;
 
 public class AddTaskPresenter implements AddTaskOutputBoundary {
 
     private final AddTaskViewModel addTaskViewModel;
+    private final ProjectViewModel projectViewModel;
     private ViewModelManager ViewModelManager;
 
     public AddTaskPresenter(ViewModelManager ViewModelManager,
-                            AddTaskViewModel addTaskViewModel) {
+                            AddTaskViewModel addTaskViewModel, ProjectViewModel projectViewModel) {
         this.ViewModelManager = ViewModelManager;
         this.addTaskViewModel = addTaskViewModel;
+        this.projectViewModel = projectViewModel;
     }
 
     @Override
     public void prepareSuccessView(AddTaskOutputData response) {
-        // switch to project view when task is successfully added
-        /*
         ProjectState projectState = projectViewModel.getState();
-        projectState.setTaskName(response.getTaskName());
-        projectState.setDueDate(response.getDueDate());
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
 
         this.ViewModelManager.setActiveView(projectViewModel.getViewName());
-        this.ViewModelManager.firePropertyChanged(); */
-       
-        
+        this.ViewModelManager.firePropertyChanged();
     }
 
     @Override

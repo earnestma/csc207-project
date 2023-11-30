@@ -6,6 +6,8 @@ import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.project.ProjectState;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_task.SelectTaskController;
+import interface_adapter.select_add_task.SelectAddTaskController;
+import interface_adapter.select_delete_Task.SelectDeleteTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,20 +20,27 @@ import java.util.ArrayList;
 public class ProjectView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "project";
     private final ProjectViewModel projectViewModel;
-    private Project project;
+    private final SelectAddTaskController selectAddTaskController;
+    private final SelectDeleteTaskController selectDeleteTaskController;
     private GoHomeViewController goHomeViewController;
     private SelectTaskController selectTaskController;
-
+  
+    private Project project;
+  
     public ProjectView(ProjectViewModel projectViewModel,
                        GoHomeViewController goHomeViewController,
-                       SelectTaskController selectTaskController){
+                       SelectTaskController selectTaskController,
+                       SelectAddTaskController selectAddTaskController,
+                       SelectDeleteTaskController selectDeleteTaskController){
         this.setLayout(new BorderLayout());
         
         this.projectViewModel = projectViewModel;
         this.projectViewModel.addPropertyChangeListener(this);
-        
+      
         this.goHomeViewController = goHomeViewController;
         this.selectTaskController = selectTaskController;
+        this.selectAddTaskController = selectAddTaskController;
+        this.selectDeleteTaskController = selectDeleteTaskController;
     }
 
     private void updateView(){
@@ -39,7 +48,6 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         JPanel headerPanel = createHeaderPanel();
         JPanel footerPanel = createFooterPanel();
-        
         ArrayList<Task> taskList = project.getTaskList();
         
         int numTasks = taskList.size();
@@ -93,7 +101,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null,"CHANGE TO ADD TASK VIEW");
+                        selectAddTaskController.execute(project);]
                     }
                 }
         );
@@ -117,7 +125,6 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
 
         JButton taskButton = new JButton(task.getName());
 
@@ -166,6 +173,17 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                     }
                 }
         );
+      
+        JButton deleteTaskButton = new JButton(projectViewModel.DELETE_TASK_BUTTON_LABEL);
+
+        deleteTaskButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        selectDeleteTaskController.execute(project);
+                    }
+                }
+        );
 
         goBackButton.setPreferredSize(new Dimension(100, 30));
         goBackButton.setMargin(new Insets(0, 0, 0, 0));
@@ -176,9 +194,16 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         goBackButton.setOpaque(false);
         panel.add(goBackButton, BorderLayout.WEST);
 
+        deleteTaskButton.setPreferredSize(new Dimension(100, 30));
+        deleteTaskButton.setMargin(new Insets(0, 0, 0, 0));
+        deleteTaskButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        deleteTaskButton.setFocusPainted(false);
+        deleteTaskButton.setContentAreaFilled(false);
+        deleteTaskButton.setBorderPainted(true);
+        deleteTaskButton.setOpaque(false);
+        panel.add(deleteTaskButton, BorderLayout.EAST);
         return panel;
     }
-
 
     private void clearAll(){
         this.removeAll();
