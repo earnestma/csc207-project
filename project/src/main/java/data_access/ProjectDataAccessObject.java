@@ -4,6 +4,8 @@ import entity.Project;
 import entity.Task;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import use_case.delete_task.DeleteTaskDataAccessInterface;
+import use_case.add_task.AddTaskDataAccessInterface;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class ProjectDataAccessObject implements ProjectDataAccessInterface {
+public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddTaskDataAccessInterface, DeleteTaskDataAccessInterface {
 
     @Override
     public void modifyProject(Project project) {
@@ -52,7 +54,6 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface {
 
         taskJSON.put("content", task.getName());
         taskJSON.put("project_id", project.getId());
-        taskJSON.put("priority", task.getPriority());
 
         if (task.hasDueDate()) {
             taskJSON.put("due_datetime", task.getDueDate().toString());
@@ -128,11 +129,10 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface {
                     JSONObject t = r.getJSONObject(i);
                     String tN = t.getString("content");
                     long tID = t.getLong("id");
-                    int tP = t.getInt("priority");
 
                     if (t.isNull("due")) {
                         // no due date set
-                        Task task = new Task(tN, tP, tID);
+                        Task task = new Task(tN, tID);
                         taskList.add(task);
                     } else {
                         JSONObject a = t.getJSONObject("due");
@@ -140,7 +140,7 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface {
                         LocalDateTime date = LocalDateTime.parse(a.getString("datetime"),
                                 DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
-                        Task task = new Task(tN, tP, date, tID);
+                        Task task = new Task(tN, date, tID);
                         taskList.add(task);
                     }
                 }
@@ -164,7 +164,6 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface {
         JSONObject taskJSON = new JSONObject();
 
         taskJSON.put("content", task.getName());
-        taskJSON.put("priority", task.getPriority());
 
         if (task.hasDueDate()) {
             taskJSON.put("due_datetime", task.getDueDate().toString());

@@ -1,9 +1,12 @@
 package view;
 
+import entity.Project;
 import entity.Task;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.project.ProjectState;
 import interface_adapter.project.ProjectViewModel;
+import interface_adapter.select_add_task.SelectAddTaskController;
+import interface_adapter.select_delete_Task.SelectDeleteTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +19,17 @@ import java.util.ArrayList;
 public class ProjectView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "project";
     private final ProjectViewModel projectViewModel;
+    private final SelectAddTaskController selectAddTaskController;
+    private final SelectDeleteTaskController selectDeleteTaskController;
     private String projectName;
+    private Project projectObject;
     private ArrayList<Task> taskList;
     private GoHomeViewController goHomeViewController;
 
     public ProjectView(ProjectViewModel projectViewModel,
-                       GoHomeViewController goHomeViewController){
+                       GoHomeViewController goHomeViewController,
+                       SelectAddTaskController selectAddTaskController,
+                       SelectDeleteTaskController selectDeleteTaskController){
         this.setLayout(new BorderLayout());
         
         this.projectViewModel = projectViewModel;
@@ -30,6 +38,8 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         taskList = new ArrayList<Task>();
         
         this.goHomeViewController = goHomeViewController;
+        this.selectAddTaskController = selectAddTaskController;
+        this.selectDeleteTaskController = selectDeleteTaskController;
     }
 
     public void updateView(){
@@ -89,7 +99,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null,"CHANGE TO ADD TASK VIEW");
+                        selectAddTaskController.execute(projectObject);
                     }
                 }
         );
@@ -163,6 +173,17 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 }
         );
 
+        JButton deleteTaskButton = new JButton(projectViewModel.DELETE_TASK_BUTTON_LABEL);
+
+        deleteTaskButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        selectDeleteTaskController.execute(projectObject);
+                    }
+                }
+        );
+
         goBackButton.setPreferredSize(new Dimension(100, 30));
         goBackButton.setMargin(new Insets(0, 0, 0, 0));
         goBackButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -171,6 +192,15 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         goBackButton.setBorderPainted(true);
         goBackButton.setOpaque(false);
         panel.add(goBackButton, BorderLayout.WEST);
+
+        deleteTaskButton.setPreferredSize(new Dimension(100, 30));
+        deleteTaskButton.setMargin(new Insets(0, 0, 0, 0));
+        deleteTaskButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        deleteTaskButton.setFocusPainted(false);
+        deleteTaskButton.setContentAreaFilled(false);
+        deleteTaskButton.setBorderPainted(true);
+        deleteTaskButton.setOpaque(false);
+        panel.add(deleteTaskButton, BorderLayout.EAST);
 
         return panel;
     }
@@ -194,6 +224,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         ProjectState state = (ProjectState) evt.getNewValue();
 
+        projectObject = state.getProject();
         projectName = state.getProject().getName();
         taskList = state.getProject().getTaskList();
 

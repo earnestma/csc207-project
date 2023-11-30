@@ -1,29 +1,29 @@
-package interface_adapter.add_task;
+package interface_adapter.delete_task;
 
 import interface_adapter.ViewModel;
+import org.json.Property;
+
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 
-public class AddTaskViewModel extends ViewModel {
+public class DeleteTaskViewModel extends ViewModel {
 
-    public final String TITLE_LABEL = "Add Task View";
-    public final String TASK_NAME_LABEL = "Confirm";
-    public final String DUE_DATE_LABEL = "Enter due date (MM-DD-YYYY)";
-
-    public static final String ADD_TASK_BUTTON_LABEL = "Add task";
+    public final String TITLE_LABEL = "Delete Task View";
+    public final String DELETING_TASK = "Select which task to delete:";
+    public static final String DELETE_TASK_BUTTON_LABEL = "Confirm";
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
 
-    private AddTaskState state = new AddTaskState();
+    private DeleteTaskState state = new DeleteTaskState();
 
-    public AddTaskViewModel(){
-        super("add task");
+    public DeleteTaskViewModel() {
+        super("delete task");
     }
 
-    public void setState(AddTaskState state) {
+    public void setState(DeleteTaskState state) {
         this.state = state;
     }
 
-    public AddTaskState getState(){
+    public DeleteTaskState getState() {
         return state;
     }
 
