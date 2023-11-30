@@ -118,8 +118,13 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         label.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         label.setFont(new Font("Arial", Font.BOLD, 18));
         
+        JLabel dueTime = new JLabel(String.valueOf(task.getDueDate()));
+        dueTime.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        dueTime.setFont(new Font("Arial", Font.BOLD, 18));
+        
         // Add components to the panel
         panel.add(label);
+        panel.add(dueTime);
         
         return panel;
     }
@@ -176,7 +181,6 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
     
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        
         if (evt.getPropertyName().equals("state")) {
             this.clearAll();
             
