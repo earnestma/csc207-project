@@ -1,6 +1,7 @@
 package app;
 
 import data_access.ProjectDataAccessObject;
+import data_access.UserDataAccessObject;
 import interface_adapter.ViewModelManager;
 import interface_adapter.delete_task.DeleteTaskController;
 import interface_adapter.delete_task.DeleteTaskViewModel;
@@ -44,7 +45,8 @@ public class Main {
         DeleteTaskViewModel deleteTaskViewModel = new DeleteTaskViewModel();
         AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
 
-        ProjectDataAccessObject addTaskDataAccessObject = new ProjectDataAccessObject();
+        ProjectDataAccessObject projectDataAccessObject = new ProjectDataAccessObject();
+        UserDataAccessObject userDataAccessObject = new UserDataAccessObject();
         
         // Views
         GoHomeViewController goHomeViewController =
@@ -58,16 +60,16 @@ public class Main {
 
         SelectProjectController selectProjectController =
                 SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel);
-        HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController);
+        HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController, userDataAccessObject);
         views.add(homeViewView, homeViewView.viewName);
       
         GoProjectViewController goProjectViewController =
                 GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
-        AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject, goProjectViewController);
+        AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, projectDataAccessObject, goProjectViewController);
         views.add(addTaskView, addTaskView.viewName);
       
         DeleteTaskView deleteTaskView = DeleteTaskUseCaseFactory.create(viewModelManager, projectViewModel, deleteTaskViewModel,
-                addTaskDataAccessObject, goProjectViewController);
+                projectDataAccessObject, goProjectViewController);
         views.add(deleteTaskView, deleteTaskView.viewName);
        
         

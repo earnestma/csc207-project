@@ -1,5 +1,6 @@
 package view;
 
+import data_access.UserDataAccessObject;
 import entity.Project;
 import entity.Task;
 import interface_adapter.home_view.HomeViewViewModel;
@@ -18,17 +19,23 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     private final HomeViewViewModel homeViewViewModel;
     private ArrayList<Project> projects;
     private final SelectProjectController selectProjectController;
+    private final UserDataAccessObject userDataAccessObject;
     private BorderLayout borderLayout;
 
     public HomeViewView(HomeViewViewModel homeViewViewModel,
-                        SelectProjectController selectProjectController){
+                        SelectProjectController selectProjectController,
+                        UserDataAccessObject userDataAccessObject){
         borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
         
         this.homeViewViewModel = homeViewViewModel;
         this.homeViewViewModel.addPropertyChangeListener(this);
         this.selectProjectController = selectProjectController;
-        
+        this.userDataAccessObject = userDataAccessObject;
+
+        projects = userDataAccessObject.listProjects();
+        projects.addAll(projects);
+
         // For Testing
         projects = new ArrayList<>();
         projects.add(new Project("Easy Project", 123));
