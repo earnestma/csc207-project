@@ -19,6 +19,8 @@ public class SelectProjectPresenter implements SelectProjectOutputBoundary {
     public void prepareSuccessView(SelectProjectOutputData response) {
         ProjectState projectState = projectViewModel.getState();
         projectState.setProject(response.getProject());
+        projectState.setTaskList(response.getTaskList());
+
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
         
