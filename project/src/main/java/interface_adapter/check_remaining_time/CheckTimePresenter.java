@@ -24,7 +24,7 @@ public class CheckTimePresenter implements CheckTimeOutputBoundary{
         String outputMessage = response.getOutputMessage();
         
         this.tasksViewModel.setMessage(outputMessage);
-        this.tasksV
+        this.tasksViewModel.firePropertyChanged();
     }
 
     @Override

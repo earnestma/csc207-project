@@ -1,10 +1,11 @@
 package interface_adapter.mark_task_complete;
 
 import interface_adapter.ViewModelManager;
+import interface_adapter.task.TaskViewModel;
 import use_case.mark_task_complete.MarkTaskCompleteOutputBoundary;
 import use_case.mark_task_complete.MarkTaskCompleteOutputData;
 
-public class MarkTaskCompletePresenter implements MarkTaskCompelteOutputBoundary {
+public class MarkTaskCompletePresenter implements MarkTaskCompleteOutputBoundary {
 
     private final TaskViewModel taskViewModel;
     private ViewModelManager viewModelManager;
@@ -15,7 +16,7 @@ public class MarkTaskCompletePresenter implements MarkTaskCompelteOutputBoundary
     }
 
     @Override
-    public void prepareSuccessView(MarkTaskCompelteOutputData response) {
+    public void prepareSuccessView(MarkTaskCompleteOutputData response) {
         // Update task view model with status of task completion
         /*
         TaskState taskState = taskViewModel.getState();

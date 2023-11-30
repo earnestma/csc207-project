@@ -101,7 +101,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        selectAddTaskController.execute(project);]
+                        selectAddTaskController.execute(project);
                     }
                 }
         );

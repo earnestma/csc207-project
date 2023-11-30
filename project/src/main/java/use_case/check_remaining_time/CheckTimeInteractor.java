@@ -42,10 +42,6 @@ public class CheckTimeInteractor implements CheckTimeInputBoundary{
                 outputMessage += minutes;
             }
             outputMessage +=  " minutes to complete this task!";
-            
-            System.out.println("Days: " + days);
-            System.out.println("Hours: " + hours);
-            System.out.println("Minutes: " + minutes);
 
             CheckTimeOutputData outputData = new CheckTimeOutputData(outputMessage);
             
