@@ -59,7 +59,7 @@ public class Main {
         views.add(projectView, projectView.viewName);
 
         SelectProjectController selectProjectController =
-                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel);
+                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel, projectDataAccessObject);
         HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController, userDataAccessObject);
         views.add(homeViewView, homeViewView.viewName);
       

@@ -34,22 +34,6 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         this.userDataAccessObject = userDataAccessObject;
 
         projects = userDataAccessObject.listProjects();
-        projects.addAll(projects);
-
-        // For Testing
-        projects = new ArrayList<>();
-        projects.add(new Project("Easy Project", 123));
-        projects.add(new Project("Hard Project", 4312));
-        
-        for (int i = 0; i < 10; i++){
-            Project temp = new Project("Project " + i, i);
-            for (int j = 0; j <= i; j++){
-                Task temp_task = new Task("Task " + j, Long.valueOf(i * 100 + j));
-                temp.addTask(temp_task);
-            }
-            projects.add(temp);
-        }
-        // To here
         
         updateView();
     }
