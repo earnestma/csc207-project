@@ -35,7 +35,6 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.projectViewModel = projectViewModel;
         this.projectViewModel.addPropertyChangeListener(this);
         projectName = "";
-        taskList = new ArrayList<Task>();
         
         this.goHomeViewController = goHomeViewController;
         this.selectAddTaskController = selectAddTaskController;
@@ -47,6 +46,8 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         JPanel headerPanel = createHeaderPanel();
         JPanel footerPanel = createFooterPanel();
+
+        taskList = projectViewModel.getState().getTaskList();
 
         int numTasks = taskList.size();
 
