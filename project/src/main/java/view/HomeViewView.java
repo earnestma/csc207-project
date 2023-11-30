@@ -7,6 +7,8 @@ import interface_adapter.delete_project.DeleteProjectController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.select_delete_project.SelectDeleteProjectController;
 import interface_adapter.select_project.SelectProjectController;
+import interface_adapter.select_add_project.SelectAddProjectController;
+import interface_adapter.select_delete_Task.SelectDeleteTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,22 +26,27 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     private final SelectDeleteProjectController selectDeleteProjectController;
     private final UserDataAccessObject userDataAccessObject;
     private BorderLayout borderLayout;
+    private final SelectAddProjectController selectAddProjectController;
 
     public HomeViewView(HomeViewViewModel homeViewViewModel,
-                        SelectProjectController selectProjectController,
-                        UserDataAccessObject userDataAccessObject,
-                        SelectDeleteProjectController selectDeleteProjectController) {
+            SelectProjectController selectProjectController,
+            UserDataAccessObject userDataAccessObject,
+            SelectAddProjectController selectAddProjectController,
+            SelectDeleteProjectController selectDeleteProjectController) {
+
         borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
-        
+
         this.homeViewViewModel = homeViewViewModel;
         this.homeViewViewModel.addPropertyChangeListener(this);
         this.selectProjectController = selectProjectController;
         this.selectDeleteProjectController = selectDeleteProjectController;
+        this.selectAddProjectController = selectAddProjectController;
+
         this.userDataAccessObject = userDataAccessObject;
 
         projects = userDataAccessObject.listProjects();
-        
+
         updateView();
     }
 
@@ -51,13 +58,12 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
 
         int numProjects = projects.size();
 
-        for (Project project: projects) {
+        for (Project project : projects) {
             JPanel panel = createProjectPanel(project);
             panelList.add(panel);
         }
 
-        if (numProjects <= 5)
-        {
+        if (numProjects <= 5) {
             int missing = 5 - numProjects;
             for (int i = 1; i <= missing; i++) {
                 JPanel panel = createEmptyPanel();
@@ -99,10 +105,9 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null,"CHANGE TO ADD PROJECT VIEW");
+                        selectAddProjectController.execute(null);
                     }
-                }
-        );
+                });
 
         addProjectButton.setPreferredSize(new Dimension(100, 30));
         addProjectButton.setMargin(new Insets(0, 0, 0, 0));
@@ -116,7 +121,6 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         return panel;
     }
 
-
     private JPanel createProjectPanel(Project project) {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -124,7 +128,6 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
 
         JButton projectButton = new JButton(project.getName());
 
@@ -134,8 +137,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
                     public void actionPerformed(ActionEvent e) {
                         selectProjectController.execute(project);
                     }
-                }
-        );
+                });
 
         projectButton.setPreferredSize(new Dimension(390, 50));
         projectButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -148,7 +150,6 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
 
         return panel;
     }
-
 
     private JPanel createEmptyPanel() {
         JPanel panel = new JPanel();
@@ -172,8 +173,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
                     public void actionPerformed(ActionEvent e) {
                         selectDeleteProjectController.execute(null);
                     }
-                }
-        );
+                });
 
         deleteProjectButton.setPreferredSize(new Dimension(100, 30));
         deleteProjectButton.setMargin(new Insets(0, 0, 0, 0));
@@ -186,13 +186,13 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
 
         return panel;
     }
-    
+
     public void clearAll() {
         this.removeAll();
         this.revalidate();
         this.repaint();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
