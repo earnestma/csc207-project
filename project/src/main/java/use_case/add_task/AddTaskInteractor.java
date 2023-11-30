@@ -4,6 +4,8 @@ import entity.Project;
 import entity.Task;
 import entity.TaskFactory;
 
+import java.util.ArrayList;
+
 public class AddTaskInteractor implements AddTaskInputBoundary {
     final AddTaskDataAccessInterface userDataAccessObject;
     final AddTaskOutputBoundary addTaskPresenter;
@@ -21,9 +23,11 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
     public void execute(AddTaskInputData addTaskInputData) {
         Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getDueDate());
         Project project = addTaskInputData.getProject();
+        project.addTask(task);
         userDataAccessObject.addTask(project, task);
-
-        AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), false);
+        ArrayList<Task> taskList = userDataAccessObject.getTasks(project.getId());
+        
+        AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), taskList,false);
         addTaskPresenter.prepareSuccessView(addTaskOutputData);
     }
 }
