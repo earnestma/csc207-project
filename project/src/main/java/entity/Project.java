@@ -56,9 +56,9 @@ public class Project {
         this.archived = state;
     }
 
-    public ArrayList<Task> getTaskList(){
+    public ArrayList<Task> getTaskList() {
         ArrayList<Task> temp = new ArrayList<>();
-        for (Task task: tasks.values()){
+        for (Task task: tasks.values()) {
             temp.add(task);
         }
         System.out.println(temp);
@@ -66,7 +66,7 @@ public class Project {
         return temp;
     }
     
-    public void addTask(Task task){
+    public void addTask(Task task) {
         tasks.put(task.getID(), task);
     }
 }

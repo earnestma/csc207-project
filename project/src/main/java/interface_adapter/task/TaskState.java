@@ -22,6 +22,6 @@ public class TaskState {
         this.task = task;
     }
     
-    public Project getPreviousProject(){return previousProject;}
-    public void setPreviousProject(Project project){this.previousProject = project;}
+    public Project getPreviousProject() {return previousProject;}
+    public void setPreviousProject(Project project) {this.previousProject = project;}
 }

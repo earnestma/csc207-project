@@ -11,12 +11,12 @@ public class SelectProjectOutputData {
     
     private boolean useCaseFailed;
     
-    public SelectProjectOutputData(Project project, ArrayList<Task> taskList){
+    public SelectProjectOutputData(Project project, ArrayList<Task> taskList) {
         this.project = project;
         this.taskList = taskList;
     }
     
-    public Project getProject(){
+    public Project getProject() {
         return project;
     }
 

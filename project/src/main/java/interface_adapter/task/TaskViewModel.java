@@ -26,9 +26,9 @@ public class TaskViewModel extends ViewModel {
     public void setState(TaskState state) {
         this.state = state;
     }
-    public void setMessage(String message){this.message = message;}
+    public void setMessage(String message) {this.message = message;}
     
-    public TaskState getState(){return state;}
+    public TaskState getState() {return state;}
     
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     
@@ -42,5 +42,5 @@ public class TaskViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
     
-    public void showMessage(){support.firePropertyChange("message", null, this.message);}
+    public void showMessage() {support.firePropertyChange("message", null, this.message);}
 }

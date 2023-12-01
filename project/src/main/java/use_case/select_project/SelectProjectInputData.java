@@ -5,11 +5,11 @@ import entity.Project;
 public class SelectProjectInputData {
     final private Project project;
     
-    public SelectProjectInputData(Project project){
+    public SelectProjectInputData(Project project) {
         this.project = project;
     }
     
-    public Project getProject(){
+    public Project getProject() {
         return project;
     }
 }

@@ -1,13 +1,13 @@
 package interface_adapter.delete_task;
 
-import interface_adapter.ViewModel;
+import entity.Task;
 import interface_adapter.ViewModelManager;
 import interface_adapter.project.ProjectState;
 import interface_adapter.project.ProjectViewModel;
 import use_case.delete_task.DeleteTaskOutputBoundary;
 import use_case.delete_task.DeleteTaskOutputData;
 
-import javax.swing.text.View;
+import java.util.ArrayList;
 
 public class DeleteTaskPresenter implements DeleteTaskOutputBoundary {
 
@@ -25,6 +25,9 @@ public class DeleteTaskPresenter implements DeleteTaskOutputBoundary {
 
     public void prepareSuccessView(DeleteTaskOutputData response) {
         ProjectState projectState = projectViewModel.getState();
+        ArrayList<Task> taskList = response.getTaskList();
+        projectState.setTaskList(taskList);
+        
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
 

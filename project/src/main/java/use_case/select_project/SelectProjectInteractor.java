@@ -10,7 +10,7 @@ public class SelectProjectInteractor implements SelectProjectInputBoundary {
     final SelectProjectDataAccessInterface projectDataAccessObject;
     
     public SelectProjectInteractor(SelectProjectDataAccessInterface selectProjectDataAccessInterface,
-                                   SelectProjectOutputBoundary selectProjectPresenter){
+                                   SelectProjectOutputBoundary selectProjectPresenter) {
         this.projectDataAccessObject = selectProjectDataAccessInterface;
         this.selectProjectPresenter = selectProjectPresenter;
     }

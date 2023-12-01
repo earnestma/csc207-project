@@ -8,11 +8,11 @@ import use_case.select_task.SelectTaskInputData;
 public class SelectTaskController {
     final SelectTaskInputBoundary selectTaskInteractor;
     
-    public SelectTaskController(SelectTaskInputBoundary selectTaskInteractor){
+    public SelectTaskController(SelectTaskInputBoundary selectTaskInteractor) {
         this.selectTaskInteractor = selectTaskInteractor;
     }
     
-    public void execute(Task task, Project project){
+    public void execute(Task task, Project project) {
         SelectTaskInputData selectTaskInputData = new SelectTaskInputData(task, project);
         
         selectTaskInteractor.execute(selectTaskInputData);
