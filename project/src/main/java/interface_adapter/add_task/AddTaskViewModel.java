@@ -15,7 +15,7 @@ public class AddTaskViewModel extends ViewModel {
 
     private AddTaskState state = new AddTaskState();
 
-    public AddTaskViewModel(){
+    public AddTaskViewModel() {
         super("add task");
     }
 
@@ -23,7 +23,7 @@ public class AddTaskViewModel extends ViewModel {
         this.state = state;
     }
 
-    public AddTaskState getState(){
+    public AddTaskState getState() {
         return state;
     }
 

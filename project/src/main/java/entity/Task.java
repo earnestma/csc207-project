@@ -45,7 +45,7 @@ public class Task {
         this.reminders = new ArrayList<Reminder>();
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -88,7 +88,7 @@ public class Task {
         this.completed = true;
     }
     
-    public void markAsCompleted(){
+    public void markAsCompleted() {
         this.completed = true;
     }
 }

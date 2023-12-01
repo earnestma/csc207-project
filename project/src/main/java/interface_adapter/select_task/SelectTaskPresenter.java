@@ -11,7 +11,7 @@ public class SelectTaskPresenter implements SelectTaskOutputBoundary {
     private final ViewModelManager viewModelManager;
     
     public SelectTaskPresenter(ViewModelManager viewModelManager,
-                                  TaskViewModel taskViewModel){
+                                  TaskViewModel taskViewModel) {
         this.taskViewModel = taskViewModel;
         this.viewModelManager = viewModelManager;
     }

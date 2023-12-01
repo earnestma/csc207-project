@@ -6,7 +6,7 @@ import entity.Task;
 public class SelectTaskInteractor implements SelectTaskInputBoundary{
     final SelectTaskOutputBoundary selectTaskPresenter;
     
-    public SelectTaskInteractor(SelectTaskOutputBoundary selectTaskPresenter){
+    public SelectTaskInteractor(SelectTaskOutputBoundary selectTaskPresenter) {
         this.selectTaskPresenter = selectTaskPresenter;
     }
     @Override

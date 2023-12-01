@@ -11,7 +11,7 @@ public class SelectProjectPresenter implements SelectProjectOutputBoundary {
     private final ViewModelManager viewModelManager;
     
     public SelectProjectPresenter(ViewModelManager viewModelManager,
-                                  ProjectViewModel projectViewModel){
+                                  ProjectViewModel projectViewModel) {
         this.projectViewModel = projectViewModel;
         this.viewModelManager = viewModelManager;
     }

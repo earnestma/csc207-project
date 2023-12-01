@@ -9,7 +9,7 @@ public class SelectAddTaskOutputData {
         this.project = project;
     }
 
-    public Project getProject(){
+    public Project getProject() {
         return project;
     }
 }

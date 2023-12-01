@@ -32,7 +32,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                        GoHomeViewController goHomeViewController,
                        SelectAddTaskController selectAddTaskController,
                        SelectDeleteTaskController selectDeleteTaskController,
-                       SelectTaskController selectTaskController){
+                       SelectTaskController selectTaskController) {
         this.setLayout(new BorderLayout());
         
         this.projectViewModel = projectViewModel;
@@ -45,7 +45,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.selectTaskController = selectTaskController;
     }
 
-    public void updateView(){
+    public void updateView() {
         java.util.List<JPanel> panelList = new java.util.ArrayList<>();
 
         JPanel headerPanel = createHeaderPanel();
@@ -55,7 +55,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         int numTasks = taskList.size();
 
-        for (Task task: taskList){
+        for (Task task: taskList) {
             JPanel panel = createTaskPanel(task);
             panelList.add(panel);
         }
@@ -88,7 +88,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.add(footerPanel, BorderLayout.SOUTH);
     }
 
-    public JPanel createHeaderPanel(){
+    public JPanel createHeaderPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setPreferredSize(new Dimension(300, 50));
@@ -211,7 +211,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
     }
 
 
-    public void clearAll(){
+    public void clearAll() {
         this.removeAll();
         this.revalidate();
         this.repaint();

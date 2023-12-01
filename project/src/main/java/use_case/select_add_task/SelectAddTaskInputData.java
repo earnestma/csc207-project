@@ -8,7 +8,7 @@ public class SelectAddTaskInputData {
         this.project = project;
     }
 
-    public Project getProject(){
+    public Project getProject() {
         return project;
     }
 }

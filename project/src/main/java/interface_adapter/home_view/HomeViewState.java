@@ -14,11 +14,11 @@ public class HomeViewState {
     public HomeViewState() {
     }
 
-    public User getUser(){
+    public User getUser() {
         return user;
     }
 
-    public void setUser(User user){
+    public void setUser(User user) {
         this.user = user;
     }
 }
