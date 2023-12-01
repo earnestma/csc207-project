@@ -10,7 +10,7 @@ public class SelectTaskUseCaseFactory {
     private SelectTaskUseCaseFactory() {}
     
     public static SelectTaskController createSelectUseCase(ViewModelManager viewModelManager,
-                                                              TaskViewModel taskViewModel) {
+                                                              TaskViewModel taskViewModel) {\
         SelectTaskPresenter outputBoundary = new SelectTaskPresenter(viewModelManager, taskViewModel);
         SelectTaskInteractor interactor = new SelectTaskInteractor(outputBoundary);
         return new SelectTaskController(interactor);

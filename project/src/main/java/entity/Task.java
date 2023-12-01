@@ -45,7 +45,7 @@ public class Task {
         this.reminders = new ArrayList<Reminder>();
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
