@@ -1,9 +1,18 @@
 package use_case.delete_task;
 
-public class DeleteTaskOutputData {
-    private boolean useCaseFailed;
+import entity.Task;
 
-    public DeleteTaskOutputData(boolean useCaseFailed) {
+import java.util.ArrayList;
+
+public class DeleteTaskOutputData {
+    private ArrayList<Task> taskList;
+    private boolean useCaseFailed;
+    
+    public DeleteTaskOutputData(ArrayList<Task> taskList,
+                                boolean useCaseFailed) {
+        this.taskList = taskList;
         this.useCaseFailed = useCaseFailed;
     }
+    
+    public ArrayList<Task> getTaskList(){return taskList;}
 }
