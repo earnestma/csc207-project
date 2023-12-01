@@ -26,7 +26,7 @@ public class ProjectViewModel extends ViewModel{
         this.state = state;
     }
     
-    public ProjectState getState(){return state;}
+    public ProjectState getState() {return state;}
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

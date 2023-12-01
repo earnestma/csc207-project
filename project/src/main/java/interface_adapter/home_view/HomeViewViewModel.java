@@ -15,7 +15,7 @@ public class HomeViewViewModel extends ViewModel{
 
     public static final String PROJECTS_LABEL = "Projects: ";
 
-    public HomeViewViewModel(){super("home view");}
+    public HomeViewViewModel() {super("home view");}
 
     public void setState(HomeViewState state) {this.state = state;}
 

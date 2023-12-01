@@ -24,13 +24,14 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
         for (Task task: taskList) {
             if (task.getName().equals(taskName)) {
                 foundTask = task;
+                taskList.remove(task);
                 break;
             }
         }
 
         projectDataAccessObject.deleteTask(foundTask);
 
-        DeleteTaskOutputData deleteTaskOutputData = new DeleteTaskOutputData(false);
+        DeleteTaskOutputData deleteTaskOutputData = new DeleteTaskOutputData(taskList, false);
         deleteTaskPresenter.prepareSuccessView(deleteTaskOutputData);
     }
 }

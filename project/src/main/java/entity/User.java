@@ -18,9 +18,9 @@ public class User {
         this.projects = new HashMap<Long, Project>();
     }
 
-    public ArrayList<Project> getProjectList(){
+    public ArrayList<Project> getProjectList() {
         ArrayList<Project> temp = new ArrayList<Project>();
-        for (Project project: projects.values()){
+        for (Project project: projects.values()) {
             temp.add(project);
         }
         return temp;

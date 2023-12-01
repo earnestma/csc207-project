@@ -24,7 +24,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
 
     public HomeViewView(HomeViewViewModel homeViewViewModel,
                         SelectProjectController selectProjectController,
-                        UserDataAccessObject userDataAccessObject){
+                        UserDataAccessObject userDataAccessObject) {
         borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
         
@@ -38,7 +38,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         updateView();
     }
 
-    public void updateView(){
+    public void updateView() {
         java.util.List<JPanel> panelList = new java.util.ArrayList<>();
 
         JPanel headerPanel = createHeaderPanel();
@@ -78,7 +78,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         this.add(footerPanel, BorderLayout.SOUTH);
     }
 
-    public JPanel createHeaderPanel(){
+    public JPanel createHeaderPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setPreferredSize(new Dimension(300, 50));
@@ -182,7 +182,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         return panel;
     }
     
-    public void clearAll(){
+    public void clearAll() {
         this.removeAll();
         this.revalidate();
         this.repaint();

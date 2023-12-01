@@ -6,13 +6,13 @@ public class CheckTimeInputData{
     final private LocalDateTime dueDateTime;
     final private boolean hasDateTime;
     
-    public CheckTimeInputData(boolean hasDateTime, LocalDateTime dueDateTime){
+    public CheckTimeInputData(boolean hasDateTime, LocalDateTime dueDateTime) {
         this.hasDateTime = hasDateTime;
         this.dueDateTime = dueDateTime;
     }
 
-    public boolean getHasDateTime(){return hasDateTime;}
-    public LocalDateTime getDueDateTime(){
+    public boolean getHasDateTime() {return hasDateTime;}
+    public LocalDateTime getDueDateTime() {
         return dueDateTime;
     }
 }

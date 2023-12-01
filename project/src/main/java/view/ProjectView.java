@@ -7,6 +7,7 @@ import interface_adapter.project.ProjectState;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_add_task.SelectAddTaskController;
 import interface_adapter.select_delete_Task.SelectDeleteTaskController;
+import interface_adapter.select_task.SelectTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,11 +26,13 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
     private Project projectObject;
     private ArrayList<Task> taskList;
     private GoHomeViewController goHomeViewController;
+    private SelectTaskController selectTaskController;
 
     public ProjectView(ProjectViewModel projectViewModel,
                        GoHomeViewController goHomeViewController,
                        SelectAddTaskController selectAddTaskController,
-                       SelectDeleteTaskController selectDeleteTaskController){
+                       SelectDeleteTaskController selectDeleteTaskController,
+                       SelectTaskController selectTaskController) {
         this.setLayout(new BorderLayout());
         
         this.projectViewModel = projectViewModel;
@@ -39,9 +42,10 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.goHomeViewController = goHomeViewController;
         this.selectAddTaskController = selectAddTaskController;
         this.selectDeleteTaskController = selectDeleteTaskController;
+        this.selectTaskController = selectTaskController;
     }
 
-    public void updateView(){
+    public void updateView() {
         java.util.List<JPanel> panelList = new java.util.ArrayList<>();
 
         JPanel headerPanel = createHeaderPanel();
@@ -51,8 +55,8 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         int numTasks = taskList.size();
 
-        for (Task task: taskList){
-            JPanel panel = createTaskPanel(task.getName());
+        for (Task task: taskList) {
+            JPanel panel = createTaskPanel(task);
             panelList.add(panel);
         }
 
@@ -84,7 +88,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         this.add(footerPanel, BorderLayout.SOUTH);
     }
 
-    public JPanel createHeaderPanel(){
+    public JPanel createHeaderPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setPreferredSize(new Dimension(300, 50));
@@ -117,7 +121,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         return panel;
     }
 
-    private JPanel createTaskPanel(String taskName) {
+    private JPanel createTaskPanel(Task task) {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setSize(new Dimension(300, 50));
@@ -126,13 +130,13 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
 
-        JButton taskButton = new JButton(taskName);
+        JButton taskButton = new JButton(task.getName());
 
         taskButton.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null,"CHANGE TO TASK VIEW");
+                        selectTaskController.execute(task, projectObject);
                     }
                 }
         );
@@ -207,7 +211,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
     }
 
 
-    public void clearAll(){
+    public void clearAll() {
         this.removeAll();
         this.revalidate();
         this.repaint();

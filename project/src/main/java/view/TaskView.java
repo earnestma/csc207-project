@@ -26,7 +26,7 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
     
     public TaskView(TaskViewModel taskViewModel,
                     SelectProjectController selectProjectController,
-                    CheckTimeController checkTimeController){
+                    CheckTimeController checkTimeController) {
         this.taskViewModel = taskViewModel;
         this.taskViewModel.addPropertyChangeListener(this);
         
@@ -34,7 +34,7 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         this.checkTimeController = checkTimeController;
     }
     
-    private void updateView(){
+    private void updateView() {
         // Create three panels
         JPanel panel1 = createTaskPanel();
         JPanel panel2 = createDueDatePanel();
@@ -85,7 +85,7 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         return panel;
     }
     
-    private JPanel createTaskPanel(){
+    private JPanel createTaskPanel() 
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEADING));
         
@@ -118,8 +118,13 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         label.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         label.setFont(new Font("Arial", Font.BOLD, 18));
         
+        JLabel dueTime = new JLabel(String.valueOf(task.getDueDate()));
+        dueTime.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        dueTime.setFont(new Font("Arial", Font.BOLD, 18));
+        
         // Add components to the panel
         panel.add(label);
+        panel.add(dueTime);
         
         return panel;
     }
@@ -160,13 +165,13 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         return button;
     }
     
-    private void clearAll(){
+    private void clearAll() {
         this.removeAll();
         this.revalidate();
         this.repaint();
     }
     
-    private void showMessage(String message){
+    private void showMessage(String message) {
         JOptionPane.showMessageDialog(null, message);
     }
     @Override
@@ -176,7 +181,6 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
     
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        
         if (evt.getPropertyName().equals("state")) {
             this.clearAll();
             
@@ -187,7 +191,7 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
             
             this.updateView();
         }
-        else if (evt.getPropertyName().equals("message")){
+        else if (evt.getPropertyName().equals("message")) {
             String message = (String) evt.getNewValue();
             showMessage(message);
         }
