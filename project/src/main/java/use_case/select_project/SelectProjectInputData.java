@@ -9,5 +9,7 @@ public class SelectProjectInputData {
         this.project = project;
     }
     
-    public Project getProject(){return project;}
+    public Project getProject(){
+        return project;
+    }
 }

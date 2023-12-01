@@ -1,10 +1,10 @@
 package app;
 
 import data_access.ProjectDataAccessObject;
+import data_access.UserDataAccessObject;
 import interface_adapter.ViewModelManager;
-import interface_adapter.delete_task.DeleteTaskController;
-import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.add_task.AddTaskViewModel;
+import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.go_project_view.GoProjectViewController;
 import interface_adapter.home_view.HomeViewViewModel;
@@ -12,11 +12,7 @@ import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_add_task.SelectAddTaskController;
 import interface_adapter.select_delete_Task.SelectDeleteTaskController;
 import interface_adapter.select_project.SelectProjectController;
-import view.AddTaskView;
-import view.HomeViewView;
-import view.ProjectView;
-import view.ViewManager;
-import view.DeleteTaskView;
+import view.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,7 +40,8 @@ public class Main {
         DeleteTaskViewModel deleteTaskViewModel = new DeleteTaskViewModel();
         AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
 
-        ProjectDataAccessObject addTaskDataAccessObject = new ProjectDataAccessObject();
+        ProjectDataAccessObject projectDataAccessObject = new ProjectDataAccessObject();
+        UserDataAccessObject userDataAccessObject = new UserDataAccessObject();
         
         // Views
         GoHomeViewController goHomeViewController =
@@ -57,23 +54,18 @@ public class Main {
         views.add(projectView, projectView.viewName);
 
         SelectProjectController selectProjectController =
-                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel);
-        HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController);
+                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel, projectDataAccessObject);
+        HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController, userDataAccessObject);
         views.add(homeViewView, homeViewView.viewName);
       
         GoProjectViewController goProjectViewController =
                 GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
-        AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, addTaskDataAccessObject, goProjectViewController);
+        AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, projectDataAccessObject, goProjectViewController);
         views.add(addTaskView, addTaskView.viewName);
       
         DeleteTaskView deleteTaskView = DeleteTaskUseCaseFactory.create(viewModelManager, projectViewModel, deleteTaskViewModel,
-                addTaskDataAccessObject, goProjectViewController);
+                projectDataAccessObject, goProjectViewController);
         views.add(deleteTaskView, deleteTaskView.viewName);
-       
-        
-        
-        
-        
         
         viewModelManager.setActiveView(homeViewView.viewName);
         viewModelManager.firePropertyChanged();
