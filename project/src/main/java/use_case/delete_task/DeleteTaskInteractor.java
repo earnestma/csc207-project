@@ -31,6 +31,7 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
                 taskList.remove(index);
                 projectDataAccessObject.deleteTask(foundTask);
             }
+      
             else{
                 deleteTaskPresenter.prepareFailView("Task does not exist");
             }
