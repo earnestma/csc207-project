@@ -25,6 +25,5 @@ public class SelectDeleteProjectPresenter implements SelectDeleteProjectOutputBo
 
         this.viewModelManager.setActiveView(deleteProjectViewModel.getViewName());
         this.viewModelManager.firePropertyChanged();
-
     }
 }

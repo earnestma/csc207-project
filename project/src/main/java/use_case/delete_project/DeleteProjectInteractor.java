@@ -15,7 +15,6 @@ public class DeleteProjectInteractor implements DeleteProjectInputBoundary {
     }
 
     public void execute(DeleteProjectInputData deleteProjectInputData) {
-        try{
         ArrayList<Project> projectList = this.userDataAccessObject.listProjects();
 
         String projectName = deleteProjectInputData.getProjectName();
@@ -33,8 +32,5 @@ public class DeleteProjectInteractor implements DeleteProjectInputBoundary {
 
         DeleteProjectOutputData deleteProjectOutputData = new DeleteProjectOutputData(projectList, false);
         deleteProjectPresenter.prepareSuccessView(deleteProjectOutputData);
-    } catch (NullPointerException e) {
-            deleteProjectPresenter.prepareFailView("Project does not exist");
-        }
     }
 }
