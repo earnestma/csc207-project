@@ -14,5 +14,7 @@ public class DeleteTaskOutputData {
         this.useCaseFailed = useCaseFailed;
     }
     
-    public ArrayList<Task> getTaskList() {return taskList;}
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
 }

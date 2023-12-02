@@ -34,4 +34,9 @@ public class DeleteTaskPresenter implements DeleteTaskOutputBoundary {
         this.ViewModelManager.setActiveView(projectViewModel.getViewName());
         this.ViewModelManager.firePropertyChanged();
     }
+
+    public void prepareFailView(String error) {
+        this.deleteTaskViewModel.setMessage(error);
+        this.deleteTaskViewModel.showMessage();
+    }
 }

@@ -15,8 +15,11 @@ public class DeleteProjectViewModel extends ViewModel {
 
     private DeleteProjectState state = new DeleteProjectState();
 
+    private String message;
+
     public DeleteProjectViewModel() {
         super("delete project");
+        this.message = message;
     }
 
     public void setState(DeleteProjectState state) {
@@ -36,5 +39,8 @@ public class DeleteProjectViewModel extends ViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
+
+    public void setMessage(String message) {this.message = message;}
+    public void showMessage() {support.firePropertyChange("message", null, this.message);}
 
 }
