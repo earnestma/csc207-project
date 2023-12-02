@@ -28,5 +28,7 @@ public class AddTaskOutputData {
         return dueDate;
     }
   
-    public ArrayList<Task> getTaskList() {return this.taskList;}
+    public ArrayList<Task> getTaskList() {
+        return this.taskList;
+    }
 }
