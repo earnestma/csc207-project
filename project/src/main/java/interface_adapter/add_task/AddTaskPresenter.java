@@ -39,6 +39,7 @@ public class AddTaskPresenter implements AddTaskOutputBoundary {
 
     @Override
     public void prepareFailView(String error) {
-
+        this.addTaskViewModel.setMessage(error);
+        this.addTaskViewModel.showMessage();
     }
 }

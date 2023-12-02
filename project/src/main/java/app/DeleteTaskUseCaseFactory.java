@@ -32,7 +32,7 @@ public class DeleteTaskUseCaseFactory {
         return null;
     }
 
-    private static DeleteTaskController deleteTaskUseCase(ViewModelManager viewModelManager, ProjectViewModel projectViewModel,
+    public static DeleteTaskController deleteTaskUseCase(ViewModelManager viewModelManager, ProjectViewModel projectViewModel,
                                                           DeleteTaskViewModel deleteTaskViewModel,
                                                           DeleteTaskDataAccessInterface deleteTaskDataAccessInterface) throws IOException {
         DeleteTaskOutputBoundary deleteTaskOutputBoundary = new DeleteTaskPresenter(viewModelManager, deleteTaskViewModel, projectViewModel);
