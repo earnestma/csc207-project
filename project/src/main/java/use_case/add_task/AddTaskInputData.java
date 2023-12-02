@@ -9,15 +9,13 @@ import java.time.format.DateTimeFormatter;
 public class AddTaskInputData {
 
     final private String taskName;
-    final private LocalDateTime dueDate;
+    final private String dueDate;
     final private Project project;
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public AddTaskInputData(String taskName, String dueDate, Project project) {
         this.taskName = taskName;
 
-        LocalDate date = LocalDate.parse(dueDate, dateFormatter);
-        this.dueDate = date.atStartOfDay();
+        this.dueDate = dueDate;
         this.project = project;
     }
 
@@ -25,7 +23,7 @@ public class AddTaskInputData {
         return taskName;
     }
 
-    LocalDateTime getDueDate() {
+    String getDueDate() {
         return dueDate;
     }
 

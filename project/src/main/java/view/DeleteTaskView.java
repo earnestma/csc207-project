@@ -37,7 +37,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel taskNameInfo = new LabelTextPanel(
-                new JLabel("Enter the task name to be deleted:"), taskNameInputField);
+                new JLabel("Enter the name of the task to be deleted:"), taskNameInputField);
 
         JPanel buttons = new JPanel();
         deleteTask = new JButton(deleteTaskViewModel.DELETE_TASK_BUTTON_LABEL);
@@ -93,6 +93,10 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
         this.add(buttons);
     }
 
+    private void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Click" + e.getActionCommand());
@@ -103,6 +107,10 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
         if (evt.getPropertyName().equals("state")) {
             DeleteTaskState state = (DeleteTaskState) evt.getNewValue();
             setFields(state);
+        }
+        else if (evt.getPropertyName().equals("message")) {
+            String message = (String) evt.getNewValue();
+            showMessage(message);
         }
     }
 
