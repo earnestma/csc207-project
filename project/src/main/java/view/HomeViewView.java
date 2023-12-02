@@ -201,6 +201,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         this.clearAll();
+        projects = userDataAccessObject.listProjects();
         this.updateView();
     }
 }
