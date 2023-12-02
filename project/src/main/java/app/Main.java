@@ -67,7 +67,6 @@ public class Main {
         SelectDeleteProjectController selectDeleteProjectController =
                 SelectDeleteProjectUseCaseFactory.createSelectDeleteProjectUseCase(viewModelManager,
                         deleteProjectViewModel);
-
         
         SelectDeleteTaskController selectDeleteTaskController =
                 SelectDeleteTaskUseCaseFactory.createSelectDeleteTaskUseCase(viewModelManager, deleteTaskViewModel);
