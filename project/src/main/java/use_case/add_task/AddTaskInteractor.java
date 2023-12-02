@@ -4,6 +4,10 @@ import entity.Project;
 import entity.Task;
 import entity.TaskFactory;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class AddTaskInteractor implements AddTaskInputBoundary {
@@ -21,13 +25,23 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
 
     @Override
     public void execute(AddTaskInputData addTaskInputData) {
-        Task task = taskFactory.create(addTaskInputData.getTaskName(), addTaskInputData.getDueDate());
-        Project project = addTaskInputData.getProject();
-        project.addTask(task);
-        userDataAccessObject.addTask(project, task);
-        ArrayList<Task> taskList = userDataAccessObject.getTasks(project.getId());
-        
-        AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), taskList,false);
-        addTaskPresenter.prepareSuccessView(addTaskOutputData);
+        try {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String dueDateTimeStr = addTaskInputData.getDueDate();
+            LocalDateTime dueDateTime = LocalDateTime.parse(dueDateTimeStr, dateFormatter);
+
+            Task task = taskFactory.create(addTaskInputData.getTaskName(), dueDateTime);
+            Project project = addTaskInputData.getProject();
+            project.addTask(task);
+            userDataAccessObject.addTask(project, task);
+            ArrayList<Task> taskList = userDataAccessObject.getTasks(project.getId());
+
+            AddTaskOutputData addTaskOutputData =
+                    new AddTaskOutputData(task.getName(), task.getDueDate(), taskList, false);
+            addTaskPresenter.prepareSuccessView(addTaskOutputData);
+        }
+        catch(DateTimeParseException e){
+            addTaskPresenter.prepareFailView("Invalid Date");
+        }
     }
 }
