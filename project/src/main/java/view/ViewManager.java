@@ -32,6 +32,5 @@ public class ViewManager implements PropertyChangeListener {
             String viewModelName = (String) e.getNewValue();
             cardLayout.show(views, viewModelName);
         }
-        System.out.println("test");
     }
 }

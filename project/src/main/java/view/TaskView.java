@@ -206,7 +206,6 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
             task = state.getTask();
             project = state.getPreviousProject();
 
-            System.out.println(String.valueOf(task.getDueDate()));
             this.updateView();
         }
         else if (evt.getPropertyName().equals("message")) {

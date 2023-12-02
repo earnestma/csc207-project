@@ -38,7 +38,7 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel projectNameInfo = new LabelTextPanel(
-                new JLabel("Enter the project name to be deleted:"), projectNameInputField);
+                new JLabel("Enter the name of the project to be deleted:"), projectNameInputField);
 
         JPanel buttons = new JPanel();
         deleteProject = new JButton(deleteProjectViewModel.DELETE_TASK_BUTTON_LABEL);
@@ -105,6 +105,14 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
             DeleteProjectState state = (DeleteProjectState) evt.getNewValue();
             setFields(state);
         }
+        else if (evt.getPropertyName().equals("message")) {
+            String message = (String) evt.getNewValue();
+            showMessage(message);
+        }
+    }
+
+    private void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
     }
 
     private void setFields(DeleteProjectState state) {
