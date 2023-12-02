@@ -85,6 +85,7 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         return panel;
     }
     
+
     private JPanel createTaskPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEADING));
