@@ -1,8 +1,6 @@
 package use_case.delete_project;
 
 import entity.Project;
-import entity.Task;
-import use_case.delete_task.DeleteTaskOutputData;
 
 import java.util.ArrayList;
 
@@ -17,8 +15,7 @@ public class DeleteProjectInteractor implements DeleteProjectInputBoundary {
     }
 
     public void execute(DeleteProjectInputData deleteProjectInputData) {
-        long userId = deleteProjectInputData.getUser().getId();
-        ArrayList<Project> projectList = this.userDataAccessObject.getProjects(userId);
+        ArrayList<Project> projectList = this.userDataAccessObject.listProjects();
 
         String projectName = deleteProjectInputData.getProjectName();
 
@@ -26,17 +23,14 @@ public class DeleteProjectInteractor implements DeleteProjectInputBoundary {
         for (Project project: projectList) {
             if (project.getName().equals(projectName)) {
                 foundProject = project;
+                projectList.remove(project);
                 break;
             }
         }
 
         userDataAccessObject.deleteProject(foundProject);
 
-        DeleteProjectOutputData deleteProjectOutputData = new DeleteProjectOutputData(false);
+        DeleteProjectOutputData deleteProjectOutputData = new DeleteProjectOutputData(projectList, false);
         deleteProjectPresenter.prepareSuccessView(deleteProjectOutputData);
-    }
-}
-
-
     }
 }

@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface DeleteProjectDataAccessInterface {
     void deleteProject(Project project);
-    ArrayList<Project> getProjects(long userId);
+    ArrayList<Project> listProjects();
 }

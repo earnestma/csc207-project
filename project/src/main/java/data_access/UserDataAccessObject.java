@@ -4,6 +4,7 @@ import entity.Project;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import use_case.delete_project.DeleteProjectDataAccessInterface;
 
 import java.io.IOException;
 
@@ -14,7 +15,7 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
-public class UserDataAccessObject implements UserDataAccessInterface {
+public class UserDataAccessObject implements UserDataAccessInterface, DeleteProjectDataAccessInterface {
 
     @Override
     public void addProject(Project project) {

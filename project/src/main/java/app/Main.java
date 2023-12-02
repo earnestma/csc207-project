@@ -5,6 +5,8 @@ import data_access.UserDataAccessObject;
 import interface_adapter.ViewModelManager;
 import interface_adapter.add_task.AddTaskViewModel;
 import interface_adapter.check_remaining_time.CheckTimeController;
+import interface_adapter.delete_project.DeleteProjectController;
+import interface_adapter.delete_project.DeleteProjectViewModel;
 import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.go_project_view.GoProjectViewController;
@@ -12,6 +14,7 @@ import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_add_task.SelectAddTaskController;
 import interface_adapter.select_delete_Task.SelectDeleteTaskController;
+import interface_adapter.select_delete_project.SelectDeleteProjectController;
 import interface_adapter.select_project.SelectProjectController;
 import interface_adapter.select_task.SelectTaskController;
 import interface_adapter.task.TaskViewModel;
@@ -19,9 +22,10 @@ import view.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // The main application window.
         JFrame application = new JFrame("Scheduler");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -43,6 +47,7 @@ public class Main {
         DeleteTaskViewModel deleteTaskViewModel = new DeleteTaskViewModel();
         AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
         TaskViewModel taskViewModel = new TaskViewModel();
+        DeleteProjectViewModel deleteProjectViewModel = new DeleteProjectViewModel();
 
         ProjectDataAccessObject projectDataAccessObject = new ProjectDataAccessObject();
         UserDataAccessObject userDataAccessObject = new UserDataAccessObject();
@@ -56,6 +61,13 @@ public class Main {
                 SelectTaskUseCaseFactory.createSelectUseCase(viewModelManager, taskViewModel);
         CheckTimeController checkTimeController =
                 CheckTimeUseCaseFactory.createCheckTimeUseCase(viewModelManager, taskViewModel);
+        DeleteProjectController deleteProjectController =
+                DeleteProjectUseCaseFactory.deleteProjectUseCase(viewModelManager, homeViewViewModel,
+                        deleteProjectViewModel, userDataAccessObject);
+        SelectDeleteProjectController selectDeleteProjectController =
+                SelectDeleteProjectUseCaseFactory.createSelectDeleteProjectUseCase(viewModelManager,
+                        deleteProjectViewModel);
+
         
         SelectDeleteTaskController selectDeleteTaskController =
                 SelectDeleteTaskUseCaseFactory.createSelectDeleteTaskUseCase(viewModelManager, deleteTaskViewModel);
@@ -65,14 +77,19 @@ public class Main {
 
         SelectProjectController selectProjectController =
                 SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel, projectDataAccessObject);
-        HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController, userDataAccessObject);
+        HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController, userDataAccessObject,
+                selectDeleteProjectController);
         views.add(homeViewView, homeViewView.viewName);
       
         GoProjectViewController goProjectViewController =
                 GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
         AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, projectDataAccessObject, goProjectViewController);
         views.add(addTaskView, addTaskView.viewName);
-      
+
+        DeleteProjectView deleteProjectView = DeleteProjectUseCaseFactory.create(viewModelManager, homeViewViewModel,
+                deleteProjectViewModel, userDataAccessObject, goHomeViewController);
+        views.add(deleteProjectView, deleteProjectView.viewName);
+
         DeleteTaskView deleteTaskView = DeleteTaskUseCaseFactory.create(viewModelManager, projectViewModel, deleteTaskViewModel,
                 projectDataAccessObject, goProjectViewController);
         views.add(deleteTaskView, deleteTaskView.viewName);
