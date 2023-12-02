@@ -12,11 +12,13 @@ public class DeleteTaskViewModel extends ViewModel {
     public final String DELETING_TASK = "Select which task to delete:";
     public static final String DELETE_TASK_BUTTON_LABEL = "Confirm";
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
+    private String message;
 
     private DeleteTaskState state = new DeleteTaskState();
 
     public DeleteTaskViewModel() {
         super("delete task");
+        this.message = message;
     }
 
     public void setState(DeleteTaskState state) {
@@ -36,5 +38,8 @@ public class DeleteTaskViewModel extends ViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
+
+    public void setMessage(String message) {this.message = message;}
+    public void showMessage() {support.firePropertyChange("message", null, this.message);}
 
 }

@@ -7,6 +7,7 @@ import interface_adapter.add_task.AddTaskViewModel;
 import interface_adapter.check_remaining_time.CheckTimeController;
 import interface_adapter.delete_project.DeleteProjectController;
 import interface_adapter.delete_project.DeleteProjectViewModel;
+import interface_adapter.delete_task.DeleteTaskController;
 import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.go_project_view.GoProjectViewController;
@@ -67,6 +68,9 @@ public class Main {
         SelectDeleteProjectController selectDeleteProjectController =
                 SelectDeleteProjectUseCaseFactory.createSelectDeleteProjectUseCase(viewModelManager,
                         deleteProjectViewModel);
+        DeleteTaskController deleteTaskController = DeleteTaskUseCaseFactory.deleteTaskUseCase(
+                viewModelManager, projectViewModel, deleteTaskViewModel, projectDataAccessObject);
+
         
         SelectDeleteTaskController selectDeleteTaskController =
                 SelectDeleteTaskUseCaseFactory.createSelectDeleteTaskUseCase(viewModelManager, deleteTaskViewModel);
@@ -93,7 +97,8 @@ public class Main {
                 projectDataAccessObject, goProjectViewController);
         views.add(deleteTaskView, deleteTaskView.viewName);
         
-        TaskView taskView = new TaskView(taskViewModel, selectProjectController, checkTimeController);
+        TaskView taskView = new TaskView(taskViewModel, selectProjectController, checkTimeController,
+                deleteTaskController);
         views.add(taskView, taskView.viewName);
         
         viewModelManager.setActiveView(homeViewView.viewName);

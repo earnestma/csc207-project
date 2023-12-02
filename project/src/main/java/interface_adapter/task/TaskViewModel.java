@@ -14,7 +14,7 @@ public class TaskViewModel extends ViewModel {
     public static final String DUE_DATE_LABEL = "Due Date:";
     public static final String GO_BACK_BUTTON_LABEL = "Go Back";
     
-    public static final String TIME_BUTTON_LABEL = "Time";
+    public static final String TIME_BUTTON_LABEL = "Time Left";
     
     public static final String COMPLETE_BUTTON_LABEL = "Complete";
     
