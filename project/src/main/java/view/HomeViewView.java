@@ -3,7 +3,9 @@ package view;
 import data_access.UserDataAccessObject;
 import entity.Project;
 import entity.Task;
+import interface_adapter.delete_project.DeleteProjectController;
 import interface_adapter.home_view.HomeViewViewModel;
+import interface_adapter.select_delete_project.SelectDeleteProjectController;
 import interface_adapter.select_project.SelectProjectController;
 
 import javax.swing.*;
@@ -19,18 +21,21 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     private final HomeViewViewModel homeViewViewModel;
     private ArrayList<Project> projects;
     private final SelectProjectController selectProjectController;
+    private final SelectDeleteProjectController selectDeleteProjectController;
     private final UserDataAccessObject userDataAccessObject;
     private BorderLayout borderLayout;
 
     public HomeViewView(HomeViewViewModel homeViewViewModel,
                         SelectProjectController selectProjectController,
-                        UserDataAccessObject userDataAccessObject) {
+                        UserDataAccessObject userDataAccessObject,
+                        SelectDeleteProjectController selectDeleteProjectController) {
         borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
         
         this.homeViewViewModel = homeViewViewModel;
         this.homeViewViewModel.addPropertyChangeListener(this);
         this.selectProjectController = selectProjectController;
+        this.selectDeleteProjectController = selectDeleteProjectController;
         this.userDataAccessObject = userDataAccessObject;
 
         projects = userDataAccessObject.listProjects();
@@ -165,7 +170,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(null, "CHANGE TO DELETE PROJECT VIEW");
+                        selectDeleteProjectController.execute(null);
                     }
                 }
         );
@@ -196,6 +201,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         this.clearAll();
+        projects = userDataAccessObject.listProjects();
         this.updateView();
     }
 }

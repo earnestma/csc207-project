@@ -61,8 +61,6 @@ public class Project {
         for (Task task: tasks.values()) {
             temp.add(task);
         }
-        System.out.println(temp);
-        System.out.println(tasks.values());
         return temp;
     }
     

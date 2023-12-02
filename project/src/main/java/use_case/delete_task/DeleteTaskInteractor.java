@@ -19,6 +19,7 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
         ArrayList<Task> taskList = this.projectDataAccessObject.getTasks(projectID);
 
         String taskName = deleteTaskInputData.getTaskName();
+
         ArrayList<String> taskNameList = new ArrayList<>();
         for (Task task1 : taskList) {
             taskNameList.add(task1.getName());
@@ -29,6 +30,10 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
             Task foundTask = taskList.get(index);
             taskList.remove(index);
             projectDataAccessObject.deleteTask(foundTask);
+        }
+
+        else{
+            deleteTaskPresenter.prepareFailView("Task does not exist");
         }
 
         DeleteTaskOutputData deleteTaskOutputData = new DeleteTaskOutputData(taskList, false);

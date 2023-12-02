@@ -1,31 +1,32 @@
-package interface_adapter.delete_task;
+package interface_adapter.delete_project;
 
 import interface_adapter.ViewModel;
-import org.json.Property;
+import interface_adapter.delete_project.DeleteProjectState;
 
-import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
-public class DeleteTaskViewModel extends ViewModel {
+public class DeleteProjectViewModel extends ViewModel {
 
-    public final String TITLE_LABEL = "Delete Task View";
-    public final String DELETING_TASK = "Select which task to delete:";
+    public final String TITLE_LABEL = "Delete Project View";
+    public final String DELETING_TASK = "Select which project to delete:";
     public static final String DELETE_TASK_BUTTON_LABEL = "Confirm";
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
+
+    private DeleteProjectState state = new DeleteProjectState();
+
     private String message;
 
-    private DeleteTaskState state = new DeleteTaskState();
-
-    public DeleteTaskViewModel() {
-        super("delete task");
+    public DeleteProjectViewModel() {
+        super("delete project");
         this.message = message;
     }
 
-    public void setState(DeleteTaskState state) {
+    public void setState(DeleteProjectState state) {
         this.state = state;
     }
 
-    public DeleteTaskState getState() {
+    public DeleteProjectState getState() {
         return state;
     }
 

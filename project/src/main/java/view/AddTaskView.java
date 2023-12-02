@@ -121,6 +121,10 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         this.add(buttons);
     }
 
+    private void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+
     @Override
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click" + evt.getActionCommand());
@@ -131,6 +135,10 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         if (evt.getPropertyName().equals("state")) {
             AddTaskState state = (AddTaskState) evt.getNewValue();
             setFields(state);
+        }
+        else if (evt.getPropertyName().equals("message")) {
+            String message = (String) evt.getNewValue();
+            showMessage(message);
         }
     }
 

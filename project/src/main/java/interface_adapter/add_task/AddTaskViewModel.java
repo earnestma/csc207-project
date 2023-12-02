@@ -14,9 +14,11 @@ public class AddTaskViewModel extends ViewModel {
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
 
     private AddTaskState state = new AddTaskState();
+    private String message;
 
     public AddTaskViewModel() {
         super("add task");
+        this.message = message;
     }
 
     public void setState(AddTaskState state) {
@@ -26,6 +28,8 @@ public class AddTaskViewModel extends ViewModel {
     public AddTaskState getState() {
         return state;
     }
+    public void setMessage(String message) {this.message = message;}
+    public void showMessage() {support.firePropertyChange("message", null, this.message);}
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

@@ -3,6 +3,7 @@ package view;
 import entity.Project;
 import entity.Task;
 import interface_adapter.check_remaining_time.CheckTimeController;
+import interface_adapter.delete_task.DeleteTaskController;
 import interface_adapter.select_project.SelectProjectController;
 import interface_adapter.task.TaskState;
 import interface_adapter.task.TaskViewModel;
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.format.DateTimeFormatter;
 
 public class TaskView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "task";
@@ -21,17 +23,20 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
     private final TaskViewModel taskViewModel;
     private final SelectProjectController selectProjectController;
     private final CheckTimeController checkTimeController;
+    private final DeleteTaskController deleteTaskController;
     private Task task;
     private Project project;
     
     public TaskView(TaskViewModel taskViewModel,
                     SelectProjectController selectProjectController,
-                    CheckTimeController checkTimeController) {
+                    CheckTimeController checkTimeController,
+                    DeleteTaskController deleteTaskController) {
         this.taskViewModel = taskViewModel;
         this.taskViewModel.addPropertyChangeListener(this);
         
         this.selectProjectController = selectProjectController;
         this.checkTimeController = checkTimeController;
+        this.deleteTaskController = deleteTaskController;
     }
     
     private void updateView() {
@@ -51,8 +56,8 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         
         // Set preferred sizes for each panel
         panel1.setPreferredSize(new Dimension(this.getWidth(), topHeight));
-        panel2.setPreferredSize(new Dimension(this.getWidth(), bottomHeight / 2));
-        panel3.setPreferredSize(new Dimension(this.getWidth(), bottomHeight / 2));
+        panel2.setPreferredSize(new Dimension(this.getWidth(), 3 * bottomHeight / 4));
+        panel3.setPreferredSize(new Dimension(this.getWidth(), bottomHeight / 4));
         
         this.add(panel1);
         this.add(panel2);
@@ -67,25 +72,25 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(40, 10, 0, 12);
+        gbc.insets = new Insets(20, 10, 0, 12);
         panel.add(backButton, gbc);
         
         JButton timeButton = createTimeButton();
         gbc.gridx = 1;
         gbc.gridy = 0;
-        gbc.insets = new Insets(40, 12, 0, 12);
+        gbc.insets = new Insets(20, 12, 0, 12);
         panel.add(timeButton, gbc);
         
         JButton completeButton = createCompleteButton();
         gbc.gridx = 2;
         gbc.gridy = 0;
-        gbc.insets = new Insets(40, 12, 0, 10);
+        gbc.insets = new Insets(20, 12, 0, 10);
         panel.add(completeButton, gbc);
         
         return panel;
     }
     
-    private JPanel createTaskPanel(){
+    private JPanel createTaskPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEADING));
         
@@ -114,17 +119,24 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         panel.setLayout(new FlowLayout(FlowLayout.LEADING));
         
         // Add text to the left of the panel
-        JLabel label = new JLabel(taskViewModel.DUE_DATE_LABEL);
-        label.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-        label.setFont(new Font("Arial", Font.BOLD, 18));
-        
-        JLabel dueTime = new JLabel(String.valueOf(task.getDueDate()));
+        JLabel labelDueTime = new JLabel(taskViewModel.DUE_DATE_LABEL);
+        labelDueTime.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        labelDueTime.setFont(new Font("Arial", Font.BOLD, 18));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = task.getDueDate().format(formatter);
+        JLabel dueTime = new JLabel(formattedDateTime);
         dueTime.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         dueTime.setFont(new Font("Arial", Font.BOLD, 18));
+
+        JLabel newLine = new JLabel(" ");
+        newLine.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+        newLine.setFont(new Font("Arial", Font.BOLD, 18));
         
         // Add components to the panel
-        panel.add(label);
+        panel.add(labelDueTime);
         panel.add(dueTime);
+        panel.add(newLine);
         
         return panel;
     }
@@ -158,8 +170,13 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "ASK IF SURE, MARK COMPLETE, " +
-                        "DELETE AND SWITCH BACK TO PROJECT");
+                int selectedOption = JOptionPane.showConfirmDialog(null,
+                        "Are you sure? Marking task complete will delete the task.",
+                        "Choose",
+                        JOptionPane.YES_NO_OPTION);
+                if (selectedOption == JOptionPane.YES_OPTION) {
+                    deleteTaskController.execute(task.getName(), project);
+                }
             }
         });
         return button;
@@ -188,7 +205,7 @@ public class TaskView extends JPanel implements ActionListener, PropertyChangeLi
             
             task = state.getTask();
             project = state.getPreviousProject();
-            
+
             this.updateView();
         }
         else if (evt.getPropertyName().equals("message")) {
