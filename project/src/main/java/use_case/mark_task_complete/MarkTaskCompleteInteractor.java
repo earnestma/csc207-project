@@ -13,7 +13,7 @@ public class MarkTaskCompleteInteractor implements MarkTaskCompleteInputBoundary
     public void execute(MarkTaskCompleteInputData markTaskCompleteInputData) {
         Task task = markTaskCompleteInputData.getTask();
         if (task != null) {
-            task.markAsCompleted();
+            task.setCompleted();
             MarkTaskCompleteOutputData markTaskCompleteOutputData = new MarkTaskCompleteOutputData(task, false);
             markTaskCompletePresenter.prepareSuccessView(markTaskCompleteOutputData);
         }
