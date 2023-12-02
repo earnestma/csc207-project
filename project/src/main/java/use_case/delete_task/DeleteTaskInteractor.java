@@ -15,8 +15,6 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
     }
 
     public void execute(DeleteTaskInputData deleteTaskInputData) {
-        try {
-            
             long projectID = deleteTaskInputData.getProject().getId();
             ArrayList<Task> taskList = this.projectDataAccessObject.getTasks(projectID);
 
@@ -33,11 +31,11 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
                 taskList.remove(index);
                 projectDataAccessObject.deleteTask(foundTask);
             }
+            else{
+                deleteTaskPresenter.prepareFailView("Task does not exist");
+            }
 
             DeleteTaskOutputData deleteTaskOutputData = new DeleteTaskOutputData(taskList, false);
             deleteTaskPresenter.prepareSuccessView(deleteTaskOutputData);
-        } catch (NullPointerException e){
-            deleteTaskPresenter.prepareFailView("Task does not exist");
-        }
     }
 }
