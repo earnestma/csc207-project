@@ -12,7 +12,7 @@ import use_case.delete_task.DeleteTaskOutputBoundary;
 import java.util.ArrayList;
 
 public class AddTaskInteractorTest extends TestCase {
-    public static void testExecute() {
+    public void testExecute() {
         UserDataAccessInterface userRepository = new UserDataAccessObject();
         AddTaskDataAccessInterface projectRepository = new ProjectDataAccessObject();
 
