@@ -22,7 +22,7 @@ public class DeleteProjectPresenter implements DeleteProjectOutputBoundary {
 
     public void prepareSuccessView(DeleteProjectOutputData response) {
         HomeViewState homeViewState = homeViewViewModel.getState();
-        this.homeViewViewModel.setState(homeVigewState);
+        this.homeViewViewModel.setState(homeViewState);
         this.homeViewViewModel.firePropertyChanged();
 
         this.ViewModelManager.setActiveView(homeViewViewModel.getViewName());
