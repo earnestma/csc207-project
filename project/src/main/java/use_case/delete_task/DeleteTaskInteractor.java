@@ -19,17 +19,18 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
         ArrayList<Task> taskList = this.projectDataAccessObject.getTasks(projectID);
 
         String taskName = deleteTaskInputData.getTaskName();
-
-        Task foundTask = null;
-        for (Task task: taskList) {
-            if (task.getName().equals(taskName)) {
-                foundTask = task;
-                taskList.remove(task);
-                break;
-            }
+      
+        ArrayList<String> taskNameList = new ArrayList<>();
+        for (Task task1 : taskList) {
+            taskNameList.add(task1.getName());
         }
 
-        projectDataAccessObject.deleteTask(foundTask);
+        if (taskNameList.contains(taskName)) {
+            int index = taskNameList.indexOf(taskName);
+            Task foundTask = taskList.get(index);
+            taskList.remove(index);
+            projectDataAccessObject.deleteTask(foundTask);
+        }
 
         DeleteTaskOutputData deleteTaskOutputData = new DeleteTaskOutputData(taskList, false);
         deleteTaskPresenter.prepareSuccessView(deleteTaskOutputData);
