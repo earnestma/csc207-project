@@ -70,22 +70,21 @@ public class Main {
                         deleteProjectViewModel);
         DeleteTaskController deleteTaskController = DeleteTaskUseCaseFactory.deleteTaskUseCase(
                 viewModelManager, projectViewModel, deleteTaskViewModel, projectDataAccessObject);
-
-        
+        GoProjectViewController goProjectViewController =
+                GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
+        SelectProjectController selectProjectController =
+                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel, projectDataAccessObject);
         SelectDeleteTaskController selectDeleteTaskController =
                 SelectDeleteTaskUseCaseFactory.createSelectDeleteTaskUseCase(viewModelManager, deleteTaskViewModel);
+        
         ProjectView projectView = new ProjectView(projectViewModel, goHomeViewController, selectAddTaskController,
                 selectDeleteTaskController, selectTaskController);
         views.add(projectView, projectView.viewName);
-
-        SelectProjectController selectProjectController =
-                SelectProjectUseCaseFactory.createSelectUseCase(viewModelManager, projectViewModel, projectDataAccessObject);
+        
         HomeViewView homeViewView = new HomeViewView(homeViewViewModel, selectProjectController, userDataAccessObject,
                 selectDeleteProjectController);
         views.add(homeViewView, homeViewView.viewName);
-      
-        GoProjectViewController goProjectViewController =
-                GoProjectViewUseCaseFactory.createGoProjectViewUseCase(viewModelManager, projectViewModel);
+        
         AddTaskView addTaskView = AddTaskUseCaseFactory.create(viewModelManager, projectViewModel, addTaskViewModel, projectDataAccessObject, goProjectViewController);
         views.add(addTaskView, addTaskView.viewName);
 

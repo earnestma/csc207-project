@@ -87,8 +87,4 @@ public class Task {
     public void setCompleted() {
         this.completed = true;
     }
-    
-    public void markAsCompleted() {
-        this.completed = true;
-    }
 }

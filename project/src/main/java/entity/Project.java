@@ -64,6 +64,8 @@ public class Project {
         return temp;
     }
     
+    public Task getTask(long id){return tasks.get(id);}
+    
     public void addTask(Task task) {
         tasks.put(task.getID(), task);
     }
