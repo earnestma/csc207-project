@@ -1,15 +1,16 @@
 package use_case.go_project_view;
 
+import interface_adapter.project.ProjectViewModel;
 import junit.framework.TestCase;
-import use_case.select_add_task.SelectAddTaskInputBoundary;
-import use_case.select_add_task.SelectAddTaskInteractor;
 
 public class GoProjectViewInteractorTest extends TestCase {
 
     public void testExecute() {
+        String viewName = ProjectViewModel.PROJECT_VIEW_NAME;
         GoProjectViewOutputBoundary successPresenter = new GoProjectViewOutputBoundary() {
             @Override
             public void prepareSuccessView() {
+                assertEquals(viewName, "project");
             }
         };
 
