@@ -1,10 +1,9 @@
 package interface_adapter.delete_task;
 
 import interface_adapter.ViewModel;
-import org.json.Property;
 
-import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class DeleteTaskViewModel extends ViewModel {
 

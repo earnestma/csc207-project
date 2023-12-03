@@ -4,7 +4,6 @@ import interface_adapter.ViewModelManager;
 import interface_adapter.project.ProjectViewModel;
 import interface_adapter.select_project.SelectProjectController;
 import interface_adapter.select_project.SelectProjectPresenter;
-import use_case.select_add_task.SelectAddTaskInputData;
 import use_case.select_project.SelectProjectDataAccessInterface;
 import use_case.select_project.SelectProjectInteractor;
 

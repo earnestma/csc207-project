@@ -4,7 +4,6 @@ import interface_adapter.delete_project.DeleteProjectController;
 import interface_adapter.delete_project.DeleteProjectState;
 import interface_adapter.delete_project.DeleteProjectViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
-import interface_adapter.go_project_view.GoProjectViewController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,8 +51,7 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
                         if (evt.getSource().equals(deleteProject)) {
                             DeleteProjectState currentState = deleteProjectViewModel.getState();
 
-                            deleteProjectController.execute(currentState.getProjectName(),
-                                    currentState.getUser());
+                            deleteProjectController.execute(currentState.getProjectName());
                         }
                     }
                 }

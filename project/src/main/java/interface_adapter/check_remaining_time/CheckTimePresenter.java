@@ -2,7 +2,6 @@ package interface_adapter.check_remaining_time;
 
 import interface_adapter.ViewModelManager;
 import interface_adapter.task.TaskViewModel;
-
 import use_case.check_remaining_time.CheckTimeOutputBoundary;
 import use_case.check_remaining_time.CheckTimeOutputData;
 

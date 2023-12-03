@@ -4,8 +4,6 @@ import interface_adapter.add_task.AddTaskController;
 import interface_adapter.add_task.AddTaskState;
 import interface_adapter.add_task.AddTaskViewModel;
 import interface_adapter.go_project_view.GoProjectViewController;
-import interface_adapter.project.ProjectState;
-import interface_adapter.project.ProjectViewModel;
 
 import javax.swing.*;
 import java.awt.*;

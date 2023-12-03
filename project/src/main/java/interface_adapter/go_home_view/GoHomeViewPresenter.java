@@ -2,7 +2,6 @@ package interface_adapter.go_home_view;
 
 import interface_adapter.ViewModelManager;
 import interface_adapter.home_view.HomeViewViewModel;
-import use_case.go_home_view.GoHomeViewInputData;
 import use_case.go_home_view.GoHomeViewOutputBoundary;
 
 public class GoHomeViewPresenter implements GoHomeViewOutputBoundary {

@@ -1,9 +1,9 @@
 package app;
 
 import interface_adapter.ViewModelManager;
-import interface_adapter.task.TaskViewModel;
 import interface_adapter.select_task.SelectTaskController;
 import interface_adapter.select_task.SelectTaskPresenter;
+import interface_adapter.task.TaskViewModel;
 import use_case.select_task.SelectTaskInteractor;
 
 public class SelectTaskUseCaseFactory {

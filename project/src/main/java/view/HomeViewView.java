@@ -2,8 +2,6 @@ package view;
 
 import data_access.UserDataAccessObject;
 import entity.Project;
-import entity.Task;
-import interface_adapter.delete_project.DeleteProjectController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.select_delete_project.SelectDeleteProjectController;
 import interface_adapter.select_project.SelectProjectController;

@@ -1,7 +1,7 @@
 package interface_adapter.select_project;
 
-import use_case.select_project.SelectProjectInputBoundary;
 import entity.Project;
+import use_case.select_project.SelectProjectInputBoundary;
 import use_case.select_project.SelectProjectInputData;
 
 public class SelectProjectController {

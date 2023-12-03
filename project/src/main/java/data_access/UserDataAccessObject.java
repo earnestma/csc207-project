@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import use_case.delete_project.DeleteProjectDataAccessInterface;
 
 import java.io.IOException;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;

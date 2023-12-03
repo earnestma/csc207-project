@@ -2,8 +2,6 @@ package interface_adapter.add_task;
 
 import entity.Project;
 
-import java.util.ArrayList;
-
 public class AddTaskState {
     private String taskName = "";
     private String taskNameError = null;
@@ -62,13 +60,6 @@ public class AddTaskState {
 
     public void setProject(Project project) {
         this.project = project;
-    }
-
-    public ArrayList<Object> showTaskAdded() {
-        ArrayList<Object> task = new ArrayList<Object>();
-        task.add(taskName);
-        task.add(dueDate);
-        return task;
     }
 
 }
