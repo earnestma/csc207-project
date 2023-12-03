@@ -13,16 +13,15 @@ public class CheckTimeInteractor implements CheckTimeInputBoundary{
     public void execute(CheckTimeInputData checkTimeInputData) {
         boolean hasDateTime = checkTimeInputData.getHasDateTime();
         LocalDateTime dueDateTime = checkTimeInputData.getDueDateTime();
-        LocalDateTime currentDateTime = findCurrentTime();
+        LocalDateTime currentDateTime = checkTimeInputData.getCurrentDateTime();
         
-        if (!hasDateTime) {
-            checkTimePresenter.prepareFailView("This task had no due date set.");
-            // Does not have due date
+        if (!hasDateTime){
+            checkTimePresenter.prepareFailView("This does not have a due date.");
         }
+        
         else if (currentDateTime.compareTo(dueDateTime) > 0) {
             checkTimePresenter.prepareFailView("This was already due :(");
             // Show Fail Screen
-            
         }
         
         else{
@@ -48,10 +47,6 @@ public class CheckTimeInteractor implements CheckTimeInputBoundary{
             checkTimePresenter.prepareSuccessView(outputData);
         }
 
-    }
-
-    private LocalDateTime findCurrentTime() {
-        return java.time.LocalDateTime.now();
     }
 
     private int findMinutes(LocalDateTime currentDateTime, LocalDateTime futureDateTime) {
