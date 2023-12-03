@@ -7,16 +7,20 @@ import entity.Project;
 import entity.Task;
 import entity.TaskFactory;
 import junit.framework.TestCase;
+import org.junit.rules.ExpectedException;
 
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class AddTaskInteractorTest extends TestCase {
+    public ExpectedException exceptionRule = ExpectedException.none();
     public void testExecute() {
         UserDataAccessInterface userRepository = new UserDataAccessObject();
         AddTaskDataAccessInterface projectRepository = new ProjectDataAccessObject();
 
         Project project = userRepository.listProjects().get(0);
         AddTaskInputData inputData = new AddTaskInputData("testTask", "2023-12-05", project);
+        AddTaskInputData fakeInputData = new AddTaskInputData("failTask", "aaa", project);
 
         // creates a successPresenter that tests whether the test case is as we expect.
         AddTaskOutputBoundary successPresenter = new AddTaskOutputBoundary() {
@@ -36,11 +40,13 @@ public class AddTaskInteractorTest extends TestCase {
 
             @Override
             public void prepareFailView(String error) {
-                fail("Use case failure is unexpected.");
+                exceptionRule.expect(DateTimeParseException.class);
+                exceptionRule.expectMessage("Invalid Date");
             }
         };
 
         AddTaskInputBoundary interactor = new AddTaskInteractor(projectRepository, successPresenter, new TaskFactory());
         interactor.execute(inputData);
+        interactor.execute(fakeInputData);
     }
 }
