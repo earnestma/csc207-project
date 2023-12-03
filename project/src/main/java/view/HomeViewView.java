@@ -2,6 +2,8 @@ package view;
 
 import data_access.UserDataAccessObject;
 import entity.Project;
+import entity.Task;
+import interface_adapter.delete_project.DeleteProjectController;
 import interface_adapter.home_view.HomeViewViewModel;
 import interface_adapter.select_delete_project.SelectDeleteProjectController;
 import interface_adapter.select_project.SelectProjectController;
@@ -37,7 +39,6 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         this.userDataAccessObject = userDataAccessObject;
 
         projects = userDataAccessObject.listProjects();
-        projects.remove(0);
         
         updateView();
     }
@@ -201,7 +202,6 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     public void propertyChange(PropertyChangeEvent evt) {
         this.clearAll();
         projects = userDataAccessObject.listProjects();
-        projects.remove(0); // Removes the Inbox at index 0
         this.updateView();
     }
 }
