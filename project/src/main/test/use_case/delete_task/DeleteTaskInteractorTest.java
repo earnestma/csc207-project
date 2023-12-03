@@ -7,12 +7,15 @@ import entity.Project;
 import entity.Task;
 import entity.TaskFactory;
 import junit.framework.TestCase;
+import org.junit.rules.ExpectedException;
 import use_case.add_task.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class DeleteTaskInteractorTest extends TestCase {
+    public ExpectedException exceptionRule = ExpectedException.none();
     public void testExecute() {
 
         UserDataAccessInterface userRepository = new UserDataAccessObject();
@@ -37,6 +40,7 @@ public class DeleteTaskInteractorTest extends TestCase {
         addInteractor.execute(addInputData);
 
         DeleteTaskInputData inputData = new DeleteTaskInputData("testDeleteTask", project);
+        DeleteTaskInputData fakeInputData = new DeleteTaskInputData("notExist", project);
 
         DeleteTaskOutputBoundary successPresenter = new DeleteTaskOutputBoundary() {
             @Override
@@ -51,11 +55,12 @@ public class DeleteTaskInteractorTest extends TestCase {
 
             @Override
             public void prepareFailView(String error) {
-                fail("Use case failure is unexpected.");
+                exceptionRule.expectMessage("Task does not exist");
             }
         };
 
         DeleteTaskInputBoundary interactor = new DeleteTaskInteractor(projectRepository, successPresenter);
         interactor.execute(inputData);
+        interactor.execute(fakeInputData);
     }
 }
