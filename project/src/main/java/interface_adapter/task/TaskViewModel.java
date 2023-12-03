@@ -27,6 +27,7 @@ public class TaskViewModel extends ViewModel {
         this.state = state;
     }
     public void setMessage(String message) {this.message = message;}
+    public String getMessage(){return message;}
     
     public TaskState getState() {return state;}
     
