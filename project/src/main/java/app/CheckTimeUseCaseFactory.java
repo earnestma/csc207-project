@@ -7,9 +7,11 @@ import interface_adapter.task.TaskViewModel;
 import use_case.check_remaining_time.CheckTimeInteractor;
 
 public class CheckTimeUseCaseFactory {
-    private CheckTimeUseCaseFactory() {}
+    private CheckTimeUseCaseFactory() {
+    }
+
     public static CheckTimeController createCheckTimeUseCase(ViewModelManager viewModelManager,
-                                                             TaskViewModel taskViewModel) {
+            TaskViewModel taskViewModel) {
         CheckTimePresenter checkTimePresenter = new CheckTimePresenter(viewModelManager, taskViewModel);
         CheckTimeInteractor checkTimeInteractor = new CheckTimeInteractor(checkTimePresenter);
         return new CheckTimeController(checkTimeInteractor);

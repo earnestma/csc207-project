@@ -58,14 +58,16 @@ public class Project {
 
     public ArrayList<Task> getTaskList() {
         ArrayList<Task> temp = new ArrayList<>();
-        for (Task task: tasks.values()) {
+        for (Task task : tasks.values()) {
             temp.add(task);
         }
         return temp;
     }
-    
-    public Task getTask(long id){return tasks.get(id);}
-    
+
+    public Task getTask(long id) {
+        return tasks.get(id);
+    }
+
     public void addTask(Task task) {
         tasks.put(task.getID(), task);
     }

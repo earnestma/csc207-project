@@ -7,23 +7,23 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class DeleteTaskInputDataTest{
+public class DeleteTaskInputDataTest {
     DeleteTaskInputData data;
     Project project;
-    
+
     @BeforeEach
     void init() {
         project = new Project("project name");
         data = new DeleteTaskInputData("name", project);
     }
-    
+
     @Test
-    void getTaskName(){
+    void getTaskName() {
         assertEquals(data.getTaskName(), "name");
     }
-    
+
     @Test
-    void getProject(){
+    void getProject() {
         assertEquals(data.getProject(), project);
     }
 }

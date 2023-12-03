@@ -5,7 +5,7 @@ import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ProjectViewModel extends ViewModel{
+public class ProjectViewModel extends ViewModel {
     private final String TITLE_LABEL = "Project View";
 
     private ProjectState state = new ProjectState();
@@ -24,8 +24,10 @@ public class ProjectViewModel extends ViewModel{
     public void setState(ProjectState state) {
         this.state = state;
     }
-    
-    public ProjectState getState() {return state;}
+
+    public ProjectState getState() {
+        return state;
+    }
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

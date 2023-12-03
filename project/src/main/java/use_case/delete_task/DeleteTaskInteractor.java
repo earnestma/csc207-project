@@ -9,7 +9,7 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
     final DeleteTaskOutputBoundary deleteTaskPresenter;
 
     public DeleteTaskInteractor(DeleteTaskDataAccessInterface deleteTaskDataAccessInterface,
-                                DeleteTaskOutputBoundary deleteTaskOutputBoundary) {
+            DeleteTaskOutputBoundary deleteTaskOutputBoundary) {
         this.projectDataAccessObject = deleteTaskDataAccessInterface;
         this.deleteTaskPresenter = deleteTaskOutputBoundary;
     }

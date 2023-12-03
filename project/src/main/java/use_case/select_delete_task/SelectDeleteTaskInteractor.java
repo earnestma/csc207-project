@@ -8,6 +8,7 @@ public class SelectDeleteTaskInteractor implements SelectDeleteTaskInputBoundary
     public SelectDeleteTaskInteractor(SelectDeleteTaskOutputBoundary selectDeleteTaskPresenter) {
         this.selectDeleteTaskPresenter = selectDeleteTaskPresenter;
     }
+
     @Override
     public void execute(SelectDeleteTaskInputData selectDeleteTaskInputData) {
         Project project = selectDeleteTaskInputData.getProject();

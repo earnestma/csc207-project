@@ -9,7 +9,6 @@ public class SelectAddTaskInteractor implements SelectAddTaskInputBoundary {
         this.selectAddTaskPresenter = selectAddTaskPresenter;
     }
 
-
     @Override
     public void execute(SelectAddTaskInputData selectAddTaskInputData) {
         Project project = selectAddTaskInputData.getProject();

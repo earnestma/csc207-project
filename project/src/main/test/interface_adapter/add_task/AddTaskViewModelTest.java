@@ -7,20 +7,21 @@ import static org.junit.Assert.assertEquals;
 
 public class AddTaskViewModelTest {
     AddTaskViewModel viewModel;
+
     @BeforeEach
-    void init(){
+    void init() {
         viewModel = new AddTaskViewModel();
     }
-    
+
     @Test
-    void setAndGetState(){
+    void setAndGetState() {
         AddTaskState state = new AddTaskState();
         viewModel.setState(state);
         assertEquals(viewModel.getState(), state);
     }
-    
+
     @Test
-    void setAndGetMessage(){
+    void setAndGetMessage() {
         viewModel.setMessage("message");
         assertEquals(viewModel.getMessage(), "message");
     }

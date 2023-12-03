@@ -27,7 +27,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
     private final GoProjectViewController goProjectViewController;
 
     public DeleteTaskView(DeleteTaskViewModel deleteTaskViewModel, DeleteTaskController controller,
-                          GoProjectViewController goProjectViewController) {
+            GoProjectViewController goProjectViewController) {
         this.deleteTaskController = controller;
         this.goProjectViewController = goProjectViewController;
         this.deleteTaskViewModel = deleteTaskViewModel;
@@ -55,8 +55,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
                                     currentState.getProject());
                         }
                     }
-                }
-        );
+                });
 
         cancel.addActionListener(
                 new ActionListener() {
@@ -66,8 +65,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
                             goProjectViewController.execute();
                         }
                     }
-                }
-        );
+                });
 
         taskNameInputField.addKeyListener(new KeyListener() {
             @Override
@@ -84,8 +82,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
             @Override
             public void keyReleased(KeyEvent e) {
             }
-        }
-        );
+        });
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
@@ -107,8 +104,7 @@ public class DeleteTaskView extends JPanel implements ActionListener, PropertyCh
         if (evt.getPropertyName().equals("state")) {
             DeleteTaskState state = (DeleteTaskState) evt.getNewValue();
             setFields(state);
-        }
-        else if (evt.getPropertyName().equals("message")) {
+        } else if (evt.getPropertyName().equals("message")) {
             String message = (String) evt.getNewValue();
             showMessage(message);
         }

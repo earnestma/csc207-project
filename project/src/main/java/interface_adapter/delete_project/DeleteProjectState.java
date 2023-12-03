@@ -11,7 +11,8 @@ public class DeleteProjectState {
         user = copy.user;
     }
 
-    public DeleteProjectState() {}
+    public DeleteProjectState() {
+    }
 
     public String getProjectName() {
         return projectName;

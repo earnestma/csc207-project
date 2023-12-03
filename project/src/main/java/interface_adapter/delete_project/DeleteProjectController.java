@@ -6,6 +6,7 @@ import use_case.delete_project.DeleteProjectInputData;
 public class DeleteProjectController {
 
     final DeleteProjectInputBoundary deleteProjectUseCaseInteractor;
+
     public DeleteProjectController(DeleteProjectInputBoundary deleteProjectUseCaseInteractor) {
         this.deleteProjectUseCaseInteractor = deleteProjectUseCaseInteractor;
     }

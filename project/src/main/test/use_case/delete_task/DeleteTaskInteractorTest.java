@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class DeleteTaskInteractorTest extends TestCase {
     public ExpectedException exceptionRule = ExpectedException.none();
+
     public void testExecute() {
         UserDataAccessInterface userRepository = new UserDataAccessObject();
         DeleteTaskDataAccessInterface projectRepository = new ProjectDataAccessObject();
@@ -28,12 +29,14 @@ public class DeleteTaskInteractorTest extends TestCase {
             @Override
             public void prepareSuccessView(AddTaskOutputData task) {
             }
+
             @Override
             public void prepareFailView(String error) {
             }
         };
 
-        AddTaskInputBoundary addInteractor = new AddTaskInteractor(addProjectRepository, addSuccessPresenter, new TaskFactory());
+        AddTaskInputBoundary addInteractor = new AddTaskInteractor(addProjectRepository, addSuccessPresenter,
+                new TaskFactory());
         addInteractor.execute(addInputData);
 
         DeleteTaskInputData inputData = new DeleteTaskInputData("testDeleteTask", project);

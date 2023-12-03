@@ -16,8 +16,8 @@ public class DeleteTaskPresenter implements DeleteTaskOutputBoundary {
     private ViewModelManager ViewModelManager;
 
     public DeleteTaskPresenter(ViewModelManager ViewModelManager,
-                               DeleteTaskViewModel deleteTaskViewModel,
-                               ProjectViewModel projectViewModel) {
+            DeleteTaskViewModel deleteTaskViewModel,
+            ProjectViewModel projectViewModel) {
         this.ViewModelManager = ViewModelManager;
         this.deleteTaskViewModel = deleteTaskViewModel;
         this.projectViewModel = projectViewModel;
@@ -27,7 +27,7 @@ public class DeleteTaskPresenter implements DeleteTaskOutputBoundary {
         ProjectState projectState = projectViewModel.getState();
         ArrayList<Task> taskList = response.getTaskList();
         projectState.setTaskList(taskList);
-        
+
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
 

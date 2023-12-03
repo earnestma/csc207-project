@@ -7,9 +7,11 @@ import interface_adapter.select_add_task.SelectAddTaskPresenter;
 import use_case.select_add_task.SelectAddTaskInteractor;
 
 public class SelectAddTaskUseCaseFactory {
-    private SelectAddTaskUseCaseFactory() {}
+    private SelectAddTaskUseCaseFactory() {
+    }
+
     public static SelectAddTaskController createSelectAddTaskUseCase(ViewModelManager viewModelManager,
-                                                               AddTaskViewModel addTaskViewModel) {
+            AddTaskViewModel addTaskViewModel) {
         SelectAddTaskPresenter selectAddTaskPresenter = new SelectAddTaskPresenter(viewModelManager, addTaskViewModel);
         SelectAddTaskInteractor selectAddTaskInteractor = new SelectAddTaskInteractor(selectAddTaskPresenter);
         return new SelectAddTaskController(selectAddTaskInteractor);

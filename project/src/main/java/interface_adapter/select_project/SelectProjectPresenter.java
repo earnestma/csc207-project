@@ -9,12 +9,13 @@ import use_case.select_project.SelectProjectOutputData;
 public class SelectProjectPresenter implements SelectProjectOutputBoundary {
     private final ProjectViewModel projectViewModel;
     private final ViewModelManager viewModelManager;
-    
+
     public SelectProjectPresenter(ViewModelManager viewModelManager,
-                                  ProjectViewModel projectViewModel) {
+            ProjectViewModel projectViewModel) {
         this.projectViewModel = projectViewModel;
         this.viewModelManager = viewModelManager;
     }
+
     @Override
     public void prepareSuccessView(SelectProjectOutputData response) {
         ProjectState projectState = projectViewModel.getState();
@@ -23,7 +24,7 @@ public class SelectProjectPresenter implements SelectProjectOutputBoundary {
 
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
-        
+
         this.viewModelManager.setActiveView(projectViewModel.getViewName());
         this.viewModelManager.firePropertyChanged();
     }

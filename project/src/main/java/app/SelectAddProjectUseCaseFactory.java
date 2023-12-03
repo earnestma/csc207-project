@@ -11,8 +11,7 @@ public class SelectAddProjectUseCaseFactory {
     }
 
     public static SelectAddProjectController createSelectAddProjectUseCase(
-            ViewModelManager viewModelManager,
-            AddProjectViewModel addProjectViewModel) {
+            ViewModelManager viewModelManager, AddProjectViewModel addProjectViewModel) {
 
         SelectAddProjectPresenter selectAddProjectPresenter = new SelectAddProjectPresenter(viewModelManager,
                 addProjectViewModel);
