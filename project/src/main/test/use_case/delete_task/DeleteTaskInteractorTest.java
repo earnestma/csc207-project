@@ -10,14 +10,11 @@ import junit.framework.TestCase;
 import org.junit.rules.ExpectedException;
 import use_case.add_task.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class DeleteTaskInteractorTest extends TestCase {
     public ExpectedException exceptionRule = ExpectedException.none();
     public void testExecute() {
-
         UserDataAccessInterface userRepository = new UserDataAccessObject();
         DeleteTaskDataAccessInterface projectRepository = new ProjectDataAccessObject();
         AddTaskDataAccessInterface addProjectRepository = new ProjectDataAccessObject();
