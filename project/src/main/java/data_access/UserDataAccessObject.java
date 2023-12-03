@@ -1,6 +1,8 @@
 package data_access;
 
 import entity.Project;
+import use_case.add_project.AddProjectDataAccessInterface;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import use_case.delete_project.DeleteProjectDataAccessInterface;
@@ -13,7 +15,8 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
-public class UserDataAccessObject implements UserDataAccessInterface, DeleteProjectDataAccessInterface {
+public class UserDataAccessObject
+        implements UserDataAccessInterface, AddProjectDataAccessInterface, DeleteProjectDataAccessInterface {
 
     @Override
     public void addProject(Project project) {
