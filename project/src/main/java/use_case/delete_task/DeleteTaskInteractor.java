@@ -32,7 +32,7 @@ public class DeleteTaskInteractor implements DeleteTaskInputBoundary {
             projectDataAccessObject.deleteTask(foundTask);
         }
 
-        else{
+        else {
             deleteTaskPresenter.prepareFailView("Task does not exist");
         }
 
