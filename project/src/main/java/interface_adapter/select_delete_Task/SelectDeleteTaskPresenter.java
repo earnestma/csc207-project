@@ -1,6 +1,5 @@
 package interface_adapter.select_delete_Task;
 
-import interface_adapter.ViewModel;
 import interface_adapter.ViewModelManager;
 import interface_adapter.delete_task.DeleteTaskState;
 import interface_adapter.delete_task.DeleteTaskViewModel;

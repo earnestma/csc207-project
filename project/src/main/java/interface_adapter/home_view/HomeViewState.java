@@ -1,7 +1,6 @@
 package interface_adapter.home_view;
 
 import entity.User;
-import interface_adapter.project.ProjectState;
 
 public class HomeViewState {
     private User user;

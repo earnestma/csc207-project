@@ -37,7 +37,7 @@ public class CheckTimeInteractor implements CheckTimeInputBoundary{
             else if (hours != 0) {
                 outputMessage += hours + " hours, and " + minutes;
             }
-            else{
+            else {
                 outputMessage += minutes;
             }
             outputMessage +=  " minutes to complete this task!";

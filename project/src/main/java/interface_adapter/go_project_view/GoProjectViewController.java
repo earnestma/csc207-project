@@ -1,7 +1,6 @@
 package interface_adapter.go_project_view;
 
 import use_case.go_project_view.GoProjectViewInputBoundary;
-import use_case.go_project_view.GoProjectViewInputData;
 
 public class GoProjectViewController {
     final GoProjectViewInputBoundary goProjectViewInteractor;

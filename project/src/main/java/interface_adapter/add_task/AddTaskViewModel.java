@@ -1,8 +1,9 @@
 package interface_adapter.add_task;
 
 import interface_adapter.ViewModel;
-import java.beans.PropertyChangeSupport;
+
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class AddTaskViewModel extends ViewModel {
 

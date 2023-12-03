@@ -2,8 +2,8 @@ package app;
 
 import interface_adapter.ViewModelManager;
 import interface_adapter.delete_project.DeleteProjectController;
-import interface_adapter.delete_project.DeleteProjectViewModel;
 import interface_adapter.delete_project.DeleteProjectPresenter;
+import interface_adapter.delete_project.DeleteProjectViewModel;
 import interface_adapter.go_home_view.GoHomeViewController;
 import interface_adapter.home_view.HomeViewViewModel;
 import use_case.delete_project.DeleteProjectDataAccessInterface;

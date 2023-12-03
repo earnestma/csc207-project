@@ -1,6 +1,5 @@
 package interface_adapter.select_add_task;
 
-import interface_adapter.ViewModel;
 import interface_adapter.ViewModelManager;
 import interface_adapter.add_task.AddTaskState;
 import interface_adapter.add_task.AddTaskViewModel;
