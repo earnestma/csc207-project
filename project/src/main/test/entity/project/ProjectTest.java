@@ -2,12 +2,15 @@ package entity.project;
 
 import entity.Project;
 import entity.Task;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
+
+
 
 public class ProjectTest {
     private Project projectConstructor1;
