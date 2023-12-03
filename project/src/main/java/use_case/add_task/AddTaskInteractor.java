@@ -27,8 +27,9 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
     public void execute(AddTaskInputData addTaskInputData) {
         try {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String dueDateTimeStr = addTaskInputData.getDueDate();
-            LocalDateTime dueDateTime = LocalDateTime.parse(dueDateTimeStr, dateFormatter);
+            String dueDateStr = addTaskInputData.getDueDate();
+            LocalDate dueDate = LocalDate.parse(dueDateStr, dateFormatter);
+            LocalDateTime dueDateTime = dueDate.atStartOfDay();
 
             Task task = taskFactory.create(addTaskInputData.getTaskName(), dueDateTime);
             Project project = addTaskInputData.getProject();
@@ -40,7 +41,7 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
                     new AddTaskOutputData(task.getName(), task.getDueDate(), taskList, false);
             addTaskPresenter.prepareSuccessView(addTaskOutputData);
         }
-        catch(DateTimeParseException e){
+        catch(DateTimeParseException e) {
             addTaskPresenter.prepareFailView("Invalid Date");
         }
     }
