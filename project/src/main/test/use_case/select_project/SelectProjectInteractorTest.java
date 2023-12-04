@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class SelectProjectInteractorTest extends TestCase {
     public void testExecute() {
-        
+
         Project project = new Project("project name", 1234);
         ArrayList<Task> taskList = project.getTaskList();
         SelectProjectInputData inputData = new SelectProjectInputData(project);
         ProjectDataAccessObject dao = new ProjectDataAccessObject();
-        
+
         SelectProjectOutputBoundary successPresenter = new SelectProjectOutputBoundary() {
             @Override
             public void prepareSuccessView(SelectProjectOutputData response) {

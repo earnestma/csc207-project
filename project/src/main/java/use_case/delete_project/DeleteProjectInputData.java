@@ -7,8 +7,7 @@ public class DeleteProjectInputData {
         this.projectName = projectName;
     }
 
-    public String getProjectName () {
+    public String getProjectName() {
         return projectName;
     }
 }
-

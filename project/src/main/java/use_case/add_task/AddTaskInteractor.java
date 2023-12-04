@@ -37,11 +37,10 @@ public class AddTaskInteractor implements AddTaskInputBoundary {
             userDataAccessObject.addTask(project, task);
             ArrayList<Task> taskList = userDataAccessObject.getTasks(project.getId());
 
-            AddTaskOutputData addTaskOutputData =
-                    new AddTaskOutputData(task.getName(), task.getDueDate(), taskList, false);
+            AddTaskOutputData addTaskOutputData = new AddTaskOutputData(task.getName(), task.getDueDate(), taskList,
+                    false);
             addTaskPresenter.prepareSuccessView(addTaskOutputData);
-        }
-        catch(DateTimeParseException e) {
+        } catch (DateTimeParseException e) {
             addTaskPresenter.prepareFailView("Invalid Date");
         }
     }

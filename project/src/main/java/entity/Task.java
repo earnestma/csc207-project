@@ -39,7 +39,7 @@ public class Task {
         this.completed = false;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

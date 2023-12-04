@@ -10,11 +10,11 @@ public class SelectProjectController {
     public SelectProjectController(SelectProjectInputBoundary selectProjectInteractor) {
         this.selectProjectInteractor = selectProjectInteractor;
     }
-    
+
     public void execute(Project project) {
         SelectProjectInputData selectProjectInputData = new SelectProjectInputData(project);
-        
+
         selectProjectInteractor.execute(selectProjectInputData);
     }
-    
+
 }
