@@ -1,7 +1,8 @@
 package interface_adapter.add_task;
 
 import entity.Project;
-import use_case.add_task.*;
+import use_case.add_task.AddTaskInputBoundary;
+import use_case.add_task.AddTaskInputData;
 
 public class AddTaskController {
 

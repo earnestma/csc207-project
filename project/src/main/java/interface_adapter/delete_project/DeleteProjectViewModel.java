@@ -1,7 +1,6 @@
 package interface_adapter.delete_project;
 
 import interface_adapter.ViewModel;
-import interface_adapter.delete_project.DeleteProjectState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -40,7 +39,12 @@ public class DeleteProjectViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
-    public void setMessage(String message) {this.message = message;}
-    public void showMessage() {support.firePropertyChange("message", null, this.message);}
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void showMessage() {
+        support.firePropertyChange("message", null, this.message);
+    }
 
 }

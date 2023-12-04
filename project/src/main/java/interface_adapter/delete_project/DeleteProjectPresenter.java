@@ -13,8 +13,8 @@ public class DeleteProjectPresenter implements DeleteProjectOutputBoundary {
     private ViewModelManager ViewModelManager;
 
     public DeleteProjectPresenter(ViewModelManager ViewModelManager,
-                                  DeleteProjectViewModel deleteProjectViewModel,
-                                  HomeViewViewModel homeViewViewModel) {
+            DeleteProjectViewModel deleteProjectViewModel,
+            HomeViewViewModel homeViewViewModel) {
         this.ViewModelManager = ViewModelManager;
         this.deleteProjectViewModel = deleteProjectViewModel;
         this.homeViewViewModel = homeViewViewModel;

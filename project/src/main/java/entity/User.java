@@ -10,7 +10,6 @@ public class User {
     final private String password;
     public Map<Long, Project> projects; // projects has {project1 id : project1, project2 id : project2...}
 
-
     public User(String name, String username, String password) {
         this.name = name;
         this.username = username;
@@ -20,7 +19,7 @@ public class User {
 
     public ArrayList<Project> getProjectList() {
         ArrayList<Project> temp = new ArrayList<Project>();
-        for (Project project: projects.values()) {
+        for (Project project : projects.values()) {
             temp.add(project);
         }
         return temp;

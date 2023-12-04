@@ -4,6 +4,7 @@ import entity.User;
 
 public class SelectDeleteProjectInputData {
     final private User user;
+
     public SelectDeleteProjectInputData(User user) {
         this.user = user;
     }

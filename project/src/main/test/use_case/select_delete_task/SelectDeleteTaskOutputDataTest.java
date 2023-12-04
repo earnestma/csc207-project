@@ -9,13 +9,14 @@ import static org.junit.Assert.assertEquals;
 public class SelectDeleteTaskOutputDataTest {
     SelectDeleteTaskOutputData data;
     Project project;
+
     @BeforeEach
-    void init(){
+    void init() {
         data = new SelectDeleteTaskOutputData(project);
     }
-    
+
     @Test
-    void getProject(){
+    void getProject() {
         assertEquals(data.getProject(), project);
     }
 }

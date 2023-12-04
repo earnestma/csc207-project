@@ -1,6 +1,5 @@
 package interface_adapter.select_delete_Task;
 
-import interface_adapter.ViewModel;
 import interface_adapter.ViewModelManager;
 import interface_adapter.delete_task.DeleteTaskState;
 import interface_adapter.delete_task.DeleteTaskViewModel;
@@ -12,7 +11,7 @@ public class SelectDeleteTaskPresenter implements SelectDeleteTaskOutputBoundary
     private final ViewModelManager viewModelManager;
 
     public SelectDeleteTaskPresenter(ViewModelManager viewModelManager,
-                                     DeleteTaskViewModel deleteTaskViewModel) {
+            DeleteTaskViewModel deleteTaskViewModel) {
         this.deleteTaskViewModel = deleteTaskViewModel;
         this.viewModelManager = viewModelManager;
     }

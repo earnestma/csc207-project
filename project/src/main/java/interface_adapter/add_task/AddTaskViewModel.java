@@ -1,8 +1,9 @@
 package interface_adapter.add_task;
 
 import interface_adapter.ViewModel;
-import java.beans.PropertyChangeSupport;
+
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class AddTaskViewModel extends ViewModel {
 
@@ -28,8 +29,18 @@ public class AddTaskViewModel extends ViewModel {
     public AddTaskState getState() {
         return state;
     }
-    public void setMessage(String message) {this.message = message;}
-    public void showMessage() {support.firePropertyChange("message", null, this.message);}
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void showMessage() {
+        support.firePropertyChange("message", null, this.message);
+    }
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

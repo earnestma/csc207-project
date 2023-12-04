@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class AddTaskOutputDataTest {
     AddTaskOutputData data;
     ArrayList<Task> taskList;
-    
+
     @BeforeEach
     void init() {
         taskList = new ArrayList<>();
@@ -20,17 +20,17 @@ public class AddTaskOutputDataTest {
                 LocalDateTime.of(2023, 12, 12, 12, 12),
                 taskList, false);
     }
-    
+
     @Test
     void getTaskName() {
         assertEquals("task", data.getTaskName());
     }
-    
+
     @Test
     void getDueDate() {
         assertEquals("2023-12-12", data.getDueDate());
     }
-    
+
     @Test
     void getTaskList() {
         assertEquals(taskList, data.getTaskList());

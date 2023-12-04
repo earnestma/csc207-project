@@ -1,7 +1,6 @@
 package interface_adapter.delete_task;
 
 import entity.Project;
-import interface_adapter.add_task.AddTaskState;
 
 public class DeleteTaskState {
     private String taskName = "";
@@ -12,7 +11,8 @@ public class DeleteTaskState {
         project = copy.project;
     }
 
-    public DeleteTaskState() {}
+    public DeleteTaskState() {
+    }
 
     public String getTaskName() {
         return taskName;

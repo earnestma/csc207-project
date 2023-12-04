@@ -12,7 +12,7 @@ public class GoHomeViewInteractorTest extends TestCase {
                 assertEquals(actualViewName, "home view");
             }
         };
-        
+
         GoHomeViewInputBoundary interactor = new GoHomeViewInteractor(successPresenter);
         interactor.execute();
     }

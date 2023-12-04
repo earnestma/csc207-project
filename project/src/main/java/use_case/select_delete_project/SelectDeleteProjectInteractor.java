@@ -8,6 +8,7 @@ public class SelectDeleteProjectInteractor implements SelectDeleteProjectInputBo
     public SelectDeleteProjectInteractor(SelectDeleteProjectOutputBoundary selectDeleteProjectPresenter) {
         this.selectDeleteProjectPresenter = selectDeleteProjectPresenter;
     }
+
     @Override
     public void execute(SelectDeleteProjectInputData selectDeleteProjectInputData) {
         User user = selectDeleteProjectInputData.getUser();

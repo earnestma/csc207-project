@@ -1,32 +1,36 @@
 package interface_adapter.add_project;
 
+import interface_adapter.ViewModelManager;
+import interface_adapter.home_view.HomeViewState;
+import interface_adapter.home_view.HomeViewViewModel;
+import interface_adapter.project.ProjectState;
+import interface_adapter.project.ProjectViewModel;
+import use_case.add_project.AddProjectOutputBoundary;
+import use_case.add_project.AddProjectOutputData;
 import use_case.add_project.AddProjectOutputBoundary;
 
 public class AddProjectPresenter implements AddProjectOutputBoundary {
-/*
     private final AddProjectViewModel addProjectViewModel;
     private ViewModelManager ViewModelManager;
+    private final HomeViewViewModel homeViewViewModel;
 
     public AddProjectPresenter(ViewModelManager ViewModelManager,
-            AddProjectViewModel addProjectViewModel) {
+            AddProjectViewModel addProjectViewModel, HomeViewViewModel homeViewViewModel) {
         this.ViewModelManager = ViewModelManager;
         this.addProjectViewModel = addProjectViewModel;
+        this.homeViewViewModel = homeViewViewModel;
     }
 
     @Override
     public void prepareSuccessView(AddProjectOutputData response) {
-        // switch to project view when Project is successfully added
+        HomeViewState homeViewState = homeViewViewModel.getState();
+        this.homeViewViewModel.setState(homeViewState);
+        this.homeViewViewModel.firePropertyChanged();
 
-        ProjectState projectState = projectViewModel.getState();
-        projectState.setProjectName(response.getProjectName());
-        projectState.setDueDate(response.getDueDate());
-        this.projectViewModel.setState(projectState);
-        this.projectViewModel.firePropertyChanged();
-
-        this.ViewModelManager.setActiveView(projectViewModel.getViewName());
+        this.ViewModelManager.setActiveView(homeViewViewModel.getViewName());
         this.ViewModelManager.firePropertyChanged();
     }
-    */
+
     @Override
     public void prepareFailView(String error) {
 

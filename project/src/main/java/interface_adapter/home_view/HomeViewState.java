@@ -1,7 +1,6 @@
 package interface_adapter.home_view;
 
 import entity.User;
-import interface_adapter.project.ProjectState;
 
 public class HomeViewState {
     private User user;
@@ -10,7 +9,8 @@ public class HomeViewState {
         user = copy.user;
     }
 
-    // Because of the previous copy constructor, the default constructor must be explicit.
+    // Because of the previous copy constructor, the default constructor must be
+    // explicit.
     public HomeViewState() {
     }
 

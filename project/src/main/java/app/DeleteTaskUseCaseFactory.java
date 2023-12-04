@@ -2,8 +2,8 @@ package app;
 
 import interface_adapter.ViewModelManager;
 import interface_adapter.delete_task.DeleteTaskController;
-import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.delete_task.DeleteTaskPresenter;
+import interface_adapter.delete_task.DeleteTaskViewModel;
 import interface_adapter.go_project_view.GoProjectViewController;
 import interface_adapter.project.ProjectViewModel;
 import use_case.delete_task.DeleteTaskDataAccessInterface;
@@ -15,7 +15,8 @@ import view.DeleteTaskView;
 import java.io.IOException;
 
 public class DeleteTaskUseCaseFactory {
-    private DeleteTaskUseCaseFactory() {}
+    private DeleteTaskUseCaseFactory() {
+    }
 
     public static DeleteTaskView create(
             ViewModelManager viewModelManager, ProjectViewModel projectViewModel,
@@ -32,12 +33,15 @@ public class DeleteTaskUseCaseFactory {
         return null;
     }
 
-    public static DeleteTaskController deleteTaskUseCase(ViewModelManager viewModelManager, ProjectViewModel projectViewModel,
-                                                          DeleteTaskViewModel deleteTaskViewModel,
-                                                          DeleteTaskDataAccessInterface deleteTaskDataAccessInterface) throws IOException {
-        DeleteTaskOutputBoundary deleteTaskOutputBoundary = new DeleteTaskPresenter(viewModelManager, deleteTaskViewModel, projectViewModel);
+    public static DeleteTaskController deleteTaskUseCase(ViewModelManager viewModelManager,
+            ProjectViewModel projectViewModel,
+            DeleteTaskViewModel deleteTaskViewModel,
+            DeleteTaskDataAccessInterface deleteTaskDataAccessInterface) throws IOException {
+        DeleteTaskOutputBoundary deleteTaskOutputBoundary = new DeleteTaskPresenter(viewModelManager,
+                deleteTaskViewModel, projectViewModel);
 
-        DeleteTaskInputBoundary deleteTaskInteractor = new DeleteTaskInteractor(deleteTaskDataAccessInterface, deleteTaskOutputBoundary);
+        DeleteTaskInputBoundary deleteTaskInteractor = new DeleteTaskInteractor(deleteTaskDataAccessInterface,
+                deleteTaskOutputBoundary);
 
         return new DeleteTaskController(deleteTaskInteractor);
     }

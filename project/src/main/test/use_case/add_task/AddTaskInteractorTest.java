@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class AddTaskInteractorTest extends TestCase {
     public ExpectedException exceptionRule = ExpectedException.none();
+
     public void testExecute() {
         UserDataAccessInterface userRepository = new UserDataAccessObject();
         AddTaskDataAccessInterface projectRepository = new ProjectDataAccessObject();
@@ -26,7 +27,8 @@ public class AddTaskInteractorTest extends TestCase {
         AddTaskOutputBoundary successPresenter = new AddTaskOutputBoundary() {
             @Override
             public void prepareSuccessView(AddTaskOutputData task) {
-                // things to check: the output data is correct, and the task has been created in the DAO
+                // things to check: the output data is correct, and the task has been created in
+                // the DAO
                 assertEquals("testTask", task.getTaskName());
                 assertEquals("2023-12-05", task.getDueDate());
 

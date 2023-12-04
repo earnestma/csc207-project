@@ -9,27 +9,26 @@ import static org.junit.Assert.assertEquals;
 public class AddTaskInputDataTest {
     AddTaskInputData data;
     Project project;
-    
+
     @BeforeEach
-    void init(){
+    void init() {
         project = new Project("project name");
         data = new AddTaskInputData("name", "date", project);
     }
-    
+
     @Test
-    void getTaskName(){
+    void getTaskName() {
         assertEquals("name", data.getTaskName());
     }
-    
+
     @Test
-    void getDueDate(){
+    void getDueDate() {
         assertEquals("date", data.getDueDate());
     }
-    
+
     @Test
-    void getProject(){
+    void getProject() {
         assertEquals(project, data.getProject());
     }
-    
-    
+
 }

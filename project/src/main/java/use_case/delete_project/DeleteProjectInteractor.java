@@ -9,30 +9,30 @@ public class DeleteProjectInteractor implements DeleteProjectInputBoundary {
     final DeleteProjectOutputBoundary deleteProjectPresenter;
 
     public DeleteProjectInteractor(DeleteProjectDataAccessInterface deleteProjectDataAccessInterface,
-                                   DeleteProjectOutputBoundary deleteProjectOutputBoundary) {
+            DeleteProjectOutputBoundary deleteProjectOutputBoundary) {
         this.userDataAccessObject = deleteProjectDataAccessInterface;
         this.deleteProjectPresenter = deleteProjectOutputBoundary;
     }
 
     public void execute(DeleteProjectInputData deleteProjectInputData) {
-      try{
-        ArrayList<Project> projectList = this.userDataAccessObject.listProjects();
+        try {
+            ArrayList<Project> projectList = this.userDataAccessObject.listProjects();
 
-        String projectName = deleteProjectInputData.getProjectName();
+            String projectName = deleteProjectInputData.getProjectName();
 
-        Project foundProject = null;
-        for (Project project: projectList) {
-            if (project.getName().equals(projectName)) {
-                foundProject = project;
-                projectList.remove(project);
-                break;
+            Project foundProject = null;
+            for (Project project : projectList) {
+                if (project.getName().equals(projectName)) {
+                    foundProject = project;
+                    projectList.remove(project);
+                    break;
+                }
             }
-        }
 
-        userDataAccessObject.deleteProject(foundProject);
+            userDataAccessObject.deleteProject(foundProject);
 
-        DeleteProjectOutputData deleteProjectOutputData = new DeleteProjectOutputData(projectList, false);
-        deleteProjectPresenter.prepareSuccessView(deleteProjectOutputData);
+            DeleteProjectOutputData deleteProjectOutputData = new DeleteProjectOutputData(projectList, false);
+            deleteProjectPresenter.prepareSuccessView(deleteProjectOutputData);
         } catch (NullPointerException e) {
             deleteProjectPresenter.prepareFailView("Project does not exist");
         }

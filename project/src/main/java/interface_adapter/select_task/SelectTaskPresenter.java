@@ -9,12 +9,13 @@ import use_case.select_task.SelectTaskOutputData;
 public class SelectTaskPresenter implements SelectTaskOutputBoundary {
     private final TaskViewModel taskViewModel;
     private final ViewModelManager viewModelManager;
-    
+
     public SelectTaskPresenter(ViewModelManager viewModelManager,
-                                  TaskViewModel taskViewModel) {
+            TaskViewModel taskViewModel) {
         this.taskViewModel = taskViewModel;
         this.viewModelManager = viewModelManager;
     }
+
     @Override
     public void prepareSuccessView(SelectTaskOutputData response) {
         TaskState taskState = taskViewModel.getState();
@@ -22,7 +23,7 @@ public class SelectTaskPresenter implements SelectTaskOutputBoundary {
         taskState.setPreviousProject(response.getProject());
         this.taskViewModel.setState(taskState);
         this.taskViewModel.firePropertyChanged();
-        
+
         this.viewModelManager.setActiveView(taskViewModel.getViewName());
         this.viewModelManager.firePropertyChanged();
     }
