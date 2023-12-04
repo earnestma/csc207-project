@@ -3,10 +3,9 @@ package view;
 import data_access.UserDataAccessObject;
 import entity.Project;
 import interface_adapter.home_view.HomeViewViewModel;
+import interface_adapter.select_add_project.SelectAddProjectController;
 import interface_adapter.select_delete_project.SelectDeleteProjectController;
 import interface_adapter.select_project.SelectProjectController;
-import interface_adapter.select_add_project.SelectAddProjectController;
-import interface_adapter.select_delete_Task.SelectDeleteTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,6 +43,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
         this.userDataAccessObject = userDataAccessObject;
 
         projects = userDataAccessObject.listProjects();
+        projects.remove(0);
 
         updateView();
     }
@@ -200,6 +200,7 @@ public class HomeViewView extends JPanel implements ActionListener, PropertyChan
     public void propertyChange(PropertyChangeEvent evt) {
         this.clearAll();
         projects = userDataAccessObject.listProjects();
+        projects.remove(0);
         this.updateView();
     }
 }
