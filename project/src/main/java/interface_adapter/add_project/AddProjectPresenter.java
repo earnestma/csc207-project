@@ -1,38 +1,35 @@
 package interface_adapter.add_project;
 
 import interface_adapter.ViewModelManager;
-import interface_adapter.home_view.HomeViewState;
-import interface_adapter.home_view.HomeViewViewModel;
+import interface_adapter.add_project.AddProjectViewModel;
 import interface_adapter.project.ProjectState;
 import interface_adapter.project.ProjectViewModel;
 import use_case.add_project.AddProjectOutputBoundary;
 import use_case.add_project.AddProjectOutputData;
-import use_case.add_project.AddProjectOutputBoundary;
 
 public class AddProjectPresenter implements AddProjectOutputBoundary {
     private final AddProjectViewModel addProjectViewModel;
+    private final ProjectViewModel projectViewModel;
     private ViewModelManager ViewModelManager;
-    private final HomeViewViewModel homeViewViewModel;
 
-    public AddProjectPresenter(ViewModelManager ViewModelManager,
-            AddProjectViewModel addProjectViewModel, HomeViewViewModel homeViewViewModel) {
+    public AddProjectPresenter(ViewModelManager ViewModelManager, AddProjectViewModel addProjectViewModel,
+            ProjectViewModel projectViewModel) {
         this.ViewModelManager = ViewModelManager;
         this.addProjectViewModel = addProjectViewModel;
-        this.homeViewViewModel = homeViewViewModel;
+        this.projectViewModel = projectViewModel;
     }
 
     @Override
     public void prepareSuccessView(AddProjectOutputData response) {
-        HomeViewState homeViewState = homeViewViewModel.getState();
-        this.homeViewViewModel.setState(homeViewState);
-        this.homeViewViewModel.firePropertyChanged();
+        ProjectState projectState = projectViewModel.getState();
+        this.projectViewModel.setState(projectState);
+        this.projectViewModel.firePropertyChanged();
 
-        this.ViewModelManager.setActiveView(homeViewViewModel.getViewName());
+        this.ViewModelManager.setActiveView(projectViewModel.getViewName());
         this.ViewModelManager.firePropertyChanged();
     }
 
     @Override
     public void prepareFailView(String error) {
-
     }
 }

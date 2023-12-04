@@ -14,7 +14,7 @@ import use_case.add_project.AddProjectDataAccessInterface;
 import use_case.add_project.AddProjectInputBoundary;
 import use_case.add_project.AddProjectInteractor;
 import use_case.add_project.AddProjectOutputBoundary;
-import use_case.add_project.AddProjectPresenter;
+import interface_adapter.add_project.AddProjectPresenter;
 import view.AddProjectView;
 
 public class AddProjectUseCaseFactory {
