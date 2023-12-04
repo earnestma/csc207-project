@@ -22,3 +22,4 @@ public class SelectTaskInteractorTest extends TestCase {
         interactor.execute(inputData);
     }
 }
+
