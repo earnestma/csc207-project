@@ -28,7 +28,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         // The main application window.
-        JFrame application = new JFrame("Scheduler");
+        JFrame application = new JFrame("TimeTask");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         
