@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeleteProjectInteractorTest {
-    public ExpectedException exceptionRule  = ExpectedException.none();
+    public ExpectedException exceptionRule = ExpectedException.none();
+
     @Test
     void execute() {
         DeleteProjectDataAccessInterface userRepository = new UserDataAccessObject();

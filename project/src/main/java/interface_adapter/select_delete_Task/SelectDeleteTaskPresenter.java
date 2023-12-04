@@ -11,7 +11,7 @@ public class SelectDeleteTaskPresenter implements SelectDeleteTaskOutputBoundary
     private final ViewModelManager viewModelManager;
 
     public SelectDeleteTaskPresenter(ViewModelManager viewModelManager,
-                                     DeleteTaskViewModel deleteTaskViewModel) {
+            DeleteTaskViewModel deleteTaskViewModel) {
         this.deleteTaskViewModel = deleteTaskViewModel;
         this.viewModelManager = viewModelManager;
     }

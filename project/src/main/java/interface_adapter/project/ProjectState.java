@@ -14,9 +14,11 @@ public class ProjectState {
         taskList = copy.taskList;
     }
 
-    // Because of the previous copy constructor, the default constructor must be explicit.
+    // Because of the previous copy constructor, the default constructor must be
+    // explicit.
     public ProjectState() {
     }
+
     public Project getProject() {
         return project;
     }

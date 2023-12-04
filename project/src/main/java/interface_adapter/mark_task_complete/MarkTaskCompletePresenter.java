@@ -19,11 +19,11 @@ public class MarkTaskCompletePresenter implements MarkTaskCompleteOutputBoundary
     public void prepareSuccessView(MarkTaskCompleteOutputData response) {
         // Update task view model with status of task completion
         /*
-        TaskState taskState = taskViewModel.getState();
-        taskState.setTaskId(response.getTaskId();
-        taskState.setCompletionStatus("Complete");
-        task.taskViewModel.setState(taskState);
-        this.taskViewModel.firePropertyChanged();
+         * TaskState taskState = taskViewModel.getState();
+         * taskState.setTaskId(response.getTaskId();
+         * taskState.setCompletionStatus("Complete");
+         * task.taskViewModel.setState(taskState);
+         * this.taskViewModel.firePropertyChanged();
          */
     }
 

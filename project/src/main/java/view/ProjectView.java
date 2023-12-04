@@ -29,16 +29,16 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
     private SelectTaskController selectTaskController;
 
     public ProjectView(ProjectViewModel projectViewModel,
-                       GoHomeViewController goHomeViewController,
-                       SelectAddTaskController selectAddTaskController,
-                       SelectDeleteTaskController selectDeleteTaskController,
-                       SelectTaskController selectTaskController) {
+            GoHomeViewController goHomeViewController,
+            SelectAddTaskController selectAddTaskController,
+            SelectDeleteTaskController selectDeleteTaskController,
+            SelectTaskController selectTaskController) {
         this.setLayout(new BorderLayout());
-        
+
         this.projectViewModel = projectViewModel;
         this.projectViewModel.addPropertyChangeListener(this);
         projectName = "";
-        
+
         this.goHomeViewController = goHomeViewController;
         this.selectAddTaskController = selectAddTaskController;
         this.selectDeleteTaskController = selectDeleteTaskController;
@@ -55,14 +55,13 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         int numTasks = taskList.size();
 
-        for (Task task: taskList) {
+        for (Task task : taskList) {
             JPanel panel = createTaskPanel(task);
             panelList.add(panel);
         }
 
         // To fill up empty space
-        if (numTasks <= 5)
-        {
+        if (numTasks <= 5) {
             int missing = 5 - numTasks;
             for (int i = 1; i <= missing; i++) {
                 JPanel panel = createEmptyPanel();
@@ -106,8 +105,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                     public void actionPerformed(ActionEvent e) {
                         selectAddTaskController.execute(projectObject);
                     }
-                }
-        );
+                });
 
         addTaskButton.setPreferredSize(new Dimension(100, 30));
         addTaskButton.setMargin(new Insets(0, 0, 0, 0));
@@ -129,7 +127,6 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
 
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-
         JButton taskButton = new JButton(task.getName());
 
         taskButton.addActionListener(
@@ -138,8 +135,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                     public void actionPerformed(ActionEvent e) {
                         selectTaskController.execute(task, projectObject);
                     }
-                }
-        );
+                });
 
         taskButton.setPreferredSize(new Dimension(390, 50));
         taskButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -166,7 +162,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         panel.setLayout(new BorderLayout());
         panel.setPreferredSize(new Dimension(300, 50));
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+
         JButton goBackButton = new JButton(projectViewModel.HOME_PAGE_BUTTON_LABEL);
 
         goBackButton.addActionListener(
@@ -175,8 +171,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                     public void actionPerformed(ActionEvent e) {
                         goHomeViewController.execute();
                     }
-                }
-        );
+                });
 
         JButton deleteTaskButton = new JButton(projectViewModel.DELETE_TASK_BUTTON_LABEL);
 
@@ -186,8 +181,7 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
                     public void actionPerformed(ActionEvent e) {
                         selectDeleteTaskController.execute(projectObject);
                     }
-                }
-        );
+                });
 
         goBackButton.setPreferredSize(new Dimension(100, 30));
         goBackButton.setMargin(new Insets(0, 0, 0, 0));
@@ -210,13 +204,11 @@ public class ProjectView extends JPanel implements ActionListener, PropertyChang
         return panel;
     }
 
-
     public void clearAll() {
         this.removeAll();
         this.revalidate();
         this.repaint();
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

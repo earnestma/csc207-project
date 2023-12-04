@@ -16,7 +16,7 @@ public class AddTaskPresenter implements AddTaskOutputBoundary {
     private ViewModelManager ViewModelManager;
 
     public AddTaskPresenter(ViewModelManager ViewModelManager,
-                            AddTaskViewModel addTaskViewModel, ProjectViewModel projectViewModel) {
+            AddTaskViewModel addTaskViewModel, ProjectViewModel projectViewModel) {
         this.ViewModelManager = ViewModelManager;
         this.addTaskViewModel = addTaskViewModel;
         this.projectViewModel = projectViewModel;
@@ -25,11 +25,11 @@ public class AddTaskPresenter implements AddTaskOutputBoundary {
     @Override
     public void prepareSuccessView(AddTaskOutputData response) {
         ProjectState projectState = projectViewModel.getState();
-        
+
         ArrayList<Task> taskList = response.getTaskList();
         projectState.setTaskList(taskList);
-        //projectState.setTaskList(project.getTaskList());
-        
+        // projectState.setTaskList(project.getTaskList());
+
         this.projectViewModel.setState(projectState);
         this.projectViewModel.firePropertyChanged();
 

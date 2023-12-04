@@ -13,22 +13,20 @@ import static org.junit.Assert.assertEquals;
 public class UserTest {
     private User user;
     private LocalDateTime date;
-    
+
     @BeforeEach
     void init() {
         user = new User("name", "username", "123456");
     }
-    
+
     @Test
-    void getProjectList(){
+    void getProjectList() {
         ArrayList<Project> projectList = new ArrayList<Project>();
         assertEquals(user.getProjectList(), projectList);
     }
-    
+
     @Test
-    void getUsername(){
+    void getUsername() {
         assertEquals("username", user.getUsername());
     }
 }
-
-

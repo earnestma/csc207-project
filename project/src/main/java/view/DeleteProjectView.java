@@ -27,7 +27,7 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
     private final GoHomeViewController goHomeViewController;
 
     public DeleteProjectView(DeleteProjectViewModel deleteProjectViewModel, DeleteProjectController controller,
-                             GoHomeViewController goHomeViewController) {
+            GoHomeViewController goHomeViewController) {
         this.deleteProjectController = controller;
         this.goHomeViewController = goHomeViewController;
         this.deleteProjectViewModel = deleteProjectViewModel;
@@ -54,8 +54,7 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
                             deleteProjectController.execute(currentState.getProjectName());
                         }
                     }
-                }
-        );
+                });
 
         cancel.addActionListener(
                 new ActionListener() {
@@ -65,26 +64,24 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
                             goHomeViewController.execute();
                         }
                     }
-                }
-        );
+                });
 
         projectNameInputField.addKeyListener(new KeyListener() {
-                                              @Override
-                                              public void keyTyped(KeyEvent e) {
-                                                  DeleteProjectState currentState = deleteProjectViewModel.getState();
-                                                  currentState.setProjectName(projectNameInputField.getText() + e.getKeyChar());
-                                                  deleteProjectViewModel.setState(currentState);
-                                              }
+            @Override
+            public void keyTyped(KeyEvent e) {
+                DeleteProjectState currentState = deleteProjectViewModel.getState();
+                currentState.setProjectName(projectNameInputField.getText() + e.getKeyChar());
+                deleteProjectViewModel.setState(currentState);
+            }
 
-                                              @Override
-                                              public void keyPressed(KeyEvent e) {
-                                              }
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
 
-                                              @Override
-                                              public void keyReleased(KeyEvent e) {
-                                              }
-                                          }
-        );
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
@@ -102,8 +99,7 @@ public class DeleteProjectView extends JPanel implements ActionListener, Propert
         if (evt.getPropertyName().equals("state")) {
             DeleteProjectState state = (DeleteProjectState) evt.getNewValue();
             setFields(state);
-        }
-        else if (evt.getPropertyName().equals("message")) {
+        } else if (evt.getPropertyName().equals("message")) {
             String message = (String) evt.getNewValue();
             showMessage(message);
         }

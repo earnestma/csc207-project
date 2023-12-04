@@ -4,6 +4,7 @@ import entity.Project;
 
 public class SelectAddTaskInputData {
     final private Project project;
+
     public SelectAddTaskInputData(Project project) {
         this.project = project;
     }
