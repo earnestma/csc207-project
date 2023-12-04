@@ -22,33 +22,6 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddT
         DeleteTaskDataAccessInterface, SelectProjectDataAccessInterface {
 
     @Override
-    public void modifyProject(Project project) {
-        HttpClient client = HttpClient.newHttpClient();
-
-        JSONObject projJSON = new JSONObject();
-        projJSON.put("name", project.getName());
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(String.format("https://api.todoist.com/rest/v2/projects/%d", project.getId())))
-                .POST(BodyPublishers.ofString(projJSON.toString()))
-                .setHeader("Content-Type", "application/json")
-                .setHeader("Authorization", "Bearer " + System.getenv("token"))
-                .build();
-
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() != 200) {
-                throw new IOException("Project name could not be updated");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public void addTask(Project project, Task task) {
         HttpClient client = HttpClient.newHttpClient();
 
@@ -157,39 +130,5 @@ public class ProjectDataAccessObject implements ProjectDataAccessInterface, AddT
             e.printStackTrace();
         }
         return taskList;
-    }
-
-    @Override
-    public void modifyTask(Project project, Task task) {
-        HttpClient client = HttpClient.newHttpClient();
-
-        JSONObject taskJSON = new JSONObject();
-
-        taskJSON.put("content", task.getName());
-
-        if (task.hasDueDate()) {
-            taskJSON.put("due_datetime", task.getDueDate().toString());
-        } else {
-            taskJSON.put("due_string", "no date");
-        }
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(String.format("https://api.todoist.com/rest/v2/tasks/%d", task.getID())))
-                .POST(BodyPublishers.ofString(taskJSON.toString()))
-                .setHeader("Content-Type", "application/json")
-                .setHeader("Authorization", "Bearer " + System.getenv("token"))
-                .build();
-
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() != 204) {
-                throw new IOException("Task could not be updated");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
