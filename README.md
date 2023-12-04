@@ -1,8 +1,8 @@
-# Time Management System: 
+# TimeTask: 
 
-A Java application designed for managing tasks and projects.
+A Java application designed for managing time, tasks and projects.
 
-## Features
+## Features:
 
 1. Manage Projects and Tasks:
     - Easily create projects with names.
@@ -21,10 +21,6 @@ A Java application designed for managing tasks and projects.
     - Receive an error alert when attempting to delete a non-existing project or task.
 
 
-[//]: # (### [Clean Architecture Design of This Project])
-
-[//]: # (* https://developer.todoist.com/rest/v2/#overview)
-
-[//]: # (* https://developers.track.toggl.com/docs/)
-
-[//]: # (token?)
+## Before running:
+   - Configure an environment variable named "token" with the value "482e5b7e339d411bedf8f3672a059d864dbc357c"
+   - Alternatively, substitute it with your personal todoist token if available.
