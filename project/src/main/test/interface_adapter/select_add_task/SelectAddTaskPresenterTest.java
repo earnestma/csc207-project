@@ -13,21 +13,21 @@ public class SelectAddTaskPresenterTest {
     SelectAddTaskPresenter presenter;
     ViewModelManager viewModelManager;
     AddTaskViewModel addTaskViewModel;
-    
+
     @BeforeEach
-    void init(){
+    void init() {
         viewModelManager = new ViewModelManager();
         addTaskViewModel = new AddTaskViewModel();
         presenter = new SelectAddTaskPresenter(viewModelManager, addTaskViewModel);
     }
-    
+
     @Test
-    void prepareSuccessView(){
+    void prepareSuccessView() {
         Project project = new Project("name");
         SelectAddTaskOutputData data = new SelectAddTaskOutputData(project);
-        
+
         presenter.prepareSuccessView(data);
-        
+
         assertEquals(viewModelManager.getActiveView(), addTaskViewModel.getViewName());
     }
 }

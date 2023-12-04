@@ -38,7 +38,12 @@ public class DeleteTaskViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
-    public void setMessage(String message) {this.message = message;}
-    public void showMessage() {support.firePropertyChange("message", null, this.message);}
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void showMessage() {
+        support.firePropertyChange("message", null, this.message);
+    }
 
 }

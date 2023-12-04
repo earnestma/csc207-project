@@ -5,11 +5,11 @@ import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class HomeViewViewModel extends ViewModel{
+public class HomeViewViewModel extends ViewModel {
     private final String TITLE_LABEL = "Home View";
 
     private HomeViewState state = new HomeViewState();
-    
+
     public static final String HOME_VIEW_NAME = "home view";
 
     public static final String ADD_PROJECT_BUTTON_LABEL = "Add Project";
@@ -18,11 +18,17 @@ public class HomeViewViewModel extends ViewModel{
 
     public static final String PROJECTS_LABEL = "Projects: ";
 
-    public HomeViewViewModel() {super(HOME_VIEW_NAME);}
+    public HomeViewViewModel() {
+        super(HOME_VIEW_NAME);
+    }
 
-    public void setState(HomeViewState state) {this.state = state;}
+    public void setState(HomeViewState state) {
+        this.state = state;
+    }
 
-    public HomeViewState getState() {return state;}
+    public HomeViewState getState() {
+        return state;
+    }
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

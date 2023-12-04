@@ -133,8 +133,7 @@ public class AddTaskView extends JPanel implements ActionListener, PropertyChang
         if (evt.getPropertyName().equals("state")) {
             AddTaskState state = (AddTaskState) evt.getNewValue();
             setFields(state);
-        }
-        else if (evt.getPropertyName().equals("message")) {
+        } else if (evt.getPropertyName().equals("message")) {
             String message = (String) evt.getNewValue();
             showMessage(message);
         }

@@ -11,14 +11,15 @@ import static org.junit.Assert.assertEquals;
 public class DeleteTaskOutputDataTest {
     DeleteTaskOutputData data;
     ArrayList<Task> taskList;
+
     @BeforeEach
-    void init(){
+    void init() {
         taskList = new ArrayList<>();
         data = new DeleteTaskOutputData(taskList, false);
     }
-    
+
     @Test
-    void getTaskList(){
+    void getTaskList() {
         assertEquals(data.getTaskList(), taskList);
     }
 }

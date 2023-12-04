@@ -7,6 +7,7 @@ import use_case.delete_task.DeleteTaskInputData;
 public class DeleteTaskController {
 
     final DeleteTaskInputBoundary deleteTaskUseCaseInteractor;
+
     public DeleteTaskController(DeleteTaskInputBoundary deleteTaskUseCaseInteractor) {
         this.deleteTaskUseCaseInteractor = deleteTaskUseCaseInteractor;
     }

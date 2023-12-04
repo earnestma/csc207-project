@@ -4,6 +4,7 @@ import entity.Project;
 
 public class SelectDeleteTaskInputData {
     final private Project project;
+
     public SelectDeleteTaskInputData(Project project) {
         this.project = project;
     }

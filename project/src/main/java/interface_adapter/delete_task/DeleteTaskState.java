@@ -11,7 +11,8 @@ public class DeleteTaskState {
         project = copy.project;
     }
 
-    public DeleteTaskState() {}
+    public DeleteTaskState() {
+    }
 
     public String getTaskName() {
         return taskName;
