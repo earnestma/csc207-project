@@ -1,6 +1,5 @@
 package interface_adapter.select_add_task;
 
-import interface_adapter.ViewModel;
 import interface_adapter.ViewModelManager;
 import interface_adapter.add_task.AddTaskState;
 import interface_adapter.add_task.AddTaskViewModel;
@@ -12,7 +11,7 @@ public class SelectAddTaskPresenter implements SelectAddTaskOutputBoundary {
     private final ViewModelManager viewModelManager;
 
     public SelectAddTaskPresenter(ViewModelManager viewModelManager,
-                                  AddTaskViewModel addTaskViewModel) {
+            AddTaskViewModel addTaskViewModel) {
         this.addTaskViewModel = addTaskViewModel;
         this.viewModelManager = viewModelManager;
     }

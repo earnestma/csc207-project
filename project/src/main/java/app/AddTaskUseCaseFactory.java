@@ -1,8 +1,5 @@
 package app;
 
-import java.io.IOException;
-
-import entity.Task;
 import entity.TaskFactory;
 import interface_adapter.ViewModelManager;
 import interface_adapter.add_task.AddTaskController;
@@ -16,10 +13,11 @@ import use_case.add_task.AddTaskInteractor;
 import use_case.add_task.AddTaskOutputBoundary;
 import view.AddTaskView;
 
-import javax.swing.*;
+import java.io.IOException;
 
 public class AddTaskUseCaseFactory {
-    private AddTaskUseCaseFactory() {}
+    private AddTaskUseCaseFactory() {
+    }
 
     public static AddTaskView create(
             ViewModelManager viewModelManager, ProjectViewModel projectViewModel, AddTaskViewModel addTaskViewModel,
@@ -36,11 +34,12 @@ public class AddTaskUseCaseFactory {
     }
 
     private static AddTaskController addTaskUseCase(ViewModelManager viewModelManager,
-                                                    ProjectViewModel projectViewModel, AddTaskViewModel addTaskViewModel,
-                                                    AddTaskDataAccessInterface addTaskDataAccessObject) throws IOException {
+            ProjectViewModel projectViewModel, AddTaskViewModel addTaskViewModel,
+            AddTaskDataAccessInterface addTaskDataAccessObject) throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
-        AddTaskOutputBoundary addTaskOutputBoundary = new AddTaskPresenter(viewModelManager, addTaskViewModel, projectViewModel);
+        AddTaskOutputBoundary addTaskOutputBoundary = new AddTaskPresenter(viewModelManager, addTaskViewModel,
+                projectViewModel);
 
         TaskFactory taskFactory = new TaskFactory();
 

@@ -3,7 +3,7 @@ package use_case.check_remaining_time;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class CheckTimeInteractor implements CheckTimeInputBoundary{
+public class CheckTimeInteractor implements CheckTimeInputBoundary {
     final CheckTimeOutputBoundary checkTimePresenter;
 
     public CheckTimeInteractor(CheckTimeOutputBoundary checkTimePresenter) {
@@ -14,17 +14,17 @@ public class CheckTimeInteractor implements CheckTimeInputBoundary{
         boolean hasDateTime = checkTimeInputData.getHasDateTime();
         LocalDateTime dueDateTime = checkTimeInputData.getDueDateTime();
         LocalDateTime currentDateTime = checkTimeInputData.getCurrentDateTime();
-        
-        if (!hasDateTime){
+
+        if (!hasDateTime) {
             checkTimePresenter.prepareFailView("This does not have a due date.");
         }
-        
+
         else if (currentDateTime.compareTo(dueDateTime) > 0) {
             checkTimePresenter.prepareFailView("This was already due :(");
             // Show Fail Screen
         }
-        
-        else{
+
+        else {
             int minutes = findMinutes(currentDateTime, dueDateTime);
             int days = minutes / 1440;
             int hours = (minutes - (days * 1440)) / 60;
@@ -33,17 +33,15 @@ public class CheckTimeInteractor implements CheckTimeInputBoundary{
             String outputMessage = "You have ";
             if (days != 0) {
                 outputMessage += days + " days, " + hours + " hours, and " + minutes;
-            }
-            else if (hours != 0) {
+            } else if (hours != 0) {
                 outputMessage += hours + " hours, and " + minutes;
-            }
-            else{
+            } else {
                 outputMessage += minutes;
             }
-            outputMessage +=  " minutes to complete this task!";
+            outputMessage += " minutes to complete this task!";
 
             CheckTimeOutputData outputData = new CheckTimeOutputData(outputMessage);
-            
+
             checkTimePresenter.prepareSuccessView(outputData);
         }
 

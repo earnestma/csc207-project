@@ -10,14 +10,11 @@ public class Task {
     private boolean hasDueDate;
     private LocalDateTime dueDate;
     private boolean completed;
-    public List<Reminder> reminders; // Stores a list of reminders, with the most
-                                     // urgent at the front?
 
     public Task(String name) {
         this.name = name;
         this.hasDueDate = false;
         this.completed = false;
-        this.reminders = new ArrayList<Reminder>();
     }
 
     public Task(String name, Long id) {
@@ -25,7 +22,6 @@ public class Task {
         this.id = id;
         this.hasDueDate = false;
         this.completed = false;
-        this.reminders = new ArrayList<Reminder>();
     }
 
     public Task(String name, LocalDateTime dueDate) {
@@ -33,7 +29,6 @@ public class Task {
         this.hasDueDate = true;
         this.dueDate = dueDate;
         this.completed = false;
-        this.reminders = new ArrayList<Reminder>();
     }
 
     public Task(String name, LocalDateTime dueDate, Long id) {
@@ -42,10 +37,9 @@ public class Task {
         this.hasDueDate = true;
         this.dueDate = dueDate;
         this.completed = false;
-        this.reminders = new ArrayList<Reminder>();
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -85,10 +79,6 @@ public class Task {
     }
 
     public void setCompleted() {
-        this.completed = true;
-    }
-    
-    public void markAsCompleted() {
         this.completed = true;
     }
 }

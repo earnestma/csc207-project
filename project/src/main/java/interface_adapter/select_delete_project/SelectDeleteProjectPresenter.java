@@ -11,7 +11,7 @@ public class SelectDeleteProjectPresenter implements SelectDeleteProjectOutputBo
     private final ViewModelManager viewModelManager;
 
     public SelectDeleteProjectPresenter(ViewModelManager viewModelManager,
-                                        DeleteProjectViewModel deleteProjectViewModel) {
+            DeleteProjectViewModel deleteProjectViewModel) {
         this.deleteProjectViewModel = deleteProjectViewModel;
         this.viewModelManager = viewModelManager;
     }

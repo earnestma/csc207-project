@@ -11,9 +11,9 @@ public class AddTaskOutputData {
     private final String dueDate;
     private final ArrayList<Task> taskList;
     private boolean useCaseFailed;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public AddTaskOutputData(String taskName, LocalDateTime dueDate, ArrayList<Task> taskList, boolean useCaseFailed) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.taskName = taskName;
         this.dueDate = dueDate.format(formatter);
         this.taskList = taskList;
@@ -27,7 +27,7 @@ public class AddTaskOutputData {
     public String getDueDate() {
         return dueDate;
     }
-  
+
     public ArrayList<Task> getTaskList() {
         return this.taskList;
     }

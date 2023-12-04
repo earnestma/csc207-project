@@ -7,7 +7,6 @@ public class GoProjectViewInteractor implements GoProjectViewInputBoundary {
         this.goProjectViewPresenter = goProjectViewPresenter;
     }
 
-
     @Override
     public void execute() {
         goProjectViewPresenter.prepareSuccessView();

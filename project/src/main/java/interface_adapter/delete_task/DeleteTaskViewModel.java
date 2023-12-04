@@ -1,10 +1,9 @@
 package interface_adapter.delete_task;
 
 import interface_adapter.ViewModel;
-import org.json.Property;
 
-import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class DeleteTaskViewModel extends ViewModel {
 
@@ -39,7 +38,12 @@ public class DeleteTaskViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
-    public void setMessage(String message) {this.message = message;}
-    public void showMessage() {support.firePropertyChange("message", null, this.message);}
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void showMessage() {
+        support.firePropertyChange("message", null, this.message);
+    }
 
 }
